@@ -1,37 +1,48 @@
 package structural;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Client {
-    
+
     private int identificationNumber;
+    private String documetType;
     private String name;
     private Date birthday;
     private String email;
     private String phoneNumber;
-    private double balance;
-    
+    private String gender;
+
     public Client() {
         super();
     }
 
 
-    public Client(int identificationNumber, String name, Date Date, String email, String phoneNumber, double balance) {
+    public Client(int identificationNumber, String documetType, String name, Date birthday, String email,
+                  String phoneNumber, String gender) {
         super();
         this.identificationNumber = identificationNumber;
+        this.documetType = documetType;
         this.name = name;
-        this.birthday = Date;
+        this.birthday = birthday;
         this.email = email;
         this.phoneNumber = phoneNumber;
-        this.balance = balance;
+        this.gender = gender;
     }
-    
+
     public int getIdentificationNumber() {
             return identificationNumber;
         }
 
         public void setIdentificationNumber(int identificationNumber) {
             this.identificationNumber = identificationNumber;
+        }
+
+        public String getDocumetType() {
+            return documetType;
+        }
+
+        public void setDocumetType(String documetType) {
+            this.documetType = documetType;
         }
 
         public String getName() {
@@ -66,15 +77,16 @@ public class Client {
             this.phoneNumber = phoneNumber;
         }
 
-        public double getBalance() {
-            return balance;
+        public String getGender() {
+            return gender;
         }
 
-        public void setBalance(double balance) {
-            this.balance = balance;
+        public void setGender(String gender) {
+            this.gender = gender;
         }
-        
+
+        @Override
         public String toString() {
-            return "Client{" + "identificationNumber=" + identificationNumber + ", name=" + name + ", birthday=" + birthday + ", email=" + email + ", phoneNumber=" + phoneNumber + ", balance=" + balance + '}';
+            return "Client{" + "identificationNumber=" + identificationNumber + ", documetType=" + documetType + ", name=" + name + ", birthday=" + birthday + ", email=" + email + ", phoneNumber=" + phoneNumber + ", gender=" + gender + '}';
         }
 }
