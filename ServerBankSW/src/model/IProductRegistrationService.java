@@ -8,11 +8,11 @@ public interface IProductRegistrationService {
 
     List<ProductRegistration> listAll();
 
-    boolean insertProductoRegistration(ProductRegistration newRegistration);
+    boolean insertProductRegistration(ProductRegistration newProductRegistration);
 
-    ProductRegistration findProductoRegistration(int clientId, int productCode);
+    ProductRegistration findProductRegistration(int clientId, int productCode);
 
-    boolean updateProductoRegistration(int clientId, int productCode, ProductRegistration update);
+    boolean updateProductRegistration(int clientId, int productCode, ProductRegistration update);
 
-    boolean deleteProductoRegistration(int clientId, int productCode);
+    boolean deleteProductRegistration(int clientId, int productCode);
 }

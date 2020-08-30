@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<xsd:schema xmlns:ns0="http://webServices/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://webServices/">
+  <xsd:complexType name="findProductoRegistration">
+    <xsd:sequence>
+      <xsd:element name="arg0" type="xsd:int"/>
+      <xsd:element name="arg1" type="xsd:int"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="listAllRegistrationService"/>
+  <xsd:complexType name="insertProductoRegistrationResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:boolean"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="deleteProductoRegistration">
+    <xsd:sequence>
+      <xsd:element name="arg0" type="xsd:int"/>
+      <xsd:element name="arg1" type="xsd:int"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="listAllRegistrationServiceResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="ns0:productRegistration" minOccurs="0" maxOccurs="unbounded"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="deleteProductoRegistrationResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:boolean"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="insertProductoRegistration">
+    <xsd:sequence>
+      <xsd:element name="arg0" type="ns0:productRegistration" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="productRegistration">
+    <xsd:sequence>
+      <xsd:element name="balance" type="xsd:double"/>
+      <xsd:element name="clientId" type="xsd:int"/>
+      <xsd:element name="expirationDate" type="xsd:date" minOccurs="0"/>
+      <xsd:element name="productCode" type="xsd:int"/>
+      <xsd:element name="productNumber" type="xsd:int"/>
+      <xsd:element name="registratioDate" type="xsd:date" minOccurs="0"/>
+      <xsd:element name="state" type="xsd:boolean"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="updateProductoRegistrationResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="xsd:boolean"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="updateProductoRegistration">
+    <xsd:sequence>
+      <xsd:element name="arg0" type="xsd:int"/>
+      <xsd:element name="arg1" type="xsd:int"/>
+      <xsd:element name="arg2" type="ns0:productRegistration" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="findProductoRegistrationResponse">
+    <xsd:sequence>
+      <xsd:element name="return" type="ns0:productRegistration" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="findProductoRegistration" type="ns0:findProductoRegistration"/>
+  <xsd:element name="listAllRegistrationService" type="ns0:listAllRegistrationService"/>
+  <xsd:element name="insertProductoRegistrationResponse" type="ns0:insertProductoRegistrationResponse"/>
+  <xsd:element name="deleteProductoRegistration" type="ns0:deleteProductoRegistration"/>
+  <xsd:element name="listAllRegistrationServiceResponse" type="ns0:listAllRegistrationServiceResponse"/>
+  <xsd:element name="deleteProductoRegistrationResponse" type="ns0:deleteProductoRegistrationResponse"/>
+  <xsd:element name="insertProductoRegistration" type="ns0:insertProductoRegistration"/>
+  <xsd:element name="updateProductoRegistrationResponse" type="ns0:updateProductoRegistrationResponse"/>
+  <xsd:element name="updateProductoRegistration" type="ns0:updateProductoRegistration"/>
+  <xsd:element name="findProductoRegistrationResponse" type="ns0:findProductoRegistrationResponse"/>
+</xsd:schema>

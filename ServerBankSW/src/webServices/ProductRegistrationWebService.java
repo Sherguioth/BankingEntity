@@ -20,31 +20,31 @@ public class ProductRegistrationWebService {
     }
 
     @WebMethod
-    public List<structural.ProductRegistration> listAllRegistrationService() {
+    public List<structural.ProductRegistration> listAllProductRegistrationsService() {
         return this.productRegistrationService.listAll();
     }
 
     @WebMethod
-    public boolean insertProductoRegistration(@WebParam(name = "arg0") structural.ProductRegistration newRegistration) {
-        return this.productRegistrationService.insertProductoRegistration(newRegistration);
+    public boolean insertProductRegistration(@WebParam(name = "arg0") structural.ProductRegistration newRegistration) {
+        return this.productRegistrationService.insertProductRegistration(newRegistration);
     }
 
     @WebMethod
-    public structural.ProductRegistration findProductoRegistration(@WebParam(name = "arg0") int clientId,
+    public structural.ProductRegistration findProductRegistration(@WebParam(name = "arg0") int clientId,
                                                                    @WebParam(name = "arg1") int productCode) {
-        return this.productRegistrationService.findProductoRegistration(clientId, productCode);
+        return this.productRegistrationService.findProductRegistration(clientId, productCode);
     }
 
     @WebMethod
-    public boolean updateProductoRegistration(@WebParam(name = "arg0") int clientId,
+    public boolean updateProductRegistration(@WebParam(name = "arg0") int clientId,
                                               @WebParam(name = "arg1") int productCode,
                                               @WebParam(name = "arg2") structural.ProductRegistration update) {
-        return this.productRegistrationService.updateProductoRegistration(clientId, productCode, update);
+        return this.productRegistrationService.updateProductRegistration(clientId, productCode, update);
     }
 
     @WebMethod
-    public boolean deleteProductoRegistration(@WebParam(name = "arg0") int clientId,
+    public boolean deleteProductRegistration(@WebParam(name = "arg0") int clientId,
                                               @WebParam(name = "arg1") int productCode) {
-        return this.productRegistrationService.deleteProductoRegistration(clientId, productCode);
+        return this.productRegistrationService.deleteProductRegistration(clientId, productCode);
     }
 }

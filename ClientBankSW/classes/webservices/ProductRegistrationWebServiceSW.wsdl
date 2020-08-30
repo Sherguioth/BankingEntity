@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<definitions xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsp1_2="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://webServices/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://webServices/" name="ProductRegistrationWebServiceSW">
+  <types>
+    <xsd:schema>
+      <xsd:import namespace="http://webServices/" schemaLocation="ProductRegistrationWebServicePort1.xsd"/>
+    </xsd:schema>
+  </types>
+  <message name="findProductoRegistration">
+    <part name="parameters" element="tns:findProductoRegistration"/>
+  </message>
+  <message name="findProductoRegistrationResponse">
+    <part name="parameters" element="tns:findProductoRegistrationResponse"/>
+  </message>
+  <message name="listAllRegistrationService">
+    <part name="parameters" element="tns:listAllRegistrationService"/>
+  </message>
+  <message name="listAllRegistrationServiceResponse">
+    <part name="parameters" element="tns:listAllRegistrationServiceResponse"/>
+  </message>
+  <message name="updateProductoRegistration">
+    <part name="parameters" element="tns:updateProductoRegistration"/>
+  </message>
+  <message name="updateProductoRegistrationResponse">
+    <part name="parameters" element="tns:updateProductoRegistrationResponse"/>
+  </message>
+  <message name="deleteProductoRegistration">
+    <part name="parameters" element="tns:deleteProductoRegistration"/>
+  </message>
+  <message name="deleteProductoRegistrationResponse">
+    <part name="parameters" element="tns:deleteProductoRegistrationResponse"/>
+  </message>
+  <message name="insertProductoRegistration">
+    <part name="parameters" element="tns:insertProductoRegistration"/>
+  </message>
+  <message name="insertProductoRegistrationResponse">
+    <part name="parameters" element="tns:insertProductoRegistrationResponse"/>
+  </message>
+  <portType name="ProductRegistrationWebService">
+    <operation name="findProductoRegistration">
+      <input wsam:Action="http://webServices/ProductRegistrationWebService/findProductoRegistrationRequest" message="tns:findProductoRegistration"/>
+      <output wsam:Action="http://webServices/ProductRegistrationWebService/findProductoRegistrationResponse" message="tns:findProductoRegistrationResponse"/>
+    </operation>
+    <operation name="listAllRegistrationService">
+      <input wsam:Action="http://webServices/ProductRegistrationWebService/listAllRegistrationServiceRequest" message="tns:listAllRegistrationService"/>
+      <output wsam:Action="http://webServices/ProductRegistrationWebService/listAllRegistrationServiceResponse" message="tns:listAllRegistrationServiceResponse"/>
+    </operation>
+    <operation name="updateProductoRegistration">
+      <input wsam:Action="http://webServices/ProductRegistrationWebService/updateProductoRegistrationRequest" message="tns:updateProductoRegistration"/>
+      <output wsam:Action="http://webServices/ProductRegistrationWebService/updateProductoRegistrationResponse" message="tns:updateProductoRegistrationResponse"/>
+    </operation>
+    <operation name="deleteProductoRegistration">
+      <input wsam:Action="http://webServices/ProductRegistrationWebService/deleteProductoRegistrationRequest" message="tns:deleteProductoRegistration"/>
+      <output wsam:Action="http://webServices/ProductRegistrationWebService/deleteProductoRegistrationResponse" message="tns:deleteProductoRegistrationResponse"/>
+    </operation>
+    <operation name="insertProductoRegistration">
+      <input wsam:Action="http://webServices/ProductRegistrationWebService/insertProductoRegistrationRequest" message="tns:insertProductoRegistration"/>
+      <output wsam:Action="http://webServices/ProductRegistrationWebService/insertProductoRegistrationResponse" message="tns:insertProductoRegistrationResponse"/>
+    </operation>
+  </portType>
+  <binding name="ProductRegistrationWebServicePortBinding" type="tns:ProductRegistrationWebService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <operation name="findProductoRegistration">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="listAllRegistrationService">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="updateProductoRegistration">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="deleteProductoRegistration">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="insertProductoRegistration">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="ProductRegistrationWebServiceSW">
+    <port name="ProductRegistrationWebServicePort" binding="tns:ProductRegistrationWebServicePortBinding">
+      <soap:address location="http://localhost:7101/ServerBankSW/ProductRegistrationWebServicePort"/>
+    </port>
+  </service>
+</definitions>

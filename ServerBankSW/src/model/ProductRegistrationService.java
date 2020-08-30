@@ -55,7 +55,7 @@ public class ProductRegistrationService implements IProductRegistrationService {
     }
 
     @Override
-    public boolean insertProductoRegistration(ProductRegistration newRegistration) {
+    public boolean insertProductRegistration(ProductRegistration newProductRegistration) {
         String sql =
             "INSERT INTO public.products_registration(client_id, product_code, registration_date, balance, product_number, expiration_date, state) " +
             "VALUES (?, ?, ?, ?, ?, ?, ?);";
@@ -63,13 +63,13 @@ public class ProductRegistrationService implements IProductRegistrationService {
         PreparedStatement statement = conn.getPreparedStatement(sql);
 
         try {
-            statement.setInt(1, newRegistration.getClientId());
-            statement.setInt(2, newRegistration.getProductCode());
-            statement.setDate(3, newRegistration.getRegistratioDate());
-            statement.setDouble(4, newRegistration.getBalance());
-            statement.setInt(5, newRegistration.getProductNumber());
-            statement.setDate(6, newRegistration.getExpirationDate());
-            statement.setBoolean(7, newRegistration.getState());
+            statement.setInt(1, newProductRegistration.getClientId());
+            statement.setInt(2, newProductRegistration.getProductCode());
+            statement.setDate(3, newProductRegistration.getRegistratioDate());
+            statement.setDouble(4, newProductRegistration.getBalance());
+            statement.setInt(5, newProductRegistration.getProductNumber());
+            statement.setDate(6, newProductRegistration.getExpirationDate());
+            statement.setBoolean(7, newProductRegistration.getState());
 
             return conn.executeQuery(statement);
         } catch (SQLException ex) {
@@ -80,10 +80,10 @@ public class ProductRegistrationService implements IProductRegistrationService {
     }
 
     @Override
-    public ProductRegistration findProductoRegistration(int clientId, int productCode) {
+    public ProductRegistration findProductRegistration(int clientId, int productCode) {
         String sql =
             "SELECT client_id, product_code, registration_date, balance, product_number, expiration_date, state " +
-            "FROM public.products_registration WHERE client_id = ? OR product_code = ?;";
+            "FROM public.products_registration WHERE client_id = ? AND product_code = ?;";
 
         PreparedStatement statement = conn.getPreparedStatement(sql);
 
@@ -114,7 +114,7 @@ public class ProductRegistrationService implements IProductRegistrationService {
     }
 
     @Override
-    public boolean updateProductoRegistration(int clientId, int productCode, ProductRegistration update) {
+    public boolean updateProductRegistration(int clientId, int productCode, ProductRegistration update) {
         String sql =
             "UPDATE public.products_registration SET client_id=?, product_code=?, registration_date=?, balance=?, product_number=?, expiration_date=?, state=? " +
             "WHERE client_id = ? AND product_code = ?;";
@@ -142,7 +142,7 @@ public class ProductRegistrationService implements IProductRegistrationService {
     }
 
     @Override
-    public boolean deleteProductoRegistration(int clientId, int productCode) {
+    public boolean deleteProductRegistration(int clientId, int productCode) {
         String sql = "DELETE FROM public.products_registration WHERE client_id = ? AND product_code = ?;";
 
         PreparedStatement statement = conn.getPreparedStatement(sql);
