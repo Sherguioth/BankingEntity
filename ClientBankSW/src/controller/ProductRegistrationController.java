@@ -38,12 +38,12 @@ public class ProductRegistrationController {
             try {
                 productNumber = Integer.parseInt(strProductNumber);
             } catch (NumberFormatException ex) {
-                throw new Exception("Nï¿½mero de producto invalido.\nPor favor digite un valor nï¿½merico");
+                throw new Exception("Número de producto invalido.\nPor favor digite un valor numérico");
             }
             try {
                 balance = Double.parseDouble(strBalance);
             } catch (NumberFormatException ex) {
-                throw new Exception("Saldo invalido.\nPor favor digite un valor nï¿½merico");
+                throw new Exception("Saldo invalido.\nPor favor digite un valor numérico");
             }
 
             GregorianCalendar gDate = new GregorianCalendar();
@@ -88,7 +88,7 @@ public class ProductRegistrationController {
         }
     }
 
-    public boolean updateProductRegistrationint(int idClient, String strProductCode, String strProductNumber,
+    public boolean updateProductRegistration(int idClient, String strProductCode, String strProductNumber,
                                                 String strBalance, Date registrationDate, Date expirationDate,
                                                 boolean state) throws Exception {
 
@@ -145,6 +145,28 @@ public class ProductRegistrationController {
             } else {
                 return false;
             }
+        }
+    }
+    
+    public boolean deleteProductRegistration(int idClient, String strProductCode) throws Exception{
+        ProductRegistration productRegistrationToDelete = null;
+        try {
+            productRegistrationToDelete = this.findProductRegistration(idClient, strProductCode);
+        } catch (Exception ex) {
+            throw ex;
+        }
+        
+        int productCode = 0;
+        try {
+            productCode = Integer.parseInt(strProductCode);
+        } catch (Exception ex) {
+            throw new Exception("Por favor seleccione un producto");
+        }
+        
+        if(this.productRegistrationWebService.deleteProductRegistration(idClient, productCode)){
+            return true;
+        }else{
+            return false;
         }
     }
 }

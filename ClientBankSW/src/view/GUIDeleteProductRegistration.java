@@ -5,18 +5,16 @@
  */
 package view;
 
+import controller.ClientController;
+import controller.ProductController;
+import controller.ProductRegistrationController;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.swing.JDialog;
-
-import controller.ClientController;
-import controller.ProductController;
-import controller.ProductRegistrationController;
-
-import java.util.Date;
 
 import javax.swing.JOptionPane;
 
@@ -28,7 +26,7 @@ import webservices.ProductRegistration;
  *
  * @author Sherg
  */
-public class GUIUpdateProductRegistration extends javax.swing.JFrame implements ILoadModalData {
+public class GUIDeleteProductRegistration extends javax.swing.JFrame implements ILoadModalData {
 
     private final ClientController clientController;
     private final ProductController productController;
@@ -37,12 +35,11 @@ public class GUIUpdateProductRegistration extends javax.swing.JFrame implements 
     private JDialog modal;
 
     private Client client;
-    private Product product;
 
     /**
-     * Creates new form GUIUpdateREg
+     * Creates new form GUIDeleteProductRegistration
      */
-    public GUIUpdateProductRegistration(ClientController pClientController, ProductController pProductController,
+    public GUIDeleteProductRegistration(ClientController pClientController, ProductController pProductController,
                                         ProductRegistrationController pProductRegistrationController) {
         initComponents();
 
@@ -51,7 +48,6 @@ public class GUIUpdateProductRegistration extends javax.swing.JFrame implements 
         this.productRegistrationController = pProductRegistrationController;
 
         this.client = null;
-        this.product = null;
     }
 
     /**
@@ -62,54 +58,40 @@ public class GUIUpdateProductRegistration extends javax.swing.JFrame implements 
     @SuppressWarnings("unchecked")
     private void initComponents() {//GEN-BEGIN:initComponents
 
-        txtIdClient = new javax.swing.JTextField();
-        labProductNumber = new javax.swing.JLabel();
-        labState = new javax.swing.JLabel();
-        labExpirationDate = new javax.swing.JLabel();
-        txtProductNumber = new javax.swing.JTextField();
-        labTitle = new javax.swing.JLabel();
-        txtBalance = new javax.swing.JTextField();
-        labIdClient = new javax.swing.JLabel();
-        radBtnActivo = new javax.swing.JRadioButton();
-        btnFindClient = new javax.swing.JButton();
-        dateReg = new com.toedter.calendar.JDateChooser();
-        radBtnInactivo = new javax.swing.JRadioButton();
-        labProductCode = new javax.swing.JLabel();
-        dateExp = new com.toedter.calendar.JDateChooser();
-        jComboBoxProductCode = new javax.swing.JComboBox<String>();
-        labRegistrrionDate = new javax.swing.JLabel();
-        btnUpdate = new javax.swing.JButton();
         labBalance = new javax.swing.JLabel();
+        labProductNumber = new javax.swing.JLabel();
+        labExpirationDate = new javax.swing.JLabel();
+        labState = new javax.swing.JLabel();
+        txtProductNumber = new javax.swing.JTextField();
+        txtBalance = new javax.swing.JTextField();
+        txtRegDate = new javax.swing.JTextField();
+        txtExpDate = new javax.swing.JTextField();
+        txtState = new javax.swing.JTextField();
+        labTitle = new javax.swing.JLabel();
+        labIdClient = new javax.swing.JLabel();
+        txtIdClient = new javax.swing.JTextField();
+        btnFindClient = new javax.swing.JButton();
+        labProductCode = new javax.swing.JLabel();
+        jComboBoxProductCode = new javax.swing.JComboBox<String>();
         btnBuscar = new javax.swing.JButton();
+        labRegistrrionDate = new javax.swing.JLabel();
+        btn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Actualizar Registro");
+        setTitle("Eliminar registro");
+
+        labBalance.setText("Saldo:");
 
         labProductNumber.setText("Número de producto:");
 
-        labState.setText("Estado:");
-
         labExpirationDate.setText("Fecha de vencimiento:");
 
+        labState.setText("Estado:");
+
         labTitle.setFont(new java.awt.Font("Lucida Calligraphy", 0, 24)); // NOI18N
-        labTitle.setText("Actualizar Registro");
-        labTitle.setToolTipText("");
+        labTitle.setText("Eliminar Registro");
 
         labIdClient.setText("Documento del Cliente:");
-
-        radBtnActivo.setSelected(true);
-        radBtnActivo.setText("Avtivo");
-        radBtnActivo.setToolTipText("");
-        radBtnActivo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                radBtnActivoMouseClicked(evt);
-            }
-        });
-        radBtnActivo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radBtnActivoActionPerformed(evt);
-            }
-        });
 
         btnFindClient.setText("...");
         btnFindClient.addActionListener(new java.awt.event.ActionListener() {
@@ -118,36 +100,21 @@ public class GUIUpdateProductRegistration extends javax.swing.JFrame implements 
             }
         });
 
-        radBtnInactivo.setText("Inactivo");
-        radBtnInactivo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                radBtnInactivoMouseClicked(evt);
-            }
-        });
-        radBtnInactivo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radBtnInactivoActionPerformed(evt);
-            }
-        });
-
-        labProductCode.setText("Producto:");
-        labProductCode.setToolTipText("");
-
-        labRegistrrionDate.setText("Fecha de expedición:");
-
-        btnUpdate.setText("Actualizar");
-        btnUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnUpdateActionPerformed(evt);
-            }
-        });
-
-        labBalance.setText("Saldo:");
+        labProductCode.setText("Código de producto:");
 
         btnBuscar.setText("Buscar");
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
+            }
+        });
+
+        labRegistrrionDate.setText("Fecha de expedición:");
+
+        btn.setText("Eliminar registro");
+        btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnActionPerformed(evt);
             }
         });
 
@@ -166,35 +133,29 @@ public class GUIUpdateProductRegistration extends javax.swing.JFrame implements 
                     .addComponent(labExpirationDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(labState, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtProductNumber)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(txtIdClient, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnFindClient, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtExpDate)
+                    .addComponent(txtRegDate)
                     .addComponent(txtBalance)
+                    .addComponent(txtProductNumber)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jComboBoxProductCode, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBoxProductCode, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnBuscar))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(txtIdClient, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnFindClient, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(radBtnActivo)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(radBtnInactivo)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(dateReg, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(dateExp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(89, 89, 89)
+                    .addComponent(txtState))
+                .addContainerGap(19, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btn)
+                .addGap(159, 159, 159))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labTitle)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(178, 178, 178)
-                .addComponent(btnUpdate)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(97, 97, 97))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -220,22 +181,22 @@ public class GUIUpdateProductRegistration extends javax.swing.JFrame implements 
                     .addComponent(txtBalance)
                     .addComponent(labBalance, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(labRegistrrionDate, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dateReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtRegDate, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labExpirationDate, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dateExp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtExpDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(labExpirationDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(labState, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(radBtnActivo)
-                        .addComponent(radBtnInactivo)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnUpdate)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtState)
+                    .addComponent(labState, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addComponent(btn)
+                .addContainerGap())
         );
 
         pack();
@@ -250,38 +211,8 @@ public class GUIUpdateProductRegistration extends javax.swing.JFrame implements 
         modal.setVisible(true);
     }//GEN-LAST:event_btnFindClientActionPerformed
 
-    private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
-        int idClient = Integer.parseInt(txtIdClient.getText());
-        List<Product> productList = null;
-
-        String strProductCode = jComboBoxProductCode.getSelectedItem().toString();
-        String strProductNumber = txtProductNumber.getText();
-        String strBalance = txtBalance.getText();
-        Date registrationDate = dateReg.getDate();
-        Date expirationDate = dateExp.getDate();
-        boolean state = radBtnActivo.isSelected();
-
-        try {
-            boolean update =
-                this.productRegistrationController.updateProductRegistration(idClient, strProductCode,
-                                                                                strProductNumber, strBalance,
-                                                                                registrationDate, expirationDate,
-                                                                                state);
-
-            if (update) {
-                JOptionPane.showMessageDialog(this, "EL registro ha sido Actualizdo.", "Confirmación",
-                                              JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(this, "No se ha podido actualizar el registro del producto.", "Error",
-                                              JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Advertencia", JOptionPane.WARNING_MESSAGE);
-        }
-    }//GEN-LAST:event_btnUpdateActionPerformed
-
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        String strProductCode = (String) jComboBoxProductCode.getSelectedItem();
+        String strProductCode = jComboBoxProductCode.getSelectedItem().toString();
 
         try {
             ProductRegistration productRegistrartion =
@@ -290,45 +221,48 @@ public class GUIUpdateProductRegistration extends javax.swing.JFrame implements 
 
             txtProductNumber.setText(String.valueOf(productRegistrartion.getProductNumber()));
             txtBalance.setText(String.valueOf(productRegistrartion.getBalance()));
+            txtRegDate.setText(String.valueOf(productRegistrartion.getRegistratioDate()));
+            txtExpDate.setText(String.valueOf(productRegistrartion.getExpirationDate()));
+            txtState.setText((productRegistrartion.isState() ? "Activo" : "Inactivo"));
 
-            java.sql.Date registrationDate =
-                new java.sql.Date(productRegistrartion.getRegistratioDate().toGregorianCalendar().getTime().getTime());
-            dateReg.setDate(registrationDate);
-            java.sql.Date expirationDate =
-                new java.sql.Date(productRegistrartion.getExpirationDate().toGregorianCalendar().getTime().getTime());
-            dateExp.setDate(expirationDate);
-
-            if (productRegistrartion.isState()) {
-                radBtnActivo.setSelected(true);
-            } else {
-                radBtnInactivo.setSelected(true);
-            }
+            txtProductNumber.setEditable(false);
+            txtBalance.setEditable(false);
+            txtRegDate.setEditable(false);
+            txtExpDate.setEditable(false);
+            txtState.setEditable(false);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Advertencia", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void radBtnInactivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_radBtnInactivoMouseClicked
+    private void btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActionPerformed
+        String strProductCode = jComboBoxProductCode.getSelectedItem().toString();
 
-    }//GEN-LAST:event_radBtnInactivoMouseClicked
+        try {
+            boolean delete =
+                this.productRegistrationController.deleteProductRegistration(client.getIdentificationNumber(),
+                                                                             strProductCode);
+            if (delete) {
+                JOptionPane.showMessageDialog(this, "El registro se ha eliminado correctamente.", "Confirmación",
+                                              JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "No se ha podido eliminar el registro.", "Eror",
+                                              JOptionPane.ERROR_MESSAGE);
+                txtIdClient.setText(null);
+                jComboBoxProductCode.setSelectedIndex(0);
+                txtProductNumber.setText("");
+                txtBalance.setText("");
+                txtRegDate.setText("");
+                txtExpDate.setText("");
+                txtState.setText("");
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
+    }//GEN-LAST:event_btnActionPerformed
 
-    private void radBtnActivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_radBtnActivoMouseClicked
-        
-    }//GEN-LAST:event_radBtnActivoMouseClicked
-
-    private void radBtnActivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBtnActivoActionPerformed
-        radBtnInactivo.setSelected(false);
-        radBtnActivo.setSelected(true);
-    }//GEN-LAST:event_radBtnActivoActionPerformed
-
-    private void radBtnInactivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBtnInactivoActionPerformed
-        radBtnActivo.setSelected(false);
-        radBtnInactivo.setSelected(true);
-    }//GEN-LAST:event_radBtnInactivoActionPerformed
-
-    public void loadProducts() {
+    public void loadData() {
         jComboBoxProductCode.removeAllItems();
-
         List<ProductRegistration> allProductRegistrations =
             this.productRegistrationController.listAllProductRegistrations();
         List<ProductRegistration> clientProductRegistrations = new ArrayList<>();
@@ -361,16 +295,13 @@ public class GUIUpdateProductRegistration extends javax.swing.JFrame implements 
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
-
-        loadProducts();
+        this.loadData();
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnFindClient;
-    private javax.swing.JButton btnUpdate;
-    private com.toedter.calendar.JDateChooser dateExp;
-    private com.toedter.calendar.JDateChooser dateReg;
     private javax.swing.JComboBox<String> jComboBoxProductCode;
     private javax.swing.JLabel labBalance;
     private javax.swing.JLabel labExpirationDate;
@@ -380,11 +311,12 @@ public class GUIUpdateProductRegistration extends javax.swing.JFrame implements 
     private javax.swing.JLabel labRegistrrionDate;
     private javax.swing.JLabel labState;
     private javax.swing.JLabel labTitle;
-    private javax.swing.JRadioButton radBtnActivo;
-    private javax.swing.JRadioButton radBtnInactivo;
     private javax.swing.JTextField txtBalance;
+    private javax.swing.JTextField txtExpDate;
     private javax.swing.JTextField txtIdClient;
     private javax.swing.JTextField txtProductNumber;
+    private javax.swing.JTextField txtRegDate;
+    private javax.swing.JTextField txtState;
     // End of variables declaration//GEN-END:variables
 
 }

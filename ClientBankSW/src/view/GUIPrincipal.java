@@ -174,6 +174,11 @@ public class GUIPrincipal extends javax.swing.JFrame {
         jMenuRegProduct.add(jMenuItemUpdateReg);
 
         jMenuItemDeleteProductRegistration.setText("Eliminar Registro");
+        jMenuItemDeleteProductRegistration.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemDeleteProductRegistrationActionPerformed(evt);
+            }
+        });
         jMenuRegProduct.add(jMenuItemDeleteProductRegistration);
 
         jMenuBarPrincipal.add(jMenuRegProduct);
@@ -286,6 +291,12 @@ public class GUIPrincipal extends javax.swing.JFrame {
         gui.setLocationRelativeTo(null);
         gui.setVisible(true);
     }//GEN-LAST:event_jMenuListAllRecordsActionPerformed
+
+    private void jMenuItemDeleteProductRegistrationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemDeleteProductRegistrationActionPerformed
+        GUIDeleteProductRegistration gui = new GUIDeleteProductRegistration(this.clientController, this.productController, this.productRegistrationController);
+        gui.setLocationRelativeTo(null);
+        gui.setVisible(true);
+    }//GEN-LAST:event_jMenuItemDeleteProductRegistrationActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel imgeBank;
