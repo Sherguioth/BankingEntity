@@ -8,16 +8,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for findProductoRegistrationResponse complex type.
+ * <p>Java class for updateProductRegistrationResponse complex type.
  *
  * <p>The following schema fragment specifies the expected content contained within this class.
  *
  * <pre>
- * &lt;complexType name="findProductoRegistrationResponse">
+ * &lt;complexType name="updateProductRegistrationResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="return" type="{http://webServices/}productRegistration" minOccurs="0"/>
+ *         &lt;element name="return" type="{http://www.w3.org/2001/XMLSchema}boolean"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -27,33 +27,25 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findProductoRegistrationResponse", propOrder = { "_return" })
-public class FindProductoRegistrationResponse {
+@XmlType(name = "updateProductRegistrationResponse", propOrder = { "_return" })
+public class UpdateProductRegistrationResponse {
 
     @XmlElement(name = "return")
-    protected ProductRegistration _return;
+    protected boolean _return;
 
     /**
      * Gets the value of the return property.
      *
-     * @return
-     *     possible object is
-     *     {@link ProductRegistration }
-     *
      */
-    public ProductRegistration getReturn() {
+    public boolean isReturn() {
         return _return;
     }
 
     /**
      * Sets the value of the return property.
      *
-     * @param value
-     *     allowed object is
-     *     {@link ProductRegistration }
-     *
      */
-    public void setReturn(ProductRegistration value) {
+    public void setReturn(boolean value) {
         this._return = value;
     }
 

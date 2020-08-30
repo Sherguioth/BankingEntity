@@ -7,12 +7,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for deleteProductoRegistration complex type.
+ * <p>Java class for deleteProductRegistration complex type.
  *
  * <p>The following schema fragment specifies the expected content contained within this class.
  *
  * <pre>
- * &lt;complexType name="deleteProductoRegistration">
+ * &lt;complexType name="deleteProductRegistration">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -27,8 +27,8 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "deleteProductoRegistration", propOrder = { "arg0", "arg1" })
-public class DeleteProductoRegistration {
+@XmlType(name = "deleteProductRegistration", propOrder = { "arg0", "arg1" })
+public class DeleteProductRegistration {
 
     protected int arg0;
     protected int arg1;

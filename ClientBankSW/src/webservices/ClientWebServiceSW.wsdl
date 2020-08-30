@@ -5,29 +5,11 @@
       <xsd:import namespace="http://webServices/" schemaLocation="ClientWebServiceSW1.xsd"/>
     </xsd:schema>
   </types>
-  <message name="listAllClients">
-    <part name="parameters" element="tns:listAllClients"/>
-  </message>
-  <message name="listAllClientsResponse">
-    <part name="parameters" element="tns:listAllClientsResponse"/>
-  </message>
   <message name="updateClient">
     <part name="parameters" element="tns:updateClient"/>
   </message>
   <message name="updateClientResponse">
     <part name="parameters" element="tns:updateClientResponse"/>
-  </message>
-  <message name="insertClient">
-    <part name="parameters" element="tns:insertClient"/>
-  </message>
-  <message name="insertClientResponse">
-    <part name="parameters" element="tns:insertClientResponse"/>
-  </message>
-  <message name="deleteClient">
-    <part name="parameters" element="tns:deleteClient"/>
-  </message>
-  <message name="deleteClientResponse">
-    <part name="parameters" element="tns:deleteClientResponse"/>
   </message>
   <message name="findClient">
     <part name="parameters" element="tns:findClient"/>
@@ -35,39 +17,48 @@
   <message name="findClientResponse">
     <part name="parameters" element="tns:findClientResponse"/>
   </message>
+  <message name="deleteClient">
+    <part name="parameters" element="tns:deleteClient"/>
+  </message>
+  <message name="deleteClientResponse">
+    <part name="parameters" element="tns:deleteClientResponse"/>
+  </message>
+  <message name="insertClient">
+    <part name="parameters" element="tns:insertClient"/>
+  </message>
+  <message name="insertClientResponse">
+    <part name="parameters" element="tns:insertClientResponse"/>
+  </message>
+  <message name="listAllClients">
+    <part name="parameters" element="tns:listAllClients"/>
+  </message>
+  <message name="listAllClientsResponse">
+    <part name="parameters" element="tns:listAllClientsResponse"/>
+  </message>
   <portType name="ClientWebService">
-    <operation name="listAllClients">
-      <input wsam:Action="http://webServices/ClientWebService/listAllClientsRequest" message="tns:listAllClients"/>
-      <output wsam:Action="http://webServices/ClientWebService/listAllClientsResponse" message="tns:listAllClientsResponse"/>
-    </operation>
     <operation name="updateClient">
       <input wsam:Action="http://webServices/ClientWebService/updateClientRequest" message="tns:updateClient"/>
       <output wsam:Action="http://webServices/ClientWebService/updateClientResponse" message="tns:updateClientResponse"/>
-    </operation>
-    <operation name="insertClient">
-      <input wsam:Action="http://webServices/ClientWebService/insertClientRequest" message="tns:insertClient"/>
-      <output wsam:Action="http://webServices/ClientWebService/insertClientResponse" message="tns:insertClientResponse"/>
-    </operation>
-    <operation name="deleteClient">
-      <input wsam:Action="http://webServices/ClientWebService/deleteClientRequest" message="tns:deleteClient"/>
-      <output wsam:Action="http://webServices/ClientWebService/deleteClientResponse" message="tns:deleteClientResponse"/>
     </operation>
     <operation name="findClient">
       <input wsam:Action="http://webServices/ClientWebService/findClientRequest" message="tns:findClient"/>
       <output wsam:Action="http://webServices/ClientWebService/findClientResponse" message="tns:findClientResponse"/>
     </operation>
+    <operation name="deleteClient">
+      <input wsam:Action="http://webServices/ClientWebService/deleteClientRequest" message="tns:deleteClient"/>
+      <output wsam:Action="http://webServices/ClientWebService/deleteClientResponse" message="tns:deleteClientResponse"/>
+    </operation>
+    <operation name="insertClient">
+      <input wsam:Action="http://webServices/ClientWebService/insertClientRequest" message="tns:insertClient"/>
+      <output wsam:Action="http://webServices/ClientWebService/insertClientResponse" message="tns:insertClientResponse"/>
+    </operation>
+    <operation name="listAllClients">
+      <input wsam:Action="http://webServices/ClientWebService/listAllClientsRequest" message="tns:listAllClients"/>
+      <output wsam:Action="http://webServices/ClientWebService/listAllClientsResponse" message="tns:listAllClientsResponse"/>
+    </operation>
   </portType>
   <binding name="ClientWebServicePortBinding" type="tns:ClientWebService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
-    <operation name="listAllClients">
-      <soap:operation soapAction=""/>
-      <input>
-        <soap:body use="literal"/>
-      </input>
-      <output>
-        <soap:body use="literal"/>
-      </output>
-    </operation>
     <operation name="updateClient">
       <soap:operation soapAction=""/>
       <input>
@@ -77,7 +68,7 @@
         <soap:body use="literal"/>
       </output>
     </operation>
-    <operation name="insertClient">
+    <operation name="findClient">
       <soap:operation soapAction=""/>
       <input>
         <soap:body use="literal"/>
@@ -95,7 +86,16 @@
         <soap:body use="literal"/>
       </output>
     </operation>
-    <operation name="findClient">
+    <operation name="insertClient">
+      <soap:operation soapAction=""/>
+      <input>
+        <soap:body use="literal"/>
+      </input>
+      <output>
+        <soap:body use="literal"/>
+      </output>
+    </operation>
+    <operation name="listAllClients">
       <soap:operation soapAction=""/>
       <input>
         <soap:body use="literal"/>

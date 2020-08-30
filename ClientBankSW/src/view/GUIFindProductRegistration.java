@@ -215,6 +215,12 @@ public class GUIFindProductRegistration extends javax.swing.JFrame implements IL
             txtRegDate.setText(String.valueOf(productRegistrartion.getRegistratioDate()));
             txtExpDate.setText(String.valueOf(productRegistrartion.getExpirationDate()));
             txtState.setText((productRegistrartion.isState() ? "Activo" : "Inactivo"));
+            
+            txtProductNumber.setEditable(false);
+            txtBalance.setEditable(false);
+            txtRegDate.setEditable(false);
+            txtExpDate.setEditable(false);
+            txtState.setEditable(false);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Advertencia", JOptionPane.WARNING_MESSAGE);
         }  

@@ -6,11 +6,11 @@
          <wsdl-port namespaceURI="http://webServices/" localpart="ProductWebServicePort"/>
          <runtime/>
          <operations>
-            <operation name="listAllProducts"/>
+            <operation name="updateProduct"/>
             <operation name="insertProduct"/>
             <operation name="findProduct"/>
-            <operation name="updateProduct"/>
             <operation name="deleteProduct"/>
+            <operation name="listAllProducts"/>
          </operations>
       </port-info>
    </webservice-client>

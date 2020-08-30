@@ -27,18 +27,21 @@ public interface ProductWebService {
 
     /**
      *
+     * @param arg1
+     * @param arg0
      * @return
-     *     returns java.util.List<webservices.Product>
+     *     returns boolean
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "listAllProducts", targetNamespace = "http://webServices/",
-                    className = "webservices.ListAllProducts")
-    @ResponseWrapper(localName = "listAllProductsResponse", targetNamespace = "http://webServices/",
-                     className = "webservices.ListAllProductsResponse")
-    @Action(input = "http://webServices/ProductWebService/listAllProductsRequest",
-            output = "http://webServices/ProductWebService/listAllProductsResponse")
-    public List<Product> listAllProducts();
+    @RequestWrapper(localName = "updateProduct", targetNamespace = "http://webServices/",
+                    className = "webservices.UpdateProduct")
+    @ResponseWrapper(localName = "updateProductResponse", targetNamespace = "http://webServices/",
+                     className = "webservices.UpdateProductResponse")
+    @Action(input = "http://webServices/ProductWebService/updateProductRequest",
+            output = "http://webServices/ProductWebService/updateProductResponse")
+    public boolean updateProduct(@WebParam(name = "arg0", targetNamespace = "") int arg0,
+                                 @WebParam(name = "arg1", targetNamespace = "") Product arg1);
 
     /**
      *
@@ -74,24 +77,6 @@ public interface ProductWebService {
 
     /**
      *
-     * @param arg1
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "updateProduct", targetNamespace = "http://webServices/",
-                    className = "webservices.UpdateProduct")
-    @ResponseWrapper(localName = "updateProductResponse", targetNamespace = "http://webServices/",
-                     className = "webservices.UpdateProductResponse")
-    @Action(input = "http://webServices/ProductWebService/updateProductRequest",
-            output = "http://webServices/ProductWebService/updateProductResponse")
-    public boolean updateProduct(@WebParam(name = "arg0", targetNamespace = "") int arg0,
-                                 @WebParam(name = "arg1", targetNamespace = "") Product arg1);
-
-    /**
-     *
      * @param arg0
      * @return
      *     returns boolean
@@ -105,5 +90,20 @@ public interface ProductWebService {
     @Action(input = "http://webServices/ProductWebService/deleteProductRequest",
             output = "http://webServices/ProductWebService/deleteProductResponse")
     public boolean deleteProduct(@WebParam(name = "arg0", targetNamespace = "") int arg0);
+
+    /**
+     *
+     * @return
+     *     returns java.util.List<webservices.Product>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "listAllProducts", targetNamespace = "http://webServices/",
+                    className = "webservices.ListAllProducts")
+    @ResponseWrapper(localName = "listAllProductsResponse", targetNamespace = "http://webServices/",
+                     className = "webservices.ListAllProductsResponse")
+    @Action(input = "http://webServices/ProductWebService/listAllProductsRequest",
+            output = "http://webServices/ProductWebService/listAllProductsResponse")
+    public List<Product> listAllProducts();
 
 }

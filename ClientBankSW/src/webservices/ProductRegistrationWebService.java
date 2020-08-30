@@ -27,6 +27,37 @@ public interface ProductRegistrationWebService {
 
     /**
      *
+     * @return
+     *     returns java.util.List<webservices.ProductRegistration>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "listAllProductRegistrationsService", targetNamespace = "http://webServices/",
+                    className = "webservices.ListAllProductRegistrationsService")
+    @ResponseWrapper(localName = "listAllProductRegistrationsServiceResponse", targetNamespace = "http://webServices/",
+                     className = "webservices.ListAllProductRegistrationsServiceResponse")
+    @Action(input = "http://webServices/ProductRegistrationWebService/listAllProductRegistrationsServiceRequest",
+            output = "http://webServices/ProductRegistrationWebService/listAllProductRegistrationsServiceResponse")
+    public List<ProductRegistration> listAllProductRegistrationsService();
+
+    /**
+     *
+     * @param arg0
+     * @return
+     *     returns boolean
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "insertProductRegistration", targetNamespace = "http://webServices/",
+                    className = "webservices.InsertProductRegistration")
+    @ResponseWrapper(localName = "insertProductRegistrationResponse", targetNamespace = "http://webServices/",
+                     className = "webservices.InsertProductRegistrationResponse")
+    @Action(input = "http://webServices/ProductRegistrationWebService/insertProductRegistrationRequest",
+            output = "http://webServices/ProductRegistrationWebService/insertProductRegistrationResponse")
+    public boolean insertProductRegistration(@WebParam(name = "arg0", targetNamespace = "") ProductRegistration arg0);
+
+    /**
+     *
      * @param arg1
      * @param arg0
      * @return
@@ -34,29 +65,14 @@ public interface ProductRegistrationWebService {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "findProductoRegistration", targetNamespace = "http://webServices/",
-                    className = "webservices.FindProductoRegistration")
-    @ResponseWrapper(localName = "findProductoRegistrationResponse", targetNamespace = "http://webServices/",
-                     className = "webservices.FindProductoRegistrationResponse")
-    @Action(input = "http://webServices/ProductRegistrationWebService/findProductoRegistrationRequest",
-            output = "http://webServices/ProductRegistrationWebService/findProductoRegistrationResponse")
-    public ProductRegistration findProductoRegistration(@WebParam(name = "arg0", targetNamespace = "") int arg0,
-                                                        @WebParam(name = "arg1", targetNamespace = "") int arg1);
-
-    /**
-     *
-     * @return
-     *     returns java.util.List<webservices.ProductRegistration>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "listAllRegistrationService", targetNamespace = "http://webServices/",
-                    className = "webservices.ListAllRegistrationService")
-    @ResponseWrapper(localName = "listAllRegistrationServiceResponse", targetNamespace = "http://webServices/",
-                     className = "webservices.ListAllRegistrationServiceResponse")
-    @Action(input = "http://webServices/ProductRegistrationWebService/listAllRegistrationServiceRequest",
-            output = "http://webServices/ProductRegistrationWebService/listAllRegistrationServiceResponse")
-    public List<ProductRegistration> listAllRegistrationService();
+    @RequestWrapper(localName = "findProductRegistration", targetNamespace = "http://webServices/",
+                    className = "webservices.FindProductRegistration")
+    @ResponseWrapper(localName = "findProductRegistrationResponse", targetNamespace = "http://webServices/",
+                     className = "webservices.FindProductRegistrationResponse")
+    @Action(input = "http://webServices/ProductRegistrationWebService/findProductRegistrationRequest",
+            output = "http://webServices/ProductRegistrationWebService/findProductRegistrationResponse")
+    public ProductRegistration findProductRegistration(@WebParam(name = "arg0", targetNamespace = "") int arg0,
+                                                       @WebParam(name = "arg1", targetNamespace = "") int arg1);
 
     /**
      *
@@ -68,15 +84,15 @@ public interface ProductRegistrationWebService {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "updateProductoRegistration", targetNamespace = "http://webServices/",
-                    className = "webservices.UpdateProductoRegistration")
-    @ResponseWrapper(localName = "updateProductoRegistrationResponse", targetNamespace = "http://webServices/",
-                     className = "webservices.UpdateProductoRegistrationResponse")
-    @Action(input = "http://webServices/ProductRegistrationWebService/updateProductoRegistrationRequest",
-            output = "http://webServices/ProductRegistrationWebService/updateProductoRegistrationResponse")
-    public boolean updateProductoRegistration(@WebParam(name = "arg0", targetNamespace = "") int arg0,
-                                              @WebParam(name = "arg1", targetNamespace = "") int arg1,
-                                              @WebParam(name = "arg2", targetNamespace = "") ProductRegistration arg2);
+    @RequestWrapper(localName = "updateProductRegistration", targetNamespace = "http://webServices/",
+                    className = "webservices.UpdateProductRegistration")
+    @ResponseWrapper(localName = "updateProductRegistrationResponse", targetNamespace = "http://webServices/",
+                     className = "webservices.UpdateProductRegistrationResponse")
+    @Action(input = "http://webServices/ProductRegistrationWebService/updateProductRegistrationRequest",
+            output = "http://webServices/ProductRegistrationWebService/updateProductRegistrationResponse")
+    public boolean updateProductRegistration(@WebParam(name = "arg0", targetNamespace = "") int arg0,
+                                             @WebParam(name = "arg1", targetNamespace = "") int arg1,
+                                             @WebParam(name = "arg2", targetNamespace = "") ProductRegistration arg2);
 
     /**
      *
@@ -87,29 +103,13 @@ public interface ProductRegistrationWebService {
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "deleteProductoRegistration", targetNamespace = "http://webServices/",
-                    className = "webservices.DeleteProductoRegistration")
-    @ResponseWrapper(localName = "deleteProductoRegistrationResponse", targetNamespace = "http://webServices/",
-                     className = "webservices.DeleteProductoRegistrationResponse")
-    @Action(input = "http://webServices/ProductRegistrationWebService/deleteProductoRegistrationRequest",
-            output = "http://webServices/ProductRegistrationWebService/deleteProductoRegistrationResponse")
-    public boolean deleteProductoRegistration(@WebParam(name = "arg0", targetNamespace = "") int arg0,
-                                              @WebParam(name = "arg1", targetNamespace = "") int arg1);
-
-    /**
-     *
-     * @param arg0
-     * @return
-     *     returns boolean
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "insertProductoRegistration", targetNamespace = "http://webServices/",
-                    className = "webservices.InsertProductoRegistration")
-    @ResponseWrapper(localName = "insertProductoRegistrationResponse", targetNamespace = "http://webServices/",
-                     className = "webservices.InsertProductoRegistrationResponse")
-    @Action(input = "http://webServices/ProductRegistrationWebService/insertProductoRegistrationRequest",
-            output = "http://webServices/ProductRegistrationWebService/insertProductoRegistrationResponse")
-    public boolean insertProductRegistration(@WebParam(name = "arg0", targetNamespace = "") ProductRegistration arg0);
+    @RequestWrapper(localName = "deleteProductRegistration", targetNamespace = "http://webServices/",
+                    className = "webservices.DeleteProductRegistration")
+    @ResponseWrapper(localName = "deleteProductRegistrationResponse", targetNamespace = "http://webServices/",
+                     className = "webservices.DeleteProductRegistrationResponse")
+    @Action(input = "http://webServices/ProductRegistrationWebService/deleteProductRegistrationRequest",
+            output = "http://webServices/ProductRegistrationWebService/deleteProductRegistrationResponse")
+    public boolean deleteProductRegistration(@WebParam(name = "arg0", targetNamespace = "") int arg0,
+                                             @WebParam(name = "arg1", targetNamespace = "") int arg1);
 
 }

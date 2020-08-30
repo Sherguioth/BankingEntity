@@ -8,12 +8,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for deleteProductoRegistrationResponse complex type.
+ * <p>Java class for deleteProductRegistrationResponse complex type.
  *
  * <p>The following schema fragment specifies the expected content contained within this class.
  *
  * <pre>
- * &lt;complexType name="deleteProductoRegistrationResponse">
+ * &lt;complexType name="deleteProductRegistrationResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
@@ -27,8 +27,8 @@ import javax.xml.bind.annotation.XmlType;
  *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "deleteProductoRegistrationResponse", propOrder = { "_return" })
-public class DeleteProductoRegistrationResponse {
+@XmlType(name = "deleteProductRegistrationResponse", propOrder = { "_return" })
+public class DeleteProductRegistrationResponse {
 
     @XmlElement(name = "return")
     protected boolean _return;

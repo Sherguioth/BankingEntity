@@ -6,11 +6,11 @@
          <wsdl-port namespaceURI="http://webServices/" localpart="ProductRegistrationWebServicePort"/>
          <runtime/>
          <operations>
-            <operation name="findProductoRegistration"/>
-            <operation name="listAllRegistrationService"/>
-            <operation name="updateProductoRegistration"/>
-            <operation name="deleteProductoRegistration"/>
-            <operation name="insertProductoRegistration"/>
+            <operation name="listAllProductRegistrationsService"/>
+            <operation name="insertProductRegistration"/>
+            <operation name="findProductRegistration"/>
+            <operation name="updateProductRegistration"/>
+            <operation name="deleteProductRegistration"/>
          </operations>
       </port-info>
    </webservice-client>

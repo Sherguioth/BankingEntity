@@ -31,7 +31,7 @@
             <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
          </hash>
       </hash>
-      <value n="PROXY_ASYNC_METHODS" v="FOR_ENABLED"/>
+      <value n="PROXY_ASYNC_METHODS" v="FOR_NONE"/>
       <list n="PROXY_CLIENTS">
          <url path="ClientWebServicePortClient.java"/>
          <url path="UpdateClient.java"/>
@@ -103,17 +103,12 @@
                <value n="NAME" v="{http://webServices/}ClientWebServicePortBinding"/>
                <list n="OP_BINDINGS">
                   <hash>
-                     <value n="BOUND_OPERATION" v="java.util.List&lt;webservices.Client>.listAllClients"/>
-                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
-                     <hash n="PROPERTY_GROUPS"/>
-                  </hash>
-                  <hash>
                      <value n="BOUND_OPERATION" v="boolean.updateClient.int.webservices.Client"/>
                      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
                      <hash n="PROPERTY_GROUPS"/>
                   </hash>
                   <hash>
-                     <value n="BOUND_OPERATION" v="boolean.insertClient.webservices.Client"/>
+                     <value n="BOUND_OPERATION" v="webservices.Client.findClient.int"/>
                      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
                      <hash n="PROPERTY_GROUPS"/>
                   </hash>
@@ -123,7 +118,12 @@
                      <hash n="PROPERTY_GROUPS"/>
                   </hash>
                   <hash>
-                     <value n="BOUND_OPERATION" v="webservices.Client.findClient.int"/>
+                     <value n="BOUND_OPERATION" v="boolean.insertClient.webservices.Client"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+                  <hash>
+                     <value n="BOUND_OPERATION" v="java.util.List&lt;webservices.Client>.listAllClients"/>
                      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
                      <hash n="PROPERTY_GROUPS"/>
                   </hash>
@@ -132,7 +132,7 @@
             </hash>
          </list>
          <list n="BINDING_FILES"/>
-         <value n="GUID" v="3b59c2dd-0174-1000-8056-ac111759a43d"/>
+         <value n="GUID" v="4081c088-0174-1000-811a-c0a838014d90"/>
          <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy$ProxyJavaWebService"/>
          <list n="PO_">
             <hash>
@@ -142,17 +142,12 @@
                <value n="PORT_BINDING_NAME" v="{http://webServices/}ClientWebServicePortBinding"/>
                <list n="PORT_OPS">
                   <hash>
-                     <value n="EXPOSED_BD_OPERATION" v="java.util.List&lt;webservices.Client>.listAllClients"/>
-                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
-                     <hash n="PROPERTY_GROUPS"/>
-                  </hash>
-                  <hash>
                      <value n="EXPOSED_BD_OPERATION" v="boolean.updateClient.int.webservices.Client"/>
                      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
                      <hash n="PROPERTY_GROUPS"/>
                   </hash>
                   <hash>
-                     <value n="EXPOSED_BD_OPERATION" v="boolean.insertClient.webservices.Client"/>
+                     <value n="EXPOSED_BD_OPERATION" v="webservices.Client.findClient.int"/>
                      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
                      <hash n="PROPERTY_GROUPS"/>
                   </hash>
@@ -162,7 +157,12 @@
                      <hash n="PROPERTY_GROUPS"/>
                   </hash>
                   <hash>
-                     <value n="EXPOSED_BD_OPERATION" v="webservices.Client.findClient.int"/>
+                     <value n="EXPOSED_BD_OPERATION" v="boolean.insertClient.webservices.Client"/>
+                     <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
+                     <hash n="PROPERTY_GROUPS"/>
+                  </hash>
+                  <hash>
+                     <value n="EXPOSED_BD_OPERATION" v="java.util.List&lt;webservices.Client>.listAllClients"/>
                      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
                      <hash n="PROPERTY_GROUPS"/>
                   </hash>

@@ -5,21 +5,21 @@
       <url path="ProductRegistrationWebServiceSW.wsdl"/>
       <url path="ProductRegistrationWebServicePort1.xsd"/>
       <url path="package-info.java"/>
-      <url path="DeleteProductoRegistration.java"/>
-      <url path="ListAllRegistrationService.java"/>
       <url path="ProductRegistrationWebServicePortClient.java"/>
-      <url path="FindProductoRegistrationResponse.java"/>
-      <url path="InsertProductoRegistrationResponse.java"/>
+      <url path="FindProductRegistration.java"/>
+      <url path="ListAllProductRegistrationsServiceResponse.java"/>
+      <url path="DeleteProductRegistrationResponse.java"/>
+      <url path="InsertProductRegistration.java"/>
+      <url path="FindProductRegistrationResponse.java"/>
       <url path="ProductRegistration.java"/>
-      <url path="DeleteProductoRegistrationResponse.java"/>
+      <url path="UpdateProductRegistration.java"/>
+      <url path="ListAllProductRegistrationsService.java"/>
       <url path="ObjectFactory.java"/>
-      <url path="InsertProductoRegistration.java"/>
       <url path="ProductRegistrationWebService.java"/>
-      <url path="UpdateProductoRegistrationResponse.java"/>
-      <url path="UpdateProductoRegistration.java"/>
-      <url path="FindProductoRegistration.java"/>
+      <url path="DeleteProductRegistration.java"/>
+      <url path="InsertProductRegistrationResponse.java"/>
+      <url path="UpdateProductRegistrationResponse.java"/>
       <url path="ProductRegistrationWebServiceSW.java"/>
-      <url path="ListAllRegistrationServiceResponse.java"/>
    </list>
    <hash n="DATA_MODEL">
       <value n="ATTACHMENT_ENCODING" v="MIME"/>
@@ -31,7 +31,7 @@
             <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.java.WSDLToJavaProperties"/>
          </hash>
       </hash>
-      <value n="PROXY_ASYNC_METHODS" v="FOR_ENABLED"/>
+      <value n="PROXY_ASYNC_METHODS" v="FOR_NONE"/>
       <list n="PROXY_CLIENTS">
          <url path="ProductRegistrationWebServicePortClient.java"/>
       </list>
@@ -45,23 +45,23 @@
             <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyPort"/>
             <value n="NAME" v="ProductRegistrationWebServicePort"/>
             <hash n="OPERATIONS">
-               <hash n="deleteProductoRegistration">
+               <hash n="deleteProductRegistration">
                   <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyOperation"/>
                   <hash n="PROPERTY_GROUPS"/>
                </hash>
-               <hash n="findProductoRegistration">
+               <hash n="findProductRegistration">
                   <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyOperation"/>
                   <hash n="PROPERTY_GROUPS"/>
                </hash>
-               <hash n="insertProductoRegistration">
+               <hash n="insertProductRegistration">
                   <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyOperation"/>
                   <hash n="PROPERTY_GROUPS"/>
                </hash>
-               <hash n="listAllRegistrationService">
+               <hash n="listAllProductRegistrationsService">
                   <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyOperation"/>
                   <hash n="PROPERTY_GROUPS"/>
                </hash>
-               <hash n="updateProductoRegistration">
+               <hash n="updateProductRegistration">
                   <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.ProxyOperation"/>
                   <hash n="PROPERTY_GROUPS"/>
                </hash>
@@ -98,27 +98,27 @@
                <value n="NAME" v="{http://webServices/}ProductRegistrationWebServicePortBinding"/>
                <list n="OP_BINDINGS">
                   <hash>
-                     <value n="BOUND_OPERATION" v="webservices.ProductRegistration.findProductoRegistration.int.int"/>
+                     <value n="BOUND_OPERATION" v="java.util.List&lt;webservices.ProductRegistration>.listAllProductRegistrationsService"/>
                      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
                      <hash n="PROPERTY_GROUPS"/>
                   </hash>
                   <hash>
-                     <value n="BOUND_OPERATION" v="java.util.List&lt;webservices.ProductRegistration>.listAllRegistrationService"/>
+                     <value n="BOUND_OPERATION" v="boolean.insertProductRegistration.webservices.ProductRegistration"/>
                      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
                      <hash n="PROPERTY_GROUPS"/>
                   </hash>
                   <hash>
-                     <value n="BOUND_OPERATION" v="boolean.updateProductoRegistration.int.int.webservices.ProductRegistration"/>
+                     <value n="BOUND_OPERATION" v="webservices.ProductRegistration.findProductRegistration.int.int"/>
                      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
                      <hash n="PROPERTY_GROUPS"/>
                   </hash>
                   <hash>
-                     <value n="BOUND_OPERATION" v="boolean.deleteProductoRegistration.int.int"/>
+                     <value n="BOUND_OPERATION" v="boolean.updateProductRegistration.int.int.webservices.ProductRegistration"/>
                      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
                      <hash n="PROPERTY_GROUPS"/>
                   </hash>
                   <hash>
-                     <value n="BOUND_OPERATION" v="boolean.insertProductoRegistration.webservices.ProductRegistration"/>
+                     <value n="BOUND_OPERATION" v="boolean.deleteProductRegistration.int.int"/>
                      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.SOAPOperationBinding"/>
                      <hash n="PROPERTY_GROUPS"/>
                   </hash>
@@ -127,7 +127,7 @@
             </hash>
          </list>
          <list n="BINDING_FILES"/>
-         <value n="GUID" v="3b6389f3-0174-1000-805b-ac111759a43d"/>
+         <value n="GUID" v="40838d8f-0174-1000-8125-c0a838014d90"/>
          <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.proxy.WebServiceProxy$ProxyJavaWebService"/>
          <list n="PO_">
             <hash>
@@ -137,27 +137,27 @@
                <value n="PORT_BINDING_NAME" v="{http://webServices/}ProductRegistrationWebServicePortBinding"/>
                <list n="PORT_OPS">
                   <hash>
-                     <value n="EXPOSED_BD_OPERATION" v="webservices.ProductRegistration.findProductoRegistration.int.int"/>
+                     <value n="EXPOSED_BD_OPERATION" v="java.util.List&lt;webservices.ProductRegistration>.listAllProductRegistrationsService"/>
                      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
                      <hash n="PROPERTY_GROUPS"/>
                   </hash>
                   <hash>
-                     <value n="EXPOSED_BD_OPERATION" v="java.util.List&lt;webservices.ProductRegistration>.listAllRegistrationService"/>
+                     <value n="EXPOSED_BD_OPERATION" v="boolean.insertProductRegistration.webservices.ProductRegistration"/>
                      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
                      <hash n="PROPERTY_GROUPS"/>
                   </hash>
                   <hash>
-                     <value n="EXPOSED_BD_OPERATION" v="boolean.updateProductoRegistration.int.int.webservices.ProductRegistration"/>
+                     <value n="EXPOSED_BD_OPERATION" v="webservices.ProductRegistration.findProductRegistration.int.int"/>
                      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
                      <hash n="PROPERTY_GROUPS"/>
                   </hash>
                   <hash>
-                     <value n="EXPOSED_BD_OPERATION" v="boolean.deleteProductoRegistration.int.int"/>
+                     <value n="EXPOSED_BD_OPERATION" v="boolean.updateProductRegistration.int.int.webservices.ProductRegistration"/>
                      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
                      <hash n="PROPERTY_GROUPS"/>
                   </hash>
                   <hash>
-                     <value n="EXPOSED_BD_OPERATION" v="boolean.insertProductoRegistration.webservices.ProductRegistration"/>
+                     <value n="EXPOSED_BD_OPERATION" v="boolean.deleteProductRegistration.int.int"/>
                      <value n="MODEL_CLASS" v="oracle.jdeveloper.webservices.model.PortOperation"/>
                      <hash n="PROPERTY_GROUPS"/>
                   </hash>

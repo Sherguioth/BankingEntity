@@ -24,26 +24,26 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
-    private final static QName _DeleteProductoRegistration_QNAME =
-        new QName("http://webServices/", "deleteProductoRegistration");
-    private final static QName _ListAllRegistrationServiceResponse_QNAME =
-        new QName("http://webServices/", "listAllRegistrationServiceResponse");
-    private final static QName _DeleteProductoRegistrationResponse_QNAME =
-        new QName("http://webServices/", "deleteProductoRegistrationResponse");
-    private final static QName _InsertProductoRegistration_QNAME =
-        new QName("http://webServices/", "insertProductoRegistration");
-    private final static QName _FindProductoRegistration_QNAME =
-        new QName("http://webServices/", "findProductoRegistration");
-    private final static QName _ListAllRegistrationService_QNAME =
-        new QName("http://webServices/", "listAllRegistrationService");
-    private final static QName _InsertProductoRegistrationResponse_QNAME =
-        new QName("http://webServices/", "insertProductoRegistrationResponse");
-    private final static QName _FindProductoRegistrationResponse_QNAME =
-        new QName("http://webServices/", "findProductoRegistrationResponse");
-    private final static QName _UpdateProductoRegistrationResponse_QNAME =
-        new QName("http://webServices/", "updateProductoRegistrationResponse");
-    private final static QName _UpdateProductoRegistration_QNAME =
-        new QName("http://webServices/", "updateProductoRegistration");
+    private final static QName _DeleteProductRegistrationResponse_QNAME =
+        new QName("http://webServices/", "deleteProductRegistrationResponse");
+    private final static QName _FindProductRegistrationResponse_QNAME =
+        new QName("http://webServices/", "findProductRegistrationResponse");
+    private final static QName _InsertProductRegistrationResponse_QNAME =
+        new QName("http://webServices/", "insertProductRegistrationResponse");
+    private final static QName _ListAllProductRegistrationsServiceResponse_QNAME =
+        new QName("http://webServices/", "listAllProductRegistrationsServiceResponse");
+    private final static QName _UpdateProductRegistrationResponse_QNAME =
+        new QName("http://webServices/", "updateProductRegistrationResponse");
+    private final static QName _DeleteProductRegistration_QNAME =
+        new QName("http://webServices/", "deleteProductRegistration");
+    private final static QName _InsertProductRegistration_QNAME =
+        new QName("http://webServices/", "insertProductRegistration");
+    private final static QName _FindProductRegistration_QNAME =
+        new QName("http://webServices/", "findProductRegistration");
+    private final static QName _ListAllProductRegistrationsService_QNAME =
+        new QName("http://webServices/", "listAllProductRegistrationsService");
+    private final static QName _UpdateProductRegistration_QNAME =
+        new QName("http://webServices/", "updateProductRegistration");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: webservices
@@ -53,83 +53,83 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link FindProductoRegistration }
+     * Create an instance of {@link ListAllProductRegistrationsServiceResponse }
      *
      */
-    public FindProductoRegistration createFindProductoRegistration() {
-        return new FindProductoRegistration();
+    public ListAllProductRegistrationsServiceResponse createListAllProductRegistrationsServiceResponse() {
+        return new ListAllProductRegistrationsServiceResponse();
     }
 
     /**
-     * Create an instance of {@link InsertProductoRegistrationResponse }
+     * Create an instance of {@link UpdateProductRegistrationResponse }
      *
      */
-    public InsertProductoRegistrationResponse createInsertProductoRegistrationResponse() {
-        return new InsertProductoRegistrationResponse();
+    public UpdateProductRegistrationResponse createUpdateProductRegistrationResponse() {
+        return new UpdateProductRegistrationResponse();
     }
 
     /**
-     * Create an instance of {@link ListAllRegistrationService }
+     * Create an instance of {@link DeleteProductRegistrationResponse }
      *
      */
-    public ListAllRegistrationService createListAllRegistrationService() {
-        return new ListAllRegistrationService();
+    public DeleteProductRegistrationResponse createDeleteProductRegistrationResponse() {
+        return new DeleteProductRegistrationResponse();
     }
 
     /**
-     * Create an instance of {@link DeleteProductoRegistration }
+     * Create an instance of {@link FindProductRegistrationResponse }
      *
      */
-    public DeleteProductoRegistration createDeleteProductoRegistration() {
-        return new DeleteProductoRegistration();
+    public FindProductRegistrationResponse createFindProductRegistrationResponse() {
+        return new FindProductRegistrationResponse();
     }
 
     /**
-     * Create an instance of {@link DeleteProductoRegistrationResponse }
+     * Create an instance of {@link InsertProductRegistrationResponse }
      *
      */
-    public DeleteProductoRegistrationResponse createDeleteProductoRegistrationResponse() {
-        return new DeleteProductoRegistrationResponse();
+    public InsertProductRegistrationResponse createInsertProductRegistrationResponse() {
+        return new InsertProductRegistrationResponse();
     }
 
     /**
-     * Create an instance of {@link ListAllRegistrationServiceResponse }
+     * Create an instance of {@link ListAllProductRegistrationsService }
      *
      */
-    public ListAllRegistrationServiceResponse createListAllRegistrationServiceResponse() {
-        return new ListAllRegistrationServiceResponse();
+    public ListAllProductRegistrationsService createListAllProductRegistrationsService() {
+        return new ListAllProductRegistrationsService();
     }
 
     /**
-     * Create an instance of {@link InsertProductoRegistration }
+     * Create an instance of {@link UpdateProductRegistration }
      *
      */
-    public InsertProductoRegistration createInsertProductoRegistration() {
-        return new InsertProductoRegistration();
+    public UpdateProductRegistration createUpdateProductRegistration() {
+        return new UpdateProductRegistration();
     }
 
     /**
-     * Create an instance of {@link UpdateProductoRegistrationResponse }
+     * Create an instance of {@link DeleteProductRegistration }
      *
      */
-    public UpdateProductoRegistrationResponse createUpdateProductoRegistrationResponse() {
-        return new UpdateProductoRegistrationResponse();
+    public DeleteProductRegistration createDeleteProductRegistration() {
+        return new DeleteProductRegistration();
     }
 
     /**
-     * Create an instance of {@link UpdateProductoRegistration }
+     * Create an instance of {@link FindProductRegistration }
      *
      */
-    public UpdateProductoRegistration createUpdateProductoRegistration() {
-        return new UpdateProductoRegistration();
+    public FindProductRegistration createFindProductRegistration() {
+        return new FindProductRegistration();
     }
 
     /**
-     * Create an instance of {@link FindProductoRegistrationResponse }
+     * Create an instance of {@link InsertProductRegistration }
      *
      */
-    public FindProductoRegistrationResponse createFindProductoRegistrationResponse() {
-        return new FindProductoRegistrationResponse();
+    public InsertProductRegistration createInsertProductRegistration() {
+        return new InsertProductRegistration();
     }
 
     /**
@@ -141,107 +141,105 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteProductoRegistration }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteProductRegistrationResponse }{@code >}}
      *
      */
-    @XmlElementDecl(namespace = "http://webServices/", name = "deleteProductoRegistration")
-    public JAXBElement<DeleteProductoRegistration> createDeleteProductoRegistration(DeleteProductoRegistration value) {
-        return new JAXBElement<DeleteProductoRegistration>(_DeleteProductoRegistration_QNAME,
-                                                           DeleteProductoRegistration.class, null, value);
+    @XmlElementDecl(namespace = "http://webServices/", name = "deleteProductRegistrationResponse")
+    public JAXBElement<DeleteProductRegistrationResponse> createDeleteProductRegistrationResponse(DeleteProductRegistrationResponse value) {
+        return new JAXBElement<DeleteProductRegistrationResponse>(_DeleteProductRegistrationResponse_QNAME,
+                                                                  DeleteProductRegistrationResponse.class, null, value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ListAllRegistrationServiceResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindProductRegistrationResponse }{@code >}}
      *
      */
-    @XmlElementDecl(namespace = "http://webServices/", name = "listAllRegistrationServiceResponse")
-    public JAXBElement<ListAllRegistrationServiceResponse> createListAllRegistrationServiceResponse(ListAllRegistrationServiceResponse value) {
-        return new JAXBElement<ListAllRegistrationServiceResponse>(_ListAllRegistrationServiceResponse_QNAME,
-                                                                   ListAllRegistrationServiceResponse.class, null,
+    @XmlElementDecl(namespace = "http://webServices/", name = "findProductRegistrationResponse")
+    public JAXBElement<FindProductRegistrationResponse> createFindProductRegistrationResponse(FindProductRegistrationResponse value) {
+        return new JAXBElement<FindProductRegistrationResponse>(_FindProductRegistrationResponse_QNAME,
+                                                                FindProductRegistrationResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link InsertProductRegistrationResponse }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "http://webServices/", name = "insertProductRegistrationResponse")
+    public JAXBElement<InsertProductRegistrationResponse> createInsertProductRegistrationResponse(InsertProductRegistrationResponse value) {
+        return new JAXBElement<InsertProductRegistrationResponse>(_InsertProductRegistrationResponse_QNAME,
+                                                                  InsertProductRegistrationResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ListAllProductRegistrationsServiceResponse }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "http://webServices/", name = "listAllProductRegistrationsServiceResponse")
+    public JAXBElement<ListAllProductRegistrationsServiceResponse> createListAllProductRegistrationsServiceResponse(ListAllProductRegistrationsServiceResponse value) {
+        return new JAXBElement<ListAllProductRegistrationsServiceResponse>(_ListAllProductRegistrationsServiceResponse_QNAME,
+                                                                           ListAllProductRegistrationsServiceResponse.class,
+                                                                           null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateProductRegistrationResponse }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "http://webServices/", name = "updateProductRegistrationResponse")
+    public JAXBElement<UpdateProductRegistrationResponse> createUpdateProductRegistrationResponse(UpdateProductRegistrationResponse value) {
+        return new JAXBElement<UpdateProductRegistrationResponse>(_UpdateProductRegistrationResponse_QNAME,
+                                                                  UpdateProductRegistrationResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteProductRegistration }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "http://webServices/", name = "deleteProductRegistration")
+    public JAXBElement<DeleteProductRegistration> createDeleteProductRegistration(DeleteProductRegistration value) {
+        return new JAXBElement<DeleteProductRegistration>(_DeleteProductRegistration_QNAME,
+                                                          DeleteProductRegistration.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link InsertProductRegistration }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "http://webServices/", name = "insertProductRegistration")
+    public JAXBElement<InsertProductRegistration> createInsertProductRegistration(InsertProductRegistration value) {
+        return new JAXBElement<InsertProductRegistration>(_InsertProductRegistration_QNAME,
+                                                          InsertProductRegistration.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link FindProductRegistration }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "http://webServices/", name = "findProductRegistration")
+    public JAXBElement<FindProductRegistration> createFindProductRegistration(FindProductRegistration value) {
+        return new JAXBElement<FindProductRegistration>(_FindProductRegistration_QNAME, FindProductRegistration.class,
+                                                        null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link ListAllProductRegistrationsService }{@code >}}
+     *
+     */
+    @XmlElementDecl(namespace = "http://webServices/", name = "listAllProductRegistrationsService")
+    public JAXBElement<ListAllProductRegistrationsService> createListAllProductRegistrationsService(ListAllProductRegistrationsService value) {
+        return new JAXBElement<ListAllProductRegistrationsService>(_ListAllProductRegistrationsService_QNAME,
+                                                                   ListAllProductRegistrationsService.class, null,
                                                                    value);
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link DeleteProductoRegistrationResponse }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateProductRegistration }{@code >}}
      *
      */
-    @XmlElementDecl(namespace = "http://webServices/", name = "deleteProductoRegistrationResponse")
-    public JAXBElement<DeleteProductoRegistrationResponse> createDeleteProductoRegistrationResponse(DeleteProductoRegistrationResponse value) {
-        return new JAXBElement<DeleteProductoRegistrationResponse>(_DeleteProductoRegistrationResponse_QNAME,
-                                                                   DeleteProductoRegistrationResponse.class, null,
-                                                                   value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link InsertProductoRegistration }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "http://webServices/", name = "insertProductoRegistration")
-    public JAXBElement<InsertProductoRegistration> createInsertProductoRegistration(InsertProductoRegistration value) {
-        return new JAXBElement<InsertProductoRegistration>(_InsertProductoRegistration_QNAME,
-                                                           InsertProductoRegistration.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindProductoRegistration }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "http://webServices/", name = "findProductoRegistration")
-    public JAXBElement<FindProductoRegistration> createFindProductoRegistration(FindProductoRegistration value) {
-        return new JAXBElement<FindProductoRegistration>(_FindProductoRegistration_QNAME,
-                                                         FindProductoRegistration.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link ListAllRegistrationService }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "http://webServices/", name = "listAllRegistrationService")
-    public JAXBElement<ListAllRegistrationService> createListAllRegistrationService(ListAllRegistrationService value) {
-        return new JAXBElement<ListAllRegistrationService>(_ListAllRegistrationService_QNAME,
-                                                           ListAllRegistrationService.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link InsertProductoRegistrationResponse }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "http://webServices/", name = "insertProductoRegistrationResponse")
-    public JAXBElement<InsertProductoRegistrationResponse> createInsertProductoRegistrationResponse(InsertProductoRegistrationResponse value) {
-        return new JAXBElement<InsertProductoRegistrationResponse>(_InsertProductoRegistrationResponse_QNAME,
-                                                                   InsertProductoRegistrationResponse.class, null,
-                                                                   value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link FindProductoRegistrationResponse }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "http://webServices/", name = "findProductoRegistrationResponse")
-    public JAXBElement<FindProductoRegistrationResponse> createFindProductoRegistrationResponse(FindProductoRegistrationResponse value) {
-        return new JAXBElement<FindProductoRegistrationResponse>(_FindProductoRegistrationResponse_QNAME,
-                                                                 FindProductoRegistrationResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateProductoRegistrationResponse }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "http://webServices/", name = "updateProductoRegistrationResponse")
-    public JAXBElement<UpdateProductoRegistrationResponse> createUpdateProductoRegistrationResponse(UpdateProductoRegistrationResponse value) {
-        return new JAXBElement<UpdateProductoRegistrationResponse>(_UpdateProductoRegistrationResponse_QNAME,
-                                                                   UpdateProductoRegistrationResponse.class, null,
-                                                                   value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link UpdateProductoRegistration }{@code >}}
-     *
-     */
-    @XmlElementDecl(namespace = "http://webServices/", name = "updateProductoRegistration")
-    public JAXBElement<UpdateProductoRegistration> createUpdateProductoRegistration(UpdateProductoRegistration value) {
-        return new JAXBElement<UpdateProductoRegistration>(_UpdateProductoRegistration_QNAME,
-                                                           UpdateProductoRegistration.class, null, value);
+    @XmlElementDecl(namespace = "http://webServices/", name = "updateProductRegistration")
+    public JAXBElement<UpdateProductRegistration> createUpdateProductRegistration(UpdateProductRegistration value) {
+        return new JAXBElement<UpdateProductRegistration>(_UpdateProductRegistration_QNAME,
+                                                          UpdateProductRegistration.class, null, value);
     }
 
 }

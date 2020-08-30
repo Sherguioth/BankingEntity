@@ -22,7 +22,7 @@ public class ProductRegistrationController {
     }
 
     public List<ProductRegistration> listAllProductRegistrations() {
-        List<ProductRegistration> listProductsRegistration = productRegistrationWebService.listAllRegistrationService();
+        List<ProductRegistration> listProductsRegistration = this.productRegistrationWebService.listAllProductRegistrationsService();
 
         return listProductsRegistration;
     }
@@ -38,12 +38,12 @@ public class ProductRegistrationController {
             try {
                 productNumber = Integer.parseInt(strProductNumber);
             } catch (NumberFormatException ex) {
-                throw new Exception("Número de producto invalido.\nPor favor digite un valor númerico");
+                throw new Exception("Nï¿½mero de producto invalido.\nPor favor digite un valor nï¿½merico");
             }
             try {
                 balance = Double.parseDouble(strBalance);
             } catch (NumberFormatException ex) {
-                throw new Exception("Saldo invalido.\nPor favor digite un valor númerico");
+                throw new Exception("Saldo invalido.\nPor favor digite un valor nï¿½merico");
             }
 
             GregorianCalendar gDate = new GregorianCalendar();
@@ -115,12 +115,12 @@ public class ProductRegistrationController {
             try {
                 productNumber = Integer.parseInt(strProductNumber);
             } catch (NumberFormatException ex) {
-                throw new Exception("Número de producto invalido.\nPor favor digite un valor númerico");
+                throw new Exception("Nï¿½mero de producto invalido.\nPor favor digite un valor nï¿½merico");
             }
             try {
                 balance = Double.parseDouble(strBalance);
             } catch (NumberFormatException ex) {
-                throw new Exception("Saldo invalido.\nPor favor digite un valor númerico");
+                throw new Exception("Saldo invalido.\nPor favor digite un valor nï¿½merico");
             }
 
             GregorianCalendar gDate = new GregorianCalendar();
@@ -138,7 +138,7 @@ public class ProductRegistrationController {
             productRegistrationToUpdate.setExpirationDate(xmlExpirationDate);
             productRegistrationToUpdate.setState(state);
 
-            if (this.productRegistrationWebService.updateProductoRegistration(productRegistrationToUpdate.getClientId(),
+            if (this.productRegistrationWebService.updateProductRegistration(productRegistrationToUpdate.getClientId(),
                                                                               productRegistrationToUpdate.getProductCode(),
                                                                               productRegistrationToUpdate)) {
                 return true;

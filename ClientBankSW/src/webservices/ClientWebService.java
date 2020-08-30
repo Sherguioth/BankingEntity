@@ -27,21 +27,6 @@ public interface ClientWebService {
 
     /**
      *
-     * @return
-     *     returns java.util.List<webservices.Client>
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "listAllClients", targetNamespace = "http://webServices/",
-                    className = "webservices.ListAllClients")
-    @ResponseWrapper(localName = "listAllClientsResponse", targetNamespace = "http://webServices/",
-                     className = "webservices.ListAllClientsResponse")
-    @Action(input = "http://webServices/ClientWebService/listAllClientsRequest",
-            output = "http://webServices/ClientWebService/listAllClientsResponse")
-    public List<Client> listAllClients();
-
-    /**
-     *
      * @param arg1
      * @param arg0
      * @return
@@ -62,17 +47,17 @@ public interface ClientWebService {
      *
      * @param arg0
      * @return
-     *     returns boolean
+     *     returns webservices.Client
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "insertClient", targetNamespace = "http://webServices/",
-                    className = "webservices.InsertClient")
-    @ResponseWrapper(localName = "insertClientResponse", targetNamespace = "http://webServices/",
-                     className = "webservices.InsertClientResponse")
-    @Action(input = "http://webServices/ClientWebService/insertClientRequest",
-            output = "http://webServices/ClientWebService/insertClientResponse")
-    public boolean insertClient(@WebParam(name = "arg0", targetNamespace = "") Client arg0);
+    @RequestWrapper(localName = "findClient", targetNamespace = "http://webServices/",
+                    className = "webservices.FindClient")
+    @ResponseWrapper(localName = "findClientResponse", targetNamespace = "http://webServices/",
+                     className = "webservices.FindClientResponse")
+    @Action(input = "http://webServices/ClientWebService/findClientRequest",
+            output = "http://webServices/ClientWebService/findClientResponse")
+    public Client findClient(@WebParam(name = "arg0", targetNamespace = "") int arg0);
 
     /**
      *
@@ -94,16 +79,31 @@ public interface ClientWebService {
      *
      * @param arg0
      * @return
-     *     returns webservices.Client
+     *     returns boolean
      */
     @WebMethod
     @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "findClient", targetNamespace = "http://webServices/",
-                    className = "webservices.FindClient")
-    @ResponseWrapper(localName = "findClientResponse", targetNamespace = "http://webServices/",
-                     className = "webservices.FindClientResponse")
-    @Action(input = "http://webServices/ClientWebService/findClientRequest",
-            output = "http://webServices/ClientWebService/findClientResponse")
-    public Client findClient(@WebParam(name = "arg0", targetNamespace = "") int arg0);
+    @RequestWrapper(localName = "insertClient", targetNamespace = "http://webServices/",
+                    className = "webservices.InsertClient")
+    @ResponseWrapper(localName = "insertClientResponse", targetNamespace = "http://webServices/",
+                     className = "webservices.InsertClientResponse")
+    @Action(input = "http://webServices/ClientWebService/insertClientRequest",
+            output = "http://webServices/ClientWebService/insertClientResponse")
+    public boolean insertClient(@WebParam(name = "arg0", targetNamespace = "") Client arg0);
+
+    /**
+     *
+     * @return
+     *     returns java.util.List<webservices.Client>
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "listAllClients", targetNamespace = "http://webServices/",
+                    className = "webservices.ListAllClients")
+    @ResponseWrapper(localName = "listAllClientsResponse", targetNamespace = "http://webServices/",
+                     className = "webservices.ListAllClientsResponse")
+    @Action(input = "http://webServices/ClientWebService/listAllClientsRequest",
+            output = "http://webServices/ClientWebService/listAllClientsResponse")
+    public List<Client> listAllClients();
 
 }
