@@ -233,11 +233,18 @@
         <Property name="text" type="java.lang.String" value="Avtivo"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="radBtnActivoMouseClicked"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radBtnActivoActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JRadioButton" name="radBtnInactivo">
       <Properties>
         <Property name="text" type="java.lang.String" value="Inactivo"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radBtnInactivoActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

@@ -282,7 +282,9 @@ public class GUIPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemUpdateRegActionPerformed
 
     private void jMenuListAllRecordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuListAllRecordsActionPerformed
-        // TODO add your handling code here:
+        GUIListAllProductsRegistrations gui  = new GUIListAllProductsRegistrations(this.productController, this.productRegistrationController);
+        gui.setLocationRelativeTo(null);
+        gui.setVisible(true);
     }//GEN-LAST:event_jMenuListAllRecordsActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

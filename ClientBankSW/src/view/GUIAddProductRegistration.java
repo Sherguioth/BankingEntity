@@ -127,8 +127,23 @@ public class GUIAddProductRegistration extends javax.swing.JFrame implements ILo
         radBtnActivo.setSelected(true);
         radBtnActivo.setText("Avtivo");
         radBtnActivo.setToolTipText("");
+        radBtnActivo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                radBtnActivoMouseClicked(evt);
+            }
+        });
+        radBtnActivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radBtnActivoActionPerformed(evt);
+            }
+        });
 
         radBtnInactivo.setText("Inactivo");
+        radBtnInactivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radBtnInactivoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -239,7 +254,7 @@ public class GUIAddProductRegistration extends javax.swing.JFrame implements ILo
                 this.product = product;
             }
         }
-        
+
         int productCode = product.getCode();
         String strProductNumber = txtProductNumber.getText();
         String strBalance = txtBalance.getText();
@@ -256,6 +271,7 @@ public class GUIAddProductRegistration extends javax.swing.JFrame implements ILo
             if (insert) {
                 JOptionPane.showMessageDialog(this, "Producto registrado correctamente.", "Confirmación",
                                               JOptionPane.INFORMATION_MESSAGE);
+                jComboBoxProductCode.setSelectedIndex(0);
                 txtProductNumber.setText("");
                 txtBalance.setText("");
                 dateReg.setDate(null);
@@ -269,9 +285,23 @@ public class GUIAddProductRegistration extends javax.swing.JFrame implements ILo
         }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
+    private void radBtnActivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_radBtnActivoMouseClicked
+
+    }//GEN-LAST:event_radBtnActivoMouseClicked
+
+    private void radBtnInactivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBtnInactivoActionPerformed
+        radBtnActivo.setSelected(false);
+        radBtnInactivo.setSelected(true);
+    }//GEN-LAST:event_radBtnInactivoActionPerformed
+
+    private void radBtnActivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBtnActivoActionPerformed
+        radBtnInactivo.setSelected(false);
+        radBtnActivo.setSelected(true);
+    }//GEN-LAST:event_radBtnActivoActionPerformed
+
     public void loadProducts() {
         List<Product> productList = productController.listAllProducts();
-
+        jComboBoxProductCode.removeAllItems();
         for (Product product : productList) {
             jComboBoxProductCode.addItem(product.getName());
         }

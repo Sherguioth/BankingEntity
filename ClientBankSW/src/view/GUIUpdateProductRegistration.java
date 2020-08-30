@@ -105,6 +105,11 @@ public class GUIUpdateProductRegistration extends javax.swing.JFrame implements 
                 radBtnActivoMouseClicked(evt);
             }
         });
+        radBtnActivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radBtnActivoActionPerformed(evt);
+            }
+        });
 
         btnFindClient.setText("...");
         btnFindClient.addActionListener(new java.awt.event.ActionListener() {
@@ -117,6 +122,11 @@ public class GUIUpdateProductRegistration extends javax.swing.JFrame implements 
         radBtnInactivo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 radBtnInactivoMouseClicked(evt);
+            }
+        });
+        radBtnInactivo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radBtnInactivoActionPerformed(evt);
             }
         });
 
@@ -299,12 +309,22 @@ public class GUIUpdateProductRegistration extends javax.swing.JFrame implements 
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void radBtnInactivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_radBtnInactivoMouseClicked
-        radBtnActivo.setSelected(false);
+
     }//GEN-LAST:event_radBtnInactivoMouseClicked
 
     private void radBtnActivoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_radBtnActivoMouseClicked
-        radBtnInactivo.setSelected(false);
+        
     }//GEN-LAST:event_radBtnActivoMouseClicked
+
+    private void radBtnActivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBtnActivoActionPerformed
+        radBtnInactivo.setSelected(false);
+        radBtnActivo.setSelected(true);
+    }//GEN-LAST:event_radBtnActivoActionPerformed
+
+    private void radBtnInactivoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radBtnInactivoActionPerformed
+        radBtnActivo.setSelected(false);
+        radBtnInactivo.setSelected(true);
+    }//GEN-LAST:event_radBtnInactivoActionPerformed
 
     public void loadProducts() {
         jComboBoxProductCode.removeAllItems();
