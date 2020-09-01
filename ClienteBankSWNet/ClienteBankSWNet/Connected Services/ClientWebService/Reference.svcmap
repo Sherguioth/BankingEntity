@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:7101/ServerBankSW/ClientWebServiceSW?WSDL" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.16.14:7101/ServerBankSW/ClientWebServiceSW?WSDL" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ClientWebServiceSW.xsd" MetadataType="Schema" ID="acb83b89-91c8-4e47-8ced-c16d9988e02a" SourceId="1" SourceUrl="http://localhost:7101/ServerBankSW/ClientWebServiceSW?xsd=1" />
-    <MetadataFile FileName="ClientWebServiceSW.wsdl" MetadataType="Wsdl" ID="b0e6dce8-d72b-4997-8152-0e1292ebc4fd" SourceId="1" SourceUrl="http://localhost:7101/ServerBankSW/ClientWebServiceSW?WSDL" />
+    <MetadataFile FileName="ClientWebServiceSW1.wsdl" MetadataType="Wsdl" ID="3b5badb9-4627-4217-9369-9e6c5a1f2018" SourceId="1" SourceUrl="http://192.168.16.14:7101/ServerBankSW/ClientWebServiceSW?WSDL" />
+    <MetadataFile FileName="ClientWebServiceSW1.xsd" MetadataType="Schema" ID="2477e812-97b6-4c79-bf58-aaaa824629b8" SourceId="1" SourceUrl="http://192.168.16.14:7101/ServerBankSW/ClientWebServiceSW?xsd=1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

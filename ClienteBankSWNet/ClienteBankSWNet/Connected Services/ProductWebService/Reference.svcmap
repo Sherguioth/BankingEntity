@@ -19,11 +19,11 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:7101/ServerBankSW/ProductWebServicePort?WSDL" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://192.168.16.14:7101/ServerBankSW/ProductWebServicePort?WSDL" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ProductWebServicePort.xsd" MetadataType="Schema" ID="717d70d6-9428-4c02-af1d-dc33a6d8433c" SourceId="1" SourceUrl="http://localhost:7101/ServerBankSW/ProductWebServicePort?xsd=1" />
-    <MetadataFile FileName="ProductWebServiceSW.wsdl" MetadataType="Wsdl" ID="cedebbd3-e6ff-4df2-adce-72ca64a2e024" SourceId="1" SourceUrl="http://localhost:7101/ServerBankSW/ProductWebServicePort?WSDL" />
+    <MetadataFile FileName="ProductWebServiceSW1.wsdl" MetadataType="Wsdl" ID="270513a2-5bcf-4547-a2f1-17451f742c16" SourceId="1" SourceUrl="http://192.168.16.14:7101/ServerBankSW/ProductWebServicePort?WSDL" />
+    <MetadataFile FileName="ProductWebServicePort1.xsd" MetadataType="Schema" ID="269214fa-eac8-4f1a-bbc8-c00ac291d90f" SourceId="1" SourceUrl="http://192.168.16.14:7101/ServerBankSW/ProductWebServicePort?xsd=1" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

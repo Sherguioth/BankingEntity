@@ -23,8 +23,6 @@ namespace ClienteBankSWNet.gui
 
             this.productController = ProductController.Instance;
             this.productRegistrationController = ProductRegistrationController.Instance;
-
-            loadProductCodes();
         }
 
         private void btnFindClient_Click(object sender, EventArgs e)
@@ -32,6 +30,7 @@ namespace ClienteBankSWNet.gui
             GUIModalListClients guiModal = new GUIModalListClients();
             guiModal.ShowDialog();
             txtClientId.Text = guiModal.ClientIdSelected;
+            loadProductCodes();
         }
 
         private void btnAddProductRegistration_Click(object sender, EventArgs e)
@@ -44,9 +43,19 @@ namespace ClienteBankSWNet.gui
             DateTime expirationDate = datePickerExpiration.Value;
             bool state = rbtnActivo.Checked;
 
+            product[] list = this.productController.ListAllProducts();
+            int productCode = -1;
+            foreach(product product in list)
+            {
+                if (product.name.Equals(strProductCode))
+                {
+                    productCode = product.code;
+                }
+            }
+
             try
             {
-                if (this.productRegistrationController.AddProductRegistration(strClientId, strProductCode, strProductNumber, 
+                if (this.productRegistrationController.AddProductRegistration(strClientId, productCode, strProductNumber, 
                     strBalance, registrationDate, expirationDate, state))
                 {
                     MessageBox.Show("El producto ha sido registrado correctamente.", "Producto Registrado");

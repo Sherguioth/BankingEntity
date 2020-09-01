@@ -20,3 +20,25 @@ C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\obj\Relea
 C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\obj\Release\ClienteBankSWNet.gui.GUIAddProductRegistration.resources
 C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\obj\Release\ClienteBankSWNet.gui.GUIDeleteProductRegistration.resources
 C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\obj\Release\ClienteBankSWNet.gui.GUIModalListClients.resources
+C:\Users\Estudiantes\Documents\BankingEntityWeb\ClienteBankSWNet\ClienteBankSWNet\bin\Release\ClienteBankSWNet.exe.config
+C:\Users\Estudiantes\Documents\BankingEntityWeb\ClienteBankSWNet\ClienteBankSWNet\bin\Release\ClienteBankSWNet.exe
+C:\Users\Estudiantes\Documents\BankingEntityWeb\ClienteBankSWNet\ClienteBankSWNet\bin\Release\ClienteBankSWNet.pdb
+C:\Users\Estudiantes\Documents\BankingEntityWeb\ClienteBankSWNet\ClienteBankSWNet\obj\Release\ClienteBankSWNet.csprojAssemblyReference.cache
+C:\Users\Estudiantes\Documents\BankingEntityWeb\ClienteBankSWNet\ClienteBankSWNet\obj\Release\ClienteBankSWNet.gui.GUIAddClient.resources
+C:\Users\Estudiantes\Documents\BankingEntityWeb\ClienteBankSWNet\ClienteBankSWNet\obj\Release\ClienteBankSWNet.gui.GUIAddProductRegistration.resources
+C:\Users\Estudiantes\Documents\BankingEntityWeb\ClienteBankSWNet\ClienteBankSWNet\obj\Release\ClienteBankSWNet.gui.GUIDeleteClient.resources
+C:\Users\Estudiantes\Documents\BankingEntityWeb\ClienteBankSWNet\ClienteBankSWNet\obj\Release\ClienteBankSWNet.gui.GUIDeleteProductRegistration.resources
+C:\Users\Estudiantes\Documents\BankingEntityWeb\ClienteBankSWNet\ClienteBankSWNet\obj\Release\ClienteBankSWNet.gui.GUIFindClient.resources
+C:\Users\Estudiantes\Documents\BankingEntityWeb\ClienteBankSWNet\ClienteBankSWNet\obj\Release\ClienteBankSWNet.gui.GUIFindProductRegistration.resources
+C:\Users\Estudiantes\Documents\BankingEntityWeb\ClienteBankSWNet\ClienteBankSWNet\obj\Release\ClienteBankSWNet.gui.GUIListAllProductRegistrations.resources
+C:\Users\Estudiantes\Documents\BankingEntityWeb\ClienteBankSWNet\ClienteBankSWNet\obj\Release\ClienteBankSWNet.gui.GUIListProductRegistrationByClient.resources
+C:\Users\Estudiantes\Documents\BankingEntityWeb\ClienteBankSWNet\ClienteBankSWNet\obj\Release\ClienteBankSWNet.gui.GUIModalListClients.resources
+C:\Users\Estudiantes\Documents\BankingEntityWeb\ClienteBankSWNet\ClienteBankSWNet\obj\Release\ClienteBankSWNet.GUIPrincipal.resources
+C:\Users\Estudiantes\Documents\BankingEntityWeb\ClienteBankSWNet\ClienteBankSWNet\obj\Release\ClienteBankSWNet.gui.GUIListClients.resources
+C:\Users\Estudiantes\Documents\BankingEntityWeb\ClienteBankSWNet\ClienteBankSWNet\obj\Release\ClienteBankSWNet.gui.GUIUpdateClient.resources
+C:\Users\Estudiantes\Documents\BankingEntityWeb\ClienteBankSWNet\ClienteBankSWNet\obj\Release\ClienteBankSWNet.gui.GUIUpdateProductRegistration.resources
+C:\Users\Estudiantes\Documents\BankingEntityWeb\ClienteBankSWNet\ClienteBankSWNet\obj\Release\ClienteBankSWNet.Properties.Resources.resources
+C:\Users\Estudiantes\Documents\BankingEntityWeb\ClienteBankSWNet\ClienteBankSWNet\obj\Release\ClienteBankSWNet.csproj.GenerateResource.cache
+C:\Users\Estudiantes\Documents\BankingEntityWeb\ClienteBankSWNet\ClienteBankSWNet\obj\Release\ClienteBankSWNet.csproj.CoreCompileInputs.cache
+C:\Users\Estudiantes\Documents\BankingEntityWeb\ClienteBankSWNet\ClienteBankSWNet\obj\Release\ClienteBankSWNet.exe
+C:\Users\Estudiantes\Documents\BankingEntityWeb\ClienteBankSWNet\ClienteBankSWNet\obj\Release\ClienteBankSWNet.pdb

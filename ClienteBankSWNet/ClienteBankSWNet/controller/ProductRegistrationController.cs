@@ -45,11 +45,11 @@ namespace ClienteBankSWNet.controller
             return productRegistrations;
         }
 
-        public bool AddProductRegistration(String strClientId, String strProductCode, String strProductNumber,
+        public bool AddProductRegistration(String strClientId, int productCode, String strProductNumber,
                                                 String strBalance, DateTime registrationDate, DateTime expirationDate,
                                                 bool state)
         {
-            if (strClientId.Equals("") || strProductCode.Equals("") ||  strProductNumber.Equals("") || strBalance.Equals("") || 
+            if (strClientId.Equals("")||  strProductNumber.Equals("") || strBalance.Equals("") || 
                 registrationDate == null || expirationDate == null)
             {
                 throw new Exception("Por favor diligenciar todos los campos");
@@ -59,18 +59,9 @@ namespace ClienteBankSWNet.controller
                 productRegistration newProductRegistration = new productRegistration();
 
                 int clientId = int.Parse(strClientId);
-                int productCode;
                 int productNumber;
                 double balance;
 
-                try
-                {
-                    productCode = int.Parse(strProductCode);
-                }
-                catch (Exception)
-                {
-                    throw new Exception("Por favor seleccione un producto");
-                }
                 try
                 {
                     productNumber = int.Parse(strProductNumber);

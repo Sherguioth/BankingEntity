@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="MHyTiHuoGDcMCtQM1EBqeusQbKq6Wiy7BdT0P+8DVY4=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="AaF6/Ervbz2E/Nqfe9ESseW//mUPwT+qDopgAXXKio0=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="ClientWebServicePortBinding">
       <properties>
@@ -94,7 +94,7 @@
           <serializedValue>TransportSelected</serializedValue>
         </property>
         <property path="/security/transport/extendedProtectionPolicy/customServiceNames" isComplexType="true" isExplicitlyDefined="false" clrType="System.Security.Authentication.ExtendedProtection.Configuration.ServiceNameElementCollection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>(Collection)</serializedValue>
+          <serializedValue>(Colección)</serializedValue>
         </property>
         <property path="/security/transport/realm" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -112,10 +112,10 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="ClientWebServicePort" contract="ClientWebService.ClientWebService" bindingType="basicHttpBinding" address="http://localhost:7101/ServerBankSW/ClientWebServiceSW" bindingConfiguration="ClientWebServicePortBinding">
+    <endpoint name="ClientWebServicePort" contract="ClientWebService.ClientWebService" bindingType="basicHttpBinding" address="http://192.168.16.14:7101/ServerBankSW/ClientWebServiceSW" bindingConfiguration="ClientWebServicePortBinding">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>http://localhost:7101/ServerBankSW/ClientWebServiceSW</serializedValue>
+          <serializedValue>http://192.168.16.14:7101/ServerBankSW/ClientWebServiceSW</serializedValue>
         </property>
         <property path="/behaviorConfiguration" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />

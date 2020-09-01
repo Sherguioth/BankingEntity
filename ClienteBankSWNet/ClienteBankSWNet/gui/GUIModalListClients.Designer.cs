@@ -75,7 +75,7 @@
             this.Controls.Add(this.panelPrincipal);
             this.Name = "GUIModalListClients";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GUIModalListClients";
+            this.Text = "Lista de clientes";
             this.panelPrincipal.ResumeLayout(false);
             this.panelPrincipal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClients)).EndInit();

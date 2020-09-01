@@ -151,7 +151,7 @@
             this.Controls.Add(this.panelPrincipal);
             this.Name = "GUIListAllProductRegistrations";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "GUIListAllProductRegistrations";
+            this.Text = "Listar registro de produtos";
             this.panelPrincipal.ResumeLayout(false);
             this.panelPrincipal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridProductRegistrations)).EndInit();

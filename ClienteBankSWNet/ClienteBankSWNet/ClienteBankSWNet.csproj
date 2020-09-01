@@ -213,8 +213,8 @@
     <None Include="Connected Services\ClientWebService\ClienteBankSWNet.ClientWebService.updateClientResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ClientWebService\ClientWebServiceSW.wsdl" />
-    <None Include="Connected Services\ClientWebService\ClientWebServiceSW.xsd">
+    <None Include="Connected Services\ClientWebService\ClientWebServiceSW1.wsdl" />
+    <None Include="Connected Services\ClientWebService\ClientWebServiceSW1.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ProductRegistrationWebService\ClienteBankSWNet.ProductRegistrationWebService.deleteProductRegistrationResponse.datasource">
@@ -235,10 +235,10 @@
     <None Include="Connected Services\ProductRegistrationWebService\ClienteBankSWNet.ProductRegistrationWebService.updateProductRegistrationResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ProductRegistrationWebService\ProductRegistrationWebServicePort.xsd">
+    <None Include="Connected Services\ProductRegistrationWebService\ProductRegistrationWebServicePort1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ProductRegistrationWebService\ProductRegistrationWebServiceSW.wsdl" />
+    <None Include="Connected Services\ProductRegistrationWebService\ProductRegistrationWebServiceSW1.wsdl" />
     <None Include="Connected Services\ProductWebService\ClienteBankSWNet.ProductWebService.deleteProductResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -257,10 +257,10 @@
     <None Include="Connected Services\ProductWebService\ClienteBankSWNet.ProductWebService.updateProductResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Connected Services\ProductWebService\ProductWebServicePort.xsd">
+    <None Include="Connected Services\ProductWebService\ProductWebServicePort1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ProductWebService\ProductWebServiceSW.wsdl" />
+    <None Include="Connected Services\ProductWebService\ProductWebServiceSW1.wsdl" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -28,6 +28,14 @@ namespace ClienteBankSWNet.gui
 
         private void btnFindClient_Click(object sender, EventArgs e)
         {
+            GUIModalListClients guiModal = new GUIModalListClients();
+            guiModal.ShowDialog();
+            txtClientId.Text = guiModal.ClientIdSelected;
+            loadData();
+        }
+
+        private void btnFind_Click(object sender, EventArgs e)
+        {
             String strClientId = txtClientId.Text;
             String strProductCode = comboBoxProductCode.SelectedItem.ToString();
             try
@@ -50,14 +58,6 @@ namespace ClienteBankSWNet.gui
             {
                 MessageBox.Show("Error: " + ex.Message, "Error!!!");
             }
-        }
-
-        private void btnFind_Click(object sender, EventArgs e)
-        {
-            GUIModalListClients guiModal = new GUIModalListClients();
-            guiModal.ShowDialog();
-            txtClientId.Text = guiModal.ClientIdSelected;
-            loadData();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
