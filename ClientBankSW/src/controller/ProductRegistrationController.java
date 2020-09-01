@@ -115,12 +115,12 @@ public class ProductRegistrationController {
             try {
                 productNumber = Integer.parseInt(strProductNumber);
             } catch (NumberFormatException ex) {
-                throw new Exception("Nï¿½mero de producto invalido.\nPor favor digite un valor nï¿½merico");
+                throw new Exception("Número de producto invalido.\nPor favor digite un valor numérico");
             }
             try {
                 balance = Double.parseDouble(strBalance);
             } catch (NumberFormatException ex) {
-                throw new Exception("Saldo invalido.\nPor favor digite un valor nï¿½merico");
+                throw new Exception("Saldo invalido.\nPor favor digite un valor numérico");
             }
 
             GregorianCalendar gDate = new GregorianCalendar();

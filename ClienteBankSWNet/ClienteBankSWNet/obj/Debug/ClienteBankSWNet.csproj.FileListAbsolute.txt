@@ -1,0 +1,32 @@
+C:\Users\Estudiantes\Desktop\ClienteBankSWNet\ClienteBankSWNet\ClienteBankSWNet\bin\Debug\ClienteBankSWNet.exe.config
+C:\Users\Estudiantes\Desktop\ClienteBankSWNet\ClienteBankSWNet\ClienteBankSWNet\bin\Debug\ClienteBankSWNet.exe
+C:\Users\Estudiantes\Desktop\ClienteBankSWNet\ClienteBankSWNet\ClienteBankSWNet\bin\Debug\ClienteBankSWNet.pdb
+C:\Users\Estudiantes\Desktop\ClienteBankSWNet\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.csprojAssemblyReference.cache
+C:\Users\Estudiantes\Desktop\ClienteBankSWNet\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.GUIPrincipal.resources
+C:\Users\Estudiantes\Desktop\ClienteBankSWNet\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.Properties.Resources.resources
+C:\Users\Estudiantes\Desktop\ClienteBankSWNet\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.csproj.GenerateResource.cache
+C:\Users\Estudiantes\Desktop\ClienteBankSWNet\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.csproj.CoreCompileInputs.cache
+C:\Users\Estudiantes\Desktop\ClienteBankSWNet\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.exe
+C:\Users\Estudiantes\Desktop\ClienteBankSWNet\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.pdb
+C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.csprojAssemblyReference.cache
+C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.gui.GUIAddClient.resources
+C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.gui.GUIFindClient.resources
+C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.gui.GUIFindProductRegistration.resources
+C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.gui.GUIListProductRegistrationByClient.resources
+C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.GUIPrincipal.resources
+C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.gui.GUIListClients.resources
+C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.gui.GUIUpdateClient.resources
+C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.gui.GUIUpdateProductRegistration.resources
+C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.Properties.Resources.resources
+C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.csproj.GenerateResource.cache
+C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.csproj.CoreCompileInputs.cache
+C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.exe
+C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.pdb
+C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\bin\Debug\ClienteBankSWNet.exe.config
+C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\bin\Debug\ClienteBankSWNet.exe
+C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\bin\Debug\ClienteBankSWNet.pdb
+C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.gui.GUIDeleteClient.resources
+C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.gui.GUIListAllProductRegistrations.resources
+C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.gui.GUIModalListClients.resources
+C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.gui.GUIAddProductRegistration.resources
+C:\Users\Sherg\Shezer\Semestre 8\SOA\ClienteBankSWNet\ClienteBankSWNet\obj\Debug\ClienteBankSWNet.gui.GUIDeleteProductRegistration.resources
