@@ -2,14 +2,21 @@ package webServices;
 
 import java.util.List;
 
-import javax.jws.WebMethod;
-import javax.jws.WebParam;
-import javax.jws.WebService;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 import model.IProductRegistrationService;
 import model.ProductRegistrationService;
 
-@WebService(serviceName = "ProductRegistrationWebServiceSW")
+import structural.ProductRegistration;
+
+@Path("webServices/ProductRegistration")
 public class ProductRegistrationWebService {
 
     private IProductRegistrationService productRegistrationService;
@@ -19,32 +26,43 @@ public class ProductRegistrationWebService {
         this.productRegistrationService = new ProductRegistrationService();
     }
 
-    @WebMethod
-    public List<structural.ProductRegistration> listAllProductRegistrationsService() {
+    @GET
+    @Produces("application/json")
+    @Path("listAllProductRegistrations")
+    public List<ProductRegistration> listAllProductRegistrations() {
         return this.productRegistrationService.listAll();
     }
 
-    @WebMethod
-    public boolean insertProductRegistration(@WebParam(name = "arg0") structural.ProductRegistration newRegistration) {
+    @POST
+    @Consumes("application/json")
+    @Produces("application/json")
+    @Path("insertProductRegistration")
+    public boolean insertProductRegistration(ProductRegistration newRegistration) {
         return this.productRegistrationService.insertProductRegistration(newRegistration);
     }
 
-    @WebMethod
-    public structural.ProductRegistration findProductRegistration(@WebParam(name = "arg0") int clientId,
-                                                                   @WebParam(name = "arg1") int productCode) {
+    @GET
+    @Produces("application/json")
+    @Path("findProductRegistration")
+    public ProductRegistration findProductRegistration(@QueryParam("clientId") int clientId,
+                                                                  @QueryParam("productCode") int productCode) {
         return this.productRegistrationService.findProductRegistration(clientId, productCode);
     }
 
-    @WebMethod
-    public boolean updateProductRegistration(@WebParam(name = "arg0") int clientId,
-                                              @WebParam(name = "arg1") int productCode,
-                                              @WebParam(name = "arg2") structural.ProductRegistration update) {
+    @PUT
+    @Consumes("application/json")
+    @Produces("application/json")
+    @Path("updateProductRegistration")
+    public boolean updateProductRegistration(@QueryParam("clientId") int clientId,
+                                             @QueryParam("productCode") int productCode, ProductRegistration update) {
         return this.productRegistrationService.updateProductRegistration(clientId, productCode, update);
     }
 
-    @WebMethod
-    public boolean deleteProductRegistration(@WebParam(name = "arg0") int clientId,
-                                              @WebParam(name = "arg1") int productCode) {
+    @DELETE
+    @Produces("application/json")
+    @Path("deleteProductRegistration")
+    public boolean deleteProductRegistration(@QueryParam("clientId") int clientId,
+                                             @QueryParam("productCode") int productCode) {
         return this.productRegistrationService.deleteProductRegistration(clientId, productCode);
     }
 }

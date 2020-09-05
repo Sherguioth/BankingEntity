@@ -2,16 +2,21 @@ package webServices;
 
 import java.util.List;
 
-import javax.jws.WebMethod;
-import javax.jws.WebParam;
-import javax.jws.WebService;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 
 import model.IProductService;
 import model.ProductService;
 
 import structural.Product;
 
-@WebService(serviceName = "ProductWebServiceSW")
+@Path("webServices/Product")
 public class ProductWebService {
 
     private IProductService productService;
@@ -21,28 +26,40 @@ public class ProductWebService {
         this.productService = new ProductService();
     }
 
-    @WebMethod
+    @GET
+    @Produces("application/json")
+    @Path("listAllProducts")
     public List<Product> listAllProducts() {
         return this.productService.listAll();
     }
 
-    @WebMethod
-    public boolean insertProduct(@WebParam(name = "arg0") Product newProduct) {
+    @POST
+    @Consumes("application/json")
+    @Produces("application/json")
+    @Path("insertProduct")
+    public boolean insertProduct(Product newProduct) {
         return this.productService.insertProduct(newProduct);
     }
 
-    @WebMethod
-    public Product findProduct(@WebParam(name = "arg0") int code) {
+    @GET
+    @Produces("application/json")
+    @Path("findProduct")
+    public Product findProduct(@QueryParam("code") int code) {
         return this.productService.findProduct(code);
     }
 
-    @WebMethod
-    public boolean updateProduct(@WebParam(name = "arg0") int code, @WebParam(name = "arg1") Product update) {
-        return this.updateProduct(code, update);
+    @PUT
+    @Consumes("application/json")
+    @Produces("application/json")
+    @Path("updateProduct")
+    public boolean updateProduct(@QueryParam("code") int code, Product update) {
+        return this.productService.updateProduct(code, update);
     }
 
-    @WebMethod
-    public boolean deleteProduct(@WebParam(name = "arg0") int code) {
-        return this.deleteProduct(code);
+    @DELETE
+    @Produces("application/json")
+    @Path("deleteProduct")
+    public boolean deleteProduct(@QueryParam("code") int code) {
+        return this.productService.deleteProduct(code);
     }
 }

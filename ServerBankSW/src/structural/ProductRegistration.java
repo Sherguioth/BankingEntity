@@ -2,6 +2,9 @@ package structural;
 
 import java.sql.Date;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "ProductRegistration")
 public class ProductRegistration {
 
     private int clientId;

@@ -1,5 +1,8 @@
 package structural;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "Product")
 public class Product {
 
     private int code;

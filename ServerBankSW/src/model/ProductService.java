@@ -111,7 +111,7 @@ public class ProductService implements IProductService {
             statement.setString(4, update.getTypeProduct());
             statement.setBoolean(5, update.getSate());
 
-            statement.setInt(1, code);
+            statement.setInt(6, code);
 
             return conn.executeQuery(statement);
         } catch (SQLException ex) {
