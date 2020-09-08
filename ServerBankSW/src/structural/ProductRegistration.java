@@ -9,7 +9,7 @@ public class ProductRegistration {
 
     private int clientId;
     private int productCode;
-    private Date registratioDate;
+    private Date registrationDate;
     private double balance;
     private int productNumber;
     private Date expirationDate;
@@ -19,12 +19,12 @@ public class ProductRegistration {
         super();
     }
 
-    public ProductRegistration(int clientId, int productCode, Date registratioDate, double balance, int productNumber,
+    public ProductRegistration(int clientId, int productCode, Date registrationDate, double balance, int productNumber,
                                 Date expirationDate, boolean state) {
         super();
         this.clientId = clientId;
         this.productCode = productCode;
-        this.registratioDate = registratioDate;
+        this.registrationDate = registrationDate;
         this.balance = balance;
         this.productNumber = productNumber;
         this.expirationDate = expirationDate;
@@ -47,12 +47,12 @@ public class ProductRegistration {
         this.productCode = productCode;
     }
 
-    public Date getRegistratioDate() {
-        return registratioDate;
+    public Date getRegistrationDate() {
+        return registrationDate;
     }
 
-    public void setRegistratioDate(Date registratioDate) {
-        this.registratioDate = registratioDate;
+    public void setRegistrationDate(Date registrationDate) {
+        this.registrationDate = registrationDate;
     }
 
     public double getBalance() {
@@ -89,8 +89,8 @@ public class ProductRegistration {
 
     @Override
     public String toString() {
-        return "RegistrationProduct{" + "clientId=" + clientId + ", productCode=" + productCode + ", registratioDate=" +
-               registratioDate + ", balance=" + balance + ", productNumber=" + productNumber + ", expirationDate=" +
+        return "RegistrationProduct{" + "clientId=" + clientId + ", productCode=" + productCode + ", registrationDate=" +
+               registrationDate + ", balance=" + balance + ", productNumber=" + productNumber + ", expirationDate=" +
                expirationDate + ", state=" + state + '}';
     }
 }

@@ -1,6 +1,7 @@
 ﻿using ClienteBankSWNet.ClientWebService;
 using ClienteBankSWNet.controller;
 using ClienteBankSWNet.ProductRegistrationWebService;
+using ClienteBankSWNet.structural;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -40,12 +41,12 @@ namespace ClienteBankSWNet.gui
             String strProductCode = comboBoxProductCode.SelectedItem.ToString();
             try
             {
-                productRegistration productRegistration = this.productRegistrationController.FindProductRegistration(strClientId, strProductCode);
+                ProductRegistration productRegistration = this.productRegistrationController.FindProductRegistration(strClientId, strProductCode);
 
                 txtProductNumber.Text = productRegistration.productNumber.ToString();
                 txtBalance.Text = productRegistration.balance.ToString();
-                datePickerRegistration.Value = productRegistration.registratioDate;
-                datePickerExpiration.Value = productRegistration.expirationDate;
+                datePickerRegistration.Value = DateTime.Parse(productRegistration.registrationDate);
+                datePickerExpiration.Value = DateTime.Parse(productRegistration.expirationDate);
                 txtState.Text = productRegistration.state ? "Activo" : "Inactivo";
 
                 txtProductNumber.Enabled = false;
@@ -90,10 +91,10 @@ namespace ClienteBankSWNet.gui
         {
             comboBoxProductCode.Items.Clear();
 
-            productRegistration[] allProductRegistrations = this.productRegistrationController.ListAllProductRegistations();
-            client client = this.clientController.FindClient(txtClientId.Text);
+            ProductRegistration[] allProductRegistrations = this.productRegistrationController.ListAllProductRegistations();
+            Client client = this.clientController.FindClient(txtClientId.Text);
 
-            foreach (productRegistration productRegistration in allProductRegistrations)
+            foreach (ProductRegistration productRegistration in allProductRegistrations)
             {
                 if (productRegistration.clientId == client.identificationNumber)
                 {

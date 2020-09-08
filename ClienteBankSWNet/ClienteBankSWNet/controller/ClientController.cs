@@ -1,23 +1,30 @@
 ﻿using System;
+using System.Net;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Http;
+using System.Net.Http.Headers;
+using Newtonsoft.Json;
+using ClienteBankSWNet.structural;
 
 namespace ClienteBankSWNet.controller
 {
-    using ClientWebService;
-    using System.Runtime.InteropServices.WindowsRuntime;
-
     public class ClientController
     {
         private static ClientController controller = null;
-        private ClientWebServiceClient clientWebService;
 
-        private ClientController()
+        private static HttpClient httpClient;
+
+        private ClientController(){ }
+
+        private void InstanceHttpClient()
         {
-            clientWebService = new ClientWebServiceClient();
+            httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Accept.Clear();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         public static ClientController Instance
@@ -31,15 +38,21 @@ namespace ClienteBankSWNet.controller
             }
         }
 
-        public client[] ListAllClients()
+        public Client[] ListAllClients()
         {
-            client[] listClients;
+            Client[] listClients = null;
 
             try
             {
-                listClients = clientWebService.listAllClients();
+                InstanceHttpClient();
+                httpClient.BaseAddress = new Uri(GeneralController.URL + "Client/listAllClients");
+                HttpResponseMessage response = httpClient.GetAsync(httpClient.BaseAddress).Result;
+                HttpContent httpContent = response.Content;
+
+                listClients = JsonConvert.DeserializeObject<Client[]>(httpContent.ReadAsStringAsync().Result.ToString());
+                httpClient = null;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
@@ -56,7 +69,7 @@ namespace ClienteBankSWNet.controller
             }
             else
             {
-                int identificationNumber = 0;
+                int identificationNumber;
                 try
                 {
                     identificationNumber = Int32.Parse(strIdNumber);
@@ -66,24 +79,31 @@ namespace ClienteBankSWNet.controller
                     throw new Exception("Número de identificación invalido.\nPor favor introducir un valor numérico");
                 }
 
-                client newClient = new client();
+                Client newClient = new Client
+                {
+                    identificationNumber = identificationNumber,
+                    documetType = docType,
+                    name = name,
+                    birthday = birthday.ToString("yyyy-MM-dd"),
+                    email = email,
+                    phoneNumber = phoneNumber,
+                    gender = gender
+                };
 
-                newClient.identificationNumber = identificationNumber;
-                newClient.documetType = docType;
-                newClient.name = name;
-                newClient.birthday = birthday;
-                newClient.birthdaySpecified = true;
-                newClient.email = email;
-                newClient.phoneNumber = phoneNumber;
-                newClient.gender = gender;
+                InstanceHttpClient();
+                httpClient.BaseAddress = new Uri(GeneralController.URL + "Client/insertClient");
+                string strJson = JsonConvert.SerializeObject(newClient);
+                HttpContent httpContent = new StringContent(strJson, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = httpClient.PostAsync(httpClient.BaseAddress, httpContent).Result;
+                httpClient = null;
 
-                return this.clientWebService.insertClient(newClient);
+                return response.IsSuccessStatusCode;
             }
         }
 
-        public client FindClient(String strIdNumber)
+        public Client FindClient(string strIdNumber)
         {
-            client client = null;
+            Client client;
 
             if (strIdNumber.Equals(""))
             {
@@ -91,7 +111,7 @@ namespace ClienteBankSWNet.controller
             }
             else
             {
-                int identificationNumber = 0;
+                int identificationNumber;
                 try
                 {
                     identificationNumber = Int32.Parse(strIdNumber);
@@ -101,9 +121,15 @@ namespace ClienteBankSWNet.controller
                     throw new Exception("Número de identificación invalido.\nPor favor introducir un valor numérico");
                 }
 
-                client = this.clientWebService.findClient(identificationNumber);
+                InstanceHttpClient();
+                httpClient.BaseAddress = new Uri(GeneralController.URL + "Client/findClient?clientId="+strIdNumber);
+                HttpResponseMessage response = httpClient.GetAsync(httpClient.BaseAddress).Result;
+                HttpContent httpContent = response.Content;
 
-                if(client != null)
+                client = JsonConvert.DeserializeObject<Client>(httpContent.ReadAsStringAsync().Result.ToString());
+                httpClient = null;
+
+                if (client != null)
                 {
                     return client;
                 }
@@ -112,13 +138,13 @@ namespace ClienteBankSWNet.controller
                     throw new Exception("El cliente con el número de identificación " + identificationNumber +
                     " no ha sido encontrado");
                 }
+
             }
         }
 
         public bool UpdateClient(String strIdNumber, String docType, String name, DateTime birthday, String email, String phoneNumber, String gender)
         {
-            client clientToUpdate = null;
-
+            Client clientToUpdate;
             try
             {
                 clientToUpdate = this.FindClient(strIdNumber);
@@ -137,19 +163,25 @@ namespace ClienteBankSWNet.controller
             {
                 clientToUpdate.documetType = docType;
                 clientToUpdate.name = name;
-                clientToUpdate.birthday = birthday;
-                clientToUpdate.birthdaySpecified = true;
+                clientToUpdate.birthday = birthday.ToString("yyyy-MM-dd");
                 clientToUpdate.email = email;
                 clientToUpdate.phoneNumber = phoneNumber;
                 clientToUpdate.gender = gender;
 
-                return this.clientWebService.updateClient(clientToUpdate.identificationNumber, clientToUpdate);
+                InstanceHttpClient();
+                httpClient.BaseAddress = new Uri(GeneralController.URL + "Client/updateClient?clientId="+strIdNumber);
+                string strJson = JsonConvert.SerializeObject(clientToUpdate);
+                HttpContent httpContent = new StringContent(strJson, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = httpClient.PutAsync(httpClient.BaseAddress, httpContent).Result;
+                httpClient = null;
+
+                return response.IsSuccessStatusCode;
             }
         }
         
         public bool DeleteClient(String strIdNumber)
         {
-            client clientToDelete = null;
+            Client clientToDelete;
 
             try
             {
@@ -160,7 +192,12 @@ namespace ClienteBankSWNet.controller
                 throw ex;
             }
 
-            return this.clientWebService.deleteClient(clientToDelete.identificationNumber);
+            InstanceHttpClient();
+            httpClient.BaseAddress = new Uri(GeneralController.URL + "Client/deleteClient?clientId=" + strIdNumber);
+            HttpResponseMessage response = httpClient.DeleteAsync(httpClient.BaseAddress).Result;
+            httpClient = null;
+
+            return response.IsSuccessStatusCode;
         }
     }
 }

@@ -1,21 +1,27 @@
-﻿using System;
+﻿using ClienteBankSWNet.structural;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ClienteBankSWNet.controller
 {
-    using ProductRegistrationWebService;
-
     public class ProductRegistrationController
     {
         private static ProductRegistrationController controller = null;
-        private ProductRegistrationWebServiceClient productRegistrationWebService;
+        private static HttpClient httpClient;
 
-        private ProductRegistrationController()
+        private ProductRegistrationController(){ }
+
+        private void InstanceHttpClient()
         {
-            this.productRegistrationWebService = new ProductRegistrationWebServiceClient();
+            httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Accept.Clear();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         public static ProductRegistrationController Instance
@@ -29,13 +35,18 @@ namespace ClienteBankSWNet.controller
             }
         }
 
-        public productRegistration[] ListAllProductRegistations()
+        public ProductRegistration[] ListAllProductRegistations()
         {
-            productRegistration[] productRegistrations;
+            ProductRegistration[] productRegistrations;
 
             try
             {
-                productRegistrations = this.productRegistrationWebService.listAllProductRegistrationsService();
+                InstanceHttpClient();
+                httpClient.BaseAddress = new Uri(GeneralController.URL + "ProductRegistration/listAllProductRegistrations");
+                HttpResponseMessage response = httpClient.GetAsync(httpClient.BaseAddress).Result;
+                HttpContent httpContent = response.Content;
+
+                productRegistrations = JsonConvert.DeserializeObject<ProductRegistration[]>(httpContent.ReadAsStringAsync().Result.ToString());
             }
             catch(Exception ex)
             {
@@ -56,8 +67,6 @@ namespace ClienteBankSWNet.controller
             }
             else
             {
-                productRegistration newProductRegistration = new productRegistration();
-
                 int clientId = int.Parse(strClientId);
                 int productNumber;
                 double balance;
@@ -79,23 +88,31 @@ namespace ClienteBankSWNet.controller
                     throw new Exception("Saldo invalido.\nPor favor digite un valor numérico");
                 }
 
-                newProductRegistration.clientId = clientId;
-                newProductRegistration.productCode = productCode;
-                newProductRegistration.productNumber = productNumber;
-                newProductRegistration.balance = balance;
-                newProductRegistration.registratioDate = registrationDate;
-                newProductRegistration.registratioDateSpecified = true;
-                newProductRegistration.expirationDate = expirationDate;
-                newProductRegistration.expirationDateSpecified = true;
-                newProductRegistration.state = state;
+                ProductRegistration newProductRegistration = new ProductRegistration
+                {
+                    clientId = clientId,
+                    productCode = productCode,
+                    productNumber = productNumber,
+                    balance = balance,
+                    registrationDate = registrationDate.ToString("yyyy-MM-dd"),
+                    expirationDate = expirationDate.ToString("yyyy-MM-dd"),
+                    state = state
+                };
 
-                return this.productRegistrationWebService.insertProductRegistration(newProductRegistration);
+                InstanceHttpClient();
+                httpClient.BaseAddress = new Uri(GeneralController.URL + "ProductRegistration/insertProductRegistration");
+                string strJson = JsonConvert.SerializeObject(newProductRegistration);
+                HttpContent httpContent = new StringContent(strJson, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = httpClient.PostAsync(httpClient.BaseAddress, httpContent).Result;
+                httpClient = null;
+
+                return response.IsSuccessStatusCode;
             }
         }
 
-        public productRegistration FindProductRegistration(String strClientId, String strProductCode)
+        public ProductRegistration FindProductRegistration(String strClientId, String strProductCode)
         {
-            productRegistration productRegistration = null;
+            ProductRegistration productRegistration = null;
             int clientId = int.Parse(strClientId);
             int productCode;
             try
@@ -107,7 +124,12 @@ namespace ClienteBankSWNet.controller
                 throw new Exception("Por favor seleccione un producto");
             }
 
-            productRegistration = this.productRegistrationWebService.findProductRegistration(clientId, productCode);
+            InstanceHttpClient();
+            httpClient.BaseAddress = new Uri(GeneralController.URL + "ProductRegistration/findProductRegistration?productCode="+strProductCode+"&clientId="+strClientId);
+            HttpResponseMessage response = httpClient.GetAsync(httpClient.BaseAddress).Result;
+            HttpContent httpContent = response.Content;
+
+            productRegistration = JsonConvert.DeserializeObject<ProductRegistration>(httpContent.ReadAsStringAsync().Result.ToString());
 
             if (productRegistration != null)
             {
@@ -129,7 +151,7 @@ namespace ClienteBankSWNet.controller
             }
             else
             {
-                productRegistration productRegistrationToUpdate;
+                ProductRegistration productRegistrationToUpdate;
 
                 try
                 {
@@ -174,20 +196,25 @@ namespace ClienteBankSWNet.controller
                 productRegistrationToUpdate.productCode = productCode;
                 productRegistrationToUpdate.productNumber = productNumber;
                 productRegistrationToUpdate.balance = balance;
-                productRegistrationToUpdate.registratioDate = registrationDate;
-                productRegistrationToUpdate.registratioDateSpecified = true;
-                productRegistrationToUpdate.expirationDate = expirationDate;
-                productRegistrationToUpdate.expirationDateSpecified = true;
+                productRegistrationToUpdate.registrationDate = registrationDate.ToString("yyyy-MM-dd");
+                productRegistrationToUpdate.expirationDate = expirationDate.ToString("yyyy-MM-dd");
                 productRegistrationToUpdate.state = state;
 
-                return this.productRegistrationWebService.updateProductRegistration(clientId, productCode, productRegistrationToUpdate);
+                InstanceHttpClient();
+                httpClient.BaseAddress = new Uri(GeneralController.URL + "ProductRegistration/updateProductRegistration?productCode=" + strProductCode + "&clientId=" + strClientId);
+                string strJson = JsonConvert.SerializeObject(productRegistrationToUpdate);
+                HttpContent httpContent = new StringContent(strJson, Encoding.UTF8, "application/json");
+                HttpResponseMessage response = httpClient.PutAsync(httpClient.BaseAddress, httpContent).Result;
+                httpClient = null;
+
+                return response.IsSuccessStatusCode;
             }
 
         }
 
         public bool DeleteProductRegistration(String strClientId, String strProductCode)
         {
-            productRegistration productRegistrationToDelete;
+            ProductRegistration productRegistrationToDelete;
 
             try
             {
@@ -198,7 +225,12 @@ namespace ClienteBankSWNet.controller
                 throw ex;
             }
 
-            return this.productRegistrationWebService.deleteProductRegistration(productRegistrationToDelete.clientId, productRegistrationToDelete.productCode);
+            InstanceHttpClient();
+            httpClient.BaseAddress = new Uri(GeneralController.URL + "ProductRegistration/deleteProductRegistration?productCode=" + strProductCode + "&clientId=" + strClientId);
+            HttpResponseMessage response = httpClient.DeleteAsync(httpClient.BaseAddress).Result;
+            httpClient = null;
+
+            return response.IsSuccessStatusCode;
         }
     }
 }

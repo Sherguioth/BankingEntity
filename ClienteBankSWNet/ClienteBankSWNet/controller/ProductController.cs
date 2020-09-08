@@ -6,16 +6,27 @@ using System.Threading.Tasks;
 
 namespace ClienteBankSWNet.controller
 {
+    using ClienteBankSWNet.structural;
+    using Newtonsoft.Json;
     using ProductWebService;
+    using System.Net.Http;
+    using System.Net.Http.Headers;
 
     public class ProductController
     {
         private static ProductController controller = null;
-        private ProductWebServiceClient productWebService;
+
+        private static HttpClient httpClient;
 
         private ProductController()
         {
-            this.productWebService = new ProductWebServiceClient();
+        }
+
+        private void InstanceHttpClient()
+        {
+            httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Accept.Clear();
+            httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
         public static ProductController Instance
@@ -29,13 +40,19 @@ namespace ClienteBankSWNet.controller
             }
         }
 
-        public product[] ListAllProducts()
+        public Product[] ListAllProducts()
         {
-            product[] products;
+            Product[] products;
 
             try
             {
-                products = this.productWebService.listAllProducts();
+                InstanceHttpClient();
+                httpClient.BaseAddress = new Uri(GeneralController.URL + "Product/listAllProducts");
+                HttpResponseMessage response = httpClient.GetAsync(httpClient.BaseAddress).Result;
+                HttpContent httpContent = response.Content;
+
+
+                products = JsonConvert.DeserializeObject<Product[]>(httpContent.ReadAsStringAsync().Result.ToString());
 
                 return products;
             }
@@ -45,7 +62,7 @@ namespace ClienteBankSWNet.controller
             }
         }
 
-        public product FindProduct(String strCode)
+        public Product FindProduct(String strCode)
         {
             int code;
             try
@@ -57,7 +74,12 @@ namespace ClienteBankSWNet.controller
                 throw new Exception("Código de producto invalido");
             }
 
-            product foundProduct = productWebService.findProduct(code);
+            InstanceHttpClient();
+            httpClient.BaseAddress = new Uri(GeneralController.URL + "Product/Product/findProduct?code="+strCode);
+            HttpResponseMessage response = httpClient.GetAsync(httpClient.BaseAddress).Result;
+            HttpContent httpContent = response.Content;
+
+            Product foundProduct = JsonConvert.DeserializeObject<Product>(httpContent.ReadAsStringAsync().Result.ToString());
             if (foundProduct == null)
             {
                 return foundProduct;

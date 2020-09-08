@@ -1,5 +1,5 @@
 ﻿using ClienteBankSWNet.controller;
-using ClienteBankSWNet.ProductWebService;
+using ClienteBankSWNet.structural;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -43,9 +43,9 @@ namespace ClienteBankSWNet.gui
             DateTime expirationDate = datePickerExpiration.Value;
             bool state = rbtnActivo.Checked;
 
-            product[] list = this.productController.ListAllProducts();
+            Product[] list = this.productController.ListAllProducts();
             int productCode = -1;
-            foreach(product product in list)
+            foreach(Product product in list)
             {
                 if (product.name.Equals(strProductCode))
                 {
@@ -80,7 +80,7 @@ namespace ClienteBankSWNet.gui
 
         private void loadProductCodes()
         {
-            product[] products = productController.ListAllProducts();
+            Product[] products = productController.ListAllProducts();
 
             comboBoxProductCode.Items.Clear();
             for (int i = 0; i < products.Length; i++)

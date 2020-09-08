@@ -1,6 +1,5 @@
 ﻿using ClienteBankSWNet.controller;
-using ClienteBankSWNet.ProductRegistrationWebService;
-using ClienteBankSWNet.ProductWebService;
+using ClienteBankSWNet.structural;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,7 +30,7 @@ namespace ClienteBankSWNet.gui
 
         private void btnFilter_Click(object sender, EventArgs e)
         {
-            productRegistration[] productRegistrations = this.productRegistrationController.ListAllProductRegistations();
+            ProductRegistration[] productRegistrations = this.productRegistrationController.ListAllProductRegistations();
 
             if(comboBoxProductType.SelectedItem == null && comboBoxState.SelectedItem == null)
             {
@@ -63,7 +62,7 @@ namespace ClienteBankSWNet.gui
                             row["Cliente"] = productRegistrations[i].clientId;
                             row["Número de producto"] = productRegistrations[i].productNumber;
                             row["Saldo"] = productRegistrations[i].balance;
-                            row["Fecha de registro"] = productRegistrations[i].registratioDate;
+                            row["Fecha de registro"] = productRegistrations[i].registrationDate;
                             row["Fecha de expiración"] = productRegistrations[i].expirationDate;
                             row["Estado"] = productRegistrations[i].state ? "Activo" : "Inactivo";
 
@@ -73,7 +72,7 @@ namespace ClienteBankSWNet.gui
                 }
                 else if (!(comboBoxProductType.SelectedItem == null) && comboBoxState.SelectedItem == null)
                 {
-                    product[] products = this.productController.ListAllProducts();
+                    Product[] products = this.productController.ListAllProducts();
                     String strProductType = comboBoxProductType.SelectedItem.ToString();
                     int productCode = -1;
 
@@ -96,7 +95,7 @@ namespace ClienteBankSWNet.gui
                             row["Cliente"] = productRegistrations[i].clientId;
                             row["Número de producto"] = productRegistrations[i].productNumber;
                             row["Saldo"] = productRegistrations[i].balance;
-                            row["Fecha de registro"] = productRegistrations[i].registratioDate;
+                            row["Fecha de registro"] = productRegistrations[i].registrationDate;
                             row["Fecha de expiración"] = productRegistrations[i].expirationDate;
                             row["Estado"] = productRegistrations[i].state ? "Activo" : "Inactivo";
 
@@ -107,7 +106,7 @@ namespace ClienteBankSWNet.gui
                 else
                 {
                     bool state = comboBoxState.SelectedItem.ToString().Equals("Activo") ? true : false;
-                    product[] products = this.productController.ListAllProducts();
+                    Product[] products = this.productController.ListAllProducts();
                     String strProductType = comboBoxProductType.SelectedItem.ToString();
                     int productCode = -1;
 
@@ -130,7 +129,7 @@ namespace ClienteBankSWNet.gui
                             row["Cliente"] = productRegistrations[i].clientId;
                             row["Número de producto"] = productRegistrations[i].productNumber;
                             row["Saldo"] = productRegistrations[i].balance;
-                            row["Fecha de registro"] = productRegistrations[i].registratioDate;
+                            row["Fecha de registro"] = productRegistrations[i].registrationDate;
                             row["Fecha de expiración"] = productRegistrations[i].expirationDate;
                             row["Estado"] = productRegistrations[i].state ? "Activo" : "Inactivo";
 
@@ -154,7 +153,7 @@ namespace ClienteBankSWNet.gui
         {
             comboBoxProductType.Items.Clear();
 
-            product[] products = this.productController.ListAllProducts();
+            Product[] products = this.productController.ListAllProducts();
             for (int i = 0; i < products.Length; i++)
             {
                 comboBoxProductType.Items.Add(products[i].name);
@@ -165,7 +164,10 @@ namespace ClienteBankSWNet.gui
         {
             try
             {
-                productRegistration[] productRegistrations = this.productRegistrationController.ListAllProductRegistations();
+                comboBoxProductType.SelectedItem = null;
+                comboBoxState.SelectedItem = null;
+
+                ProductRegistration[] productRegistrations = this.productRegistrationController.ListAllProductRegistations();
 
                 DataTable dataTable = new DataTable();
                 DataRow row;
@@ -185,7 +187,7 @@ namespace ClienteBankSWNet.gui
                     row["Cliente"] = productRegistrations[i].clientId;
                     row["Número de producto"] = productRegistrations[i].productNumber;
                     row["Saldo"] = productRegistrations[i].balance;
-                    row["Fecha de registro"] = productRegistrations[i].registratioDate;
+                    row["Fecha de registro"] = productRegistrations[i].registrationDate;
                     row["Fecha de expiración"] = productRegistrations[i].expirationDate;
                     row["Estado"] = productRegistrations[i].state ? "Activo" : "Inactivo";
 

@@ -1,5 +1,4 @@
 ﻿using ClienteBankSWNet.controller;
-using ClienteBankSWNet.ClientWebService;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClienteBankSWNet.structural;
 
 namespace ClienteBankSWNet.gui
 {
@@ -29,12 +29,12 @@ namespace ClienteBankSWNet.gui
 
             try
             {
-                client client = this.clientController.FindClient(strIdNumber);
+                Client client = this.clientController.FindClient(strIdNumber);
 
                 txtIdentificationNumber.Text = Convert.ToString(client.identificationNumber);
                 comboBoxDocType.SelectedItem = client.documetType;
                 txtName.Text = client.name;
-                datePickerBirthday.Value = client.birthday;
+                datePickerBirthday.Value = DateTime.Parse(client.birthday);
                 txtEmail.Text = client.email;
                 txtPhoneNumber.Text = client.phoneNumber;
                 comboBoxGender.SelectedItem = client.gender;

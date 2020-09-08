@@ -39,7 +39,7 @@ public class ProductRegistrationService implements IProductRegistrationService {
 
                 registration.setClientId(rs.getInt(1));
                 registration.setProductCode(rs.getInt(2));
-                registration.setRegistratioDate(rs.getDate(3));
+                registration.setRegistrationDate(rs.getDate(3));
                 registration.setBalance(rs.getDouble(4));
                 registration.setProductNumber(rs.getInt(5));
                 registration.setExpirationDate(rs.getDate(6));
@@ -65,7 +65,7 @@ public class ProductRegistrationService implements IProductRegistrationService {
         try {
             statement.setInt(1, newProductRegistration.getClientId());
             statement.setInt(2, newProductRegistration.getProductCode());
-            statement.setDate(3, newProductRegistration.getRegistratioDate());
+            statement.setDate(3, newProductRegistration.getRegistrationDate());
             statement.setDouble(4, newProductRegistration.getBalance());
             statement.setInt(5, newProductRegistration.getProductNumber());
             statement.setDate(6, newProductRegistration.getExpirationDate());
@@ -98,7 +98,7 @@ public class ProductRegistrationService implements IProductRegistrationService {
 
                 registration.setClientId(rs.getInt(1));
                 registration.setProductCode(rs.getInt(2));
-                registration.setRegistratioDate(rs.getDate(3));
+                registration.setRegistrationDate(rs.getDate(3));
                 registration.setBalance(rs.getDouble(4));
                 registration.setProductNumber(rs.getInt(5));
                 registration.setExpirationDate(rs.getDate(6));
@@ -124,7 +124,7 @@ public class ProductRegistrationService implements IProductRegistrationService {
         try {
             statement.setInt(1, update.getClientId());
             statement.setInt(2, update.getProductCode());
-            statement.setDate(3, update.getRegistratioDate());
+            statement.setDate(3, update.getRegistrationDate());
             statement.setDouble(4, update.getBalance());
             statement.setInt(5, update.getProductNumber());
             statement.setDate(6, update.getExpirationDate());

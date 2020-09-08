@@ -1,5 +1,6 @@
 ﻿using ClienteBankSWNet.controller;
 using ClienteBankSWNet.ProductRegistrationWebService;
+using ClienteBankSWNet.structural;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,7 +37,7 @@ namespace ClienteBankSWNet.gui
 
             try
             {
-                productRegistration[] productRegistrations = this.productRegistrationController.ListAllProductRegistations();
+                ProductRegistration[] productRegistrations = this.productRegistrationController.ListAllProductRegistations();
 
                 DataTable dataTable = new DataTable();
                 DataRow row;
@@ -58,7 +59,7 @@ namespace ClienteBankSWNet.gui
                         row["Cliente"] = productRegistrations[i].clientId;
                         row["Número de producto"] = productRegistrations[i].productNumber;
                         row["Saldo"] = productRegistrations[i].balance;
-                        row["Fecha de registro"] = productRegistrations[i].registratioDate;
+                        row["Fecha de registro"] = productRegistrations[i].registrationDate;
                         row["Fecha de expiración"] = productRegistrations[i].expirationDate;
                         row["Estado"] = productRegistrations[i].state ? "Activo" : "Inactivo";
 

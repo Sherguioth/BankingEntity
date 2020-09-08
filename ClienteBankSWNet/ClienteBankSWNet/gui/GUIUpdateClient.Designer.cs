@@ -191,9 +191,9 @@
             // comboBoxDocType
             // 
             this.comboBoxDocType.Items.AddRange(new object[] {
-            "Cédula de ciudadanía",
+            "Cedula de ciudadania",
             "Tarjeta de identidad",
-            "Cédula de extranjería"});
+            "Cedula de extranjeria"});
             this.comboBoxDocType.Location = new System.Drawing.Point(335, 128);
             this.comboBoxDocType.Name = "comboBoxDocType";
             this.comboBoxDocType.Size = new System.Drawing.Size(204, 21);

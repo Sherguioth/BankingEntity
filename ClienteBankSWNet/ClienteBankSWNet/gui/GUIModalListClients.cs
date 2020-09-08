@@ -1,5 +1,5 @@
-﻿using ClienteBankSWNet.ClientWebService;
-using ClienteBankSWNet.controller;
+﻿using ClienteBankSWNet.controller;
+using ClienteBankSWNet.structural;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -26,7 +26,7 @@ namespace ClienteBankSWNet.gui
 
         private void loadDataTable()
         {
-            client[] clients = this.clientController.ListAllClients();
+            Client[] clients = this.clientController.ListAllClients();
 
             DataTable dataTable = new DataTable();
             DataRow row;

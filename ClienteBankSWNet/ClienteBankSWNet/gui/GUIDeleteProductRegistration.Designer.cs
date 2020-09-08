@@ -226,6 +226,7 @@
             this.Controls.Add(this.labClientId);
             this.Controls.Add(this.labTitle);
             this.Name = "GUIDeleteProductRegistration";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Eliminar registro";
             this.ResumeLayout(false);
             this.PerformLayout();

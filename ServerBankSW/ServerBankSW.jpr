@@ -125,20 +125,21 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Pg73jdbc3.jar1"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Postgresql-42.2.16.jre7.jar1"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
             <value n="id" v="Stax-api-1.0-2.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>
       <hash n="internalDefinitions">
          <list n="libraryDefinitions">
+            <hash>
+               <list n="classPath">
+                  <url path="libs/pg73jdbc3.jar" jar-entry=""/>
+               </list>
+               <value n="deployedByDefault" v="true"/>
+               <value n="description" v="Pg73jdbc3.jar"/>
+               <value n="id" v="Pg73jdbc3.jar"/>
+               <value n="locked" v="true"/>
+            </hash>
             <hash>
                <list n="classPath">
                   <url path="libs/postgresql-42.2.16.jre7.jar" jar-entry=""/>
@@ -249,24 +250,6 @@
             </hash>
             <hash>
                <list n="classPath">
-                  <url path="libs/pg73jdbc3.jar" jar-entry=""/>
-               </list>
-               <value n="deployedByDefault" v="true"/>
-               <value n="description" v="Pg73jdbc3.jar1"/>
-               <value n="id" v="Pg73jdbc3.jar1"/>
-               <value n="locked" v="true"/>
-            </hash>
-            <hash>
-               <list n="classPath">
-                  <url path="libs/postgresql-42.2.16.jre7.jar" jar-entry=""/>
-               </list>
-               <value n="deployedByDefault" v="true"/>
-               <value n="description" v="Postgresql-42.2.16.jre7.jar1"/>
-               <value n="id" v="Postgresql-42.2.16.jre7.jar1"/>
-               <value n="locked" v="true"/>
-            </hash>
-            <hash>
-               <list n="classPath">
                   <url path="libs/stax-api-1.0-2.jar" jar-entry=""/>
                </list>
                <value n="deployedByDefault" v="true"/>
@@ -277,6 +260,10 @@
          </list>
       </hash>
       <list n="libraryReferences">
+         <hash>
+            <value n="id" v="Pg73jdbc3.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
          <hash>
             <value n="id" v="Postgresql-42.2.16.jre7.jar"/>
             <value n="isJDK" v="false"/>
@@ -327,14 +314,6 @@
          </hash>
          <hash>
             <value n="id" v="Jsr311-api-1.1.1.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Pg73jdbc3.jar1"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Postgresql-42.2.16.jre7.jar1"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>

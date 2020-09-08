@@ -1,5 +1,5 @@
-﻿using ClienteBankSWNet.ClientWebService;
-using ClienteBankSWNet.controller;
+﻿using ClienteBankSWNet.controller;
+using ClienteBankSWNet.structural;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,7 +31,7 @@ namespace ClienteBankSWNet.gui
 
         private void loadDataTable()
         {
-            client[] clients = this.clientController.ListAllClients();
+            Client[] clients = this.clientController.ListAllClients();
 
             DataTable dataTable = new DataTable();
             DataRow row;
@@ -44,7 +44,7 @@ namespace ClienteBankSWNet.gui
             dataTable.Columns.Add(new DataColumn("Telefono"));
             dataTable.Columns.Add(new DataColumn("Género"));
 
-            for(int i = 0; i < clients.Length; i++)
+            for (int i = 0; i < clients.Length; i++)
             {
                 row = dataTable.NewRow();
                 row["Número de Identificación"] = Convert.ToString(clients[i].identificationNumber);
