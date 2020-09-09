@@ -1,0 +1,332 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{15AB83EF-0B2D-4492-8845-11F772468EC6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ClientBankSWNet</RootNamespace>
+    <AssemblyName>ClientBankSWNet</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connected Services\ClientWebService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ProductRegistrationWebService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Connected Services\ProductWebService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="controller\ClientController.cs" />
+    <Compile Include="controller\GeneralController.cs" />
+    <Compile Include="controller\ProductController.cs" />
+    <Compile Include="controller\ProductRegistrationController.cs" />
+    <Compile Include="gui\GUIAddClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\GUIAddClient.Designer.cs">
+      <DependentUpon>GUIAddClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\GUIAddProductRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\GUIAddProductRegistration.Designer.cs">
+      <DependentUpon>GUIAddProductRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\GUIDeleteClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\GUIDeleteClient.Designer.cs">
+      <DependentUpon>GUIDeleteClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\GUIDeleteProductRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\GUIDeleteProductRegistration.Designer.cs">
+      <DependentUpon>GUIDeleteProductRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\GUIFindClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\GUIFindClient.Designer.cs">
+      <DependentUpon>GUIFindClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\GUIFindProductRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\GUIFindProductRegistration.Designer.cs">
+      <DependentUpon>GUIFindProductRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\GUIListAllProductRegistrations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\GUIListAllProductRegistrations.Designer.cs">
+      <DependentUpon>GUIListAllProductRegistrations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\GUIListProductRegistrationByClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\GUIListProductRegistrationByClient.Designer.cs">
+      <DependentUpon>GUIListProductRegistrationByClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\GUIModalListClients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\GUIModalListClients.Designer.cs">
+      <DependentUpon>GUIModalListClients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\GUIPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\GUIPrincipal.Designer.cs">
+      <DependentUpon>GUIPrincipal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\GUIListClients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\GUIListClients.Designer.cs">
+      <DependentUpon>GUIListClients.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\GUIUpdateClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\GUIUpdateClient.Designer.cs">
+      <DependentUpon>GUIUpdateClient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="gui\GUIUpdateProductRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="gui\GUIUpdateProductRegistration.Designer.cs">
+      <DependentUpon>GUIUpdateProductRegistration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="structural\Client.cs" />
+    <Compile Include="structural\Product.cs" />
+    <Compile Include="structural\ProductRegistration.cs" />
+    <EmbeddedResource Include="gui\GUIAddClient.resx">
+      <DependentUpon>GUIAddClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\GUIAddProductRegistration.resx">
+      <DependentUpon>GUIAddProductRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\GUIDeleteClient.resx">
+      <DependentUpon>GUIDeleteClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\GUIDeleteProductRegistration.resx">
+      <DependentUpon>GUIDeleteProductRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\GUIFindClient.resx">
+      <DependentUpon>GUIFindClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\GUIFindProductRegistration.resx">
+      <DependentUpon>GUIFindProductRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\GUIListAllProductRegistrations.resx">
+      <DependentUpon>GUIListAllProductRegistrations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\GUIListProductRegistrationByClient.resx">
+      <DependentUpon>GUIListProductRegistrationByClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\GUIModalListClients.resx">
+      <DependentUpon>GUIModalListClients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\GUIPrincipal.resx">
+      <DependentUpon>GUIPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\GUIListClients.resx">
+      <DependentUpon>GUIListClients.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\GUIUpdateClient.resx">
+      <DependentUpon>GUIUpdateClient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="gui\GUIUpdateProductRegistration.resx">
+      <DependentUpon>GUIUpdateProductRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Connected Services\ClientWebService\ClientBankSWNet.ClientWebService.client.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ClientWebService\ClientBankSWNet.ClientWebService.deleteClientResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ClientWebService\ClientBankSWNet.ClientWebService.findClientResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ClientWebService\ClientBankSWNet.ClientWebService.insertClientResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ClientWebService\ClientBankSWNet.ClientWebService.listAllClientsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ClientWebService\ClientBankSWNet.ClientWebService.updateClientResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ClientWebService\ClientWebServiceSW1.wsdl" />
+    <None Include="Connected Services\ClientWebService\ClientWebServiceSW1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProductRegistrationWebService\ClientBankSWNet.ProductRegistrationWebService.deleteProductRegistrationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProductRegistrationWebService\ClientBankSWNet.ProductRegistrationWebService.findProductRegistrationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProductRegistrationWebService\ClientBankSWNet.ProductRegistrationWebService.insertProductRegistrationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProductRegistrationWebService\ClientBankSWNet.ProductRegistrationWebService.listAllProductRegistrationsServiceResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProductRegistrationWebService\ClientBankSWNet.ProductRegistrationWebService.productRegistration.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProductRegistrationWebService\ClientBankSWNet.ProductRegistrationWebService.updateProductRegistrationResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProductRegistrationWebService\ProductRegistrationWebServicePort1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProductRegistrationWebService\ProductRegistrationWebServiceSW1.wsdl" />
+    <None Include="Connected Services\ProductWebService\ClientBankSWNet.ProductWebService.deleteProductResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProductWebService\ClientBankSWNet.ProductWebService.findProductResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProductWebService\ClientBankSWNet.ProductWebService.insertProductResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProductWebService\ClientBankSWNet.ProductWebService.listAllProductsResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProductWebService\ClientBankSWNet.ProductWebService.product.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProductWebService\ClientBankSWNet.ProductWebService.updateProductResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\ProductWebService\ProductWebServicePort1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\ProductWebService\ProductWebServiceSW1.wsdl" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ClientWebService\" />
+    <WCFMetadataStorage Include="Connected Services\ProductRegistrationWebService\" />
+    <WCFMetadataStorage Include="Connected Services\ProductWebService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ClientWebService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ClientWebService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ClientWebService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProductWebService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProductWebService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProductWebService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProductRegistrationWebService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProductRegistrationWebService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\ProductRegistrationWebService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
