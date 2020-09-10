@@ -1,6 +1,4 @@
-﻿using ClienteBankSWNet.ClientWebService;
-using ClienteBankSWNet.controller;
-using ClienteBankSWNet.ProductRegistrationWebService;
+﻿using ClienteBankSWNet.controller;
 using ClienteBankSWNet.structural;
 using System;
 using System.Collections.Generic;

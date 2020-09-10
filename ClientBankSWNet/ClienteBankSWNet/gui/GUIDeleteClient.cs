@@ -1,5 +1,4 @@
 ﻿using ClienteBankSWNet.controller;
-using ClienteBankSWNet.ClientWebService;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

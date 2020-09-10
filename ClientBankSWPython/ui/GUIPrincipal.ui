@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>GUIPrincipal</class>
+ <widget class="QMainWindow" name="GUIPrincipal">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>556</width>
+    <height>595</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>BankEntity</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label_title">
+    <property name="geometry">
+     <rect>
+      <x>180</x>
+      <y>0</y>
+      <width>181</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p align=&quot;center&quot; style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:28pt; font-style:italic;&quot;&gt;The Bank&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="textFormat">
+     <enum>Qt::RichText</enum>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+    <property name="wordWrap">
+     <bool>true</bool>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menu_bar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>556</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_file">
+    <property name="title">
+     <string>Archivo</string>
+    </property>
+    <addaction name="action_exit"/>
+   </widget>
+   <widget class="QMenu" name="clients_menu">
+    <property name="title">
+     <string>Clientes</string>
+    </property>
+    <addaction name="action_list_clients"/>
+    <addaction name="action_add_client"/>
+    <addaction name="action_find_client"/>
+    <addaction name="action_update_client"/>
+    <addaction name="action_delete_client"/>
+   </widget>
+   <widget class="QMenu" name="menu_registrations">
+    <property name="title">
+     <string>Registros</string>
+    </property>
+    <addaction name="action_list_all_registrations"/>
+    <addaction name="action_list_product_registration_by_client"/>
+    <addaction name="action_add_product_registration"/>
+    <addaction name="action_find_product_registration"/>
+    <addaction name="action_update_product_registration"/>
+    <addaction name="action_delete_product_registration"/>
+   </widget>
+   <widget class="QMenu" name="menu_help">
+    <property name="title">
+     <string>Ayuda</string>
+    </property>
+    <addaction name="action_about"/>
+   </widget>
+   <addaction name="menu_file"/>
+   <addaction name="clients_menu"/>
+   <addaction name="menu_registrations"/>
+   <addaction name="menu_help"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="action_exit">
+   <property name="text">
+    <string>Salir</string>
+   </property>
+  </action>
+  <action name="action_add_client">
+   <property name="text">
+    <string>Agregar cliente</string>
+   </property>
+  </action>
+  <action name="action_list_clients">
+   <property name="text">
+    <string>Listar clientes</string>
+   </property>
+  </action>
+  <action name="action_find_client">
+   <property name="text">
+    <string>Buscar cliente</string>
+   </property>
+  </action>
+  <action name="action_update_client">
+   <property name="text">
+    <string>Actualizar cliente</string>
+   </property>
+  </action>
+  <action name="action_delete_client">
+   <property name="text">
+    <string>Eliminar cliente</string>
+   </property>
+  </action>
+  <action name="action_list_all_registrations">
+   <property name="text">
+    <string>Listar todos los registros</string>
+   </property>
+  </action>
+  <action name="action_list_product_registration_by_client">
+   <property name="text">
+    <string>Listar registros por cliente</string>
+   </property>
+  </action>
+  <action name="action_add_product_registration">
+   <property name="text">
+    <string>Registrar un producto a un cliente</string>
+   </property>
+  </action>
+  <action name="action_find_product_registration">
+   <property name="text">
+    <string>Buscar un registro</string>
+   </property>
+  </action>
+  <action name="action_update_product_registration">
+   <property name="text">
+    <string>Actualizar un registro</string>
+   </property>
+  </action>
+  <action name="action_delete_product_registration">
+   <property name="text">
+    <string>Eliminar un registro</string>
+   </property>
+  </action>
+  <action name="action_about">
+   <property name="text">
+    <string>Acerca de...</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -8,7 +8,6 @@ namespace ClienteBankSWNet.controller
 {
     using ClienteBankSWNet.structural;
     using Newtonsoft.Json;
-    using ProductWebService;
     using System.Net.Http;
     using System.Net.Http.Headers;
 

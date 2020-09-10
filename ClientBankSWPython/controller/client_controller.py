@@ -1,5 +1,6 @@
+import sys
 import requests
-from general_contoller import url
+from controller.general_contoller import url
 
 def list_all_clients():
     response = requests.get(url("Client/listAllClients"))
