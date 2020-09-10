@@ -1,6 +1,6 @@
 import sys
 import requests
-from general_contoller import url
+from controller.general_contoller import url
 
 def list_all_products():
     response = requests.get(url("Product/listAllProducts"))
@@ -11,5 +11,3 @@ def find_produt(code):
 
     response = requests.get(url("Product/Product/findProduct?code={}".format(code)))
     return response.json()
-
-print(list_all_products())

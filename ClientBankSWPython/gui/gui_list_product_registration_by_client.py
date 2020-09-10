@@ -8,6 +8,9 @@
 
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QTableWidgetItem
+from gui.gui_modal_list_clients import GUI_Modal
+from controller import product_registration_controller
 
 
 class Ui_GUI_List_Product_Registration_By_Client(object):
@@ -46,13 +49,19 @@ class Ui_GUI_List_Product_Registration_By_Client(object):
         self.tableWidget = QtWidgets.QTableWidget(self.centralwidget)
         self.tableWidget.setGeometry(QtCore.QRect(20, 130, 761, 271))
         self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.setColumnCount(0)
+        self.tableWidget.setColumnCount(7)
         self.tableWidget.setRowCount(0)
         GUI_List_Product_Registration_By_Client.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(GUI_List_Product_Registration_By_Client)
         self.statusbar.setObjectName("statusbar")
         GUI_List_Product_Registration_By_Client.setStatusBar(self.statusbar)
-
+        
+        columnsNames = ("Código del producto", "Cliente", "Número de producto",  "Saldo", "Fecha de registro",
+                        "Fecha de expiracion", "Estado")
+        self.tableWidget.setHorizontalHeaderLabels(columnsNames)
+        
+        self.btn_find_client.clicked.connect(self.find_client)
+        
         self.retranslateUi(GUI_List_Product_Registration_By_Client)
         QtCore.QMetaObject.connectSlotsByName(GUI_List_Product_Registration_By_Client)
 
@@ -62,13 +71,27 @@ class Ui_GUI_List_Product_Registration_By_Client(object):
         self.label_title.setText(_translate("GUI_List_Product_Registration_By_Client", "Lista de registros del cliente"))
         self.label_client_id.setText(_translate("GUI_List_Product_Registration_By_Client", "Documento del cliente:"))
         self.btn_find_client.setText(_translate("GUI_List_Product_Registration_By_Client", "..."))
-
-
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    GUI_List_Product_Registration_By_Client = QtWidgets.QMainWindow()
-    ui = Ui_GUI_List_Product_Registration_By_Client()
-    ui.setupUi(GUI_List_Product_Registration_By_Client)
-    GUI_List_Product_Registration_By_Client.show()
-    sys.exit(app.exec_())
+    
+    def find_client(self):    
+        self.modal = GUI_Modal(self).exec_()
+    
+    def set_id_client_selected(self, data):
+        id_client = data
+        self.txt_client_id.setPlainText(id_client)
+        self.load_data_table(id_client)
+    
+    def load_data_table(self, id_client):
+        id_client = int(id_client)
+        product_registrations = product_registration_controller.list_all_product_registration()
+        product_registrations = list(filter (lambda product_registration: product_registration["clientId"] == id_client, product_registrations))
+        
+        for row, product_registration in enumerate(product_registrations):
+            self.tableWidget.setRowCount(row+1)
+            self.tableWidget.setItem(row, 0,QTableWidgetItem(str(product_registration["productCode"])))
+            self.tableWidget.setItem(row, 1,QTableWidgetItem(str(product_registration["clientId"])))
+            self.tableWidget.setItem(row, 2,QTableWidgetItem(str(product_registration["productNumber"])))
+            self.tableWidget.setItem(row, 3,QTableWidgetItem(str(product_registration["balance"])))
+            self.tableWidget.setItem(row, 4,QTableWidgetItem(product_registration["registrationDate"]))
+            self.tableWidget.setItem(row, 5,QTableWidgetItem(product_registration["expirationDate"]))
+            state = lambda state_json : "Activo" if (state_json) else "Inactivo"
+            self.tableWidget.setItem(row, 6,QTableWidgetItem(state(product_registration["state"])))

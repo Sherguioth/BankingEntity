@@ -8,6 +8,6 @@ namespace ClienteBankSWNet.controller
 {
     class GeneralController
     {
-        public const String URL = "http://localhost:7101/AppBankRESTful-Servidor-context-root/resources/webServices/";
+        public const String URL = "http://192.168.16.14:7101/AppBankRESTful-Servidor-context-root/resources/webServices/";
     }
 }

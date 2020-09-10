@@ -1,14 +1,6 @@
-# -*- coding: utf-8 -*-
-
-# Form implementation generated from reading ui file 'GUIAddClient.ui'
-#
-# Created by: PyQt5 UI code generator 5.13.0
-#
-# WARNING! All changes made in this file will be lost!
-
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
-from controller import client_controller
+from controller.client_controller import *
 
 class Ui_GUI_Add_Client(object):
     def setupUi(self, GUI_Add_Client):
@@ -131,11 +123,19 @@ class Ui_GUI_Add_Client(object):
         self.statusbar = QtWidgets.QStatusBar(GUI_Add_Client)
         self.statusbar.setObjectName("statusbar")
         GUI_Add_Client.setStatusBar(self.statusbar)
-
+        
+        self.comboBox_doc_type.addItems(list(["Cedula de ciudadania",
+                                             "Tarjeta de identidad",
+                                             "Cedula de extranjeria"]))
+        
+        self.comboBox_gender.addItems(list(["Masculino",
+                                           "Femenino",
+                                           "Otro"]))
+        
+        self.btn_add_client.clicked.connect(self.add_new_client)
+        
         self.retranslateUi(GUI_Add_Client)
         QtCore.QMetaObject.connectSlotsByName(GUI_Add_Client)
-        
-        
 
     def retranslateUi(self, GUI_Add_Client):
         _translate = QtCore.QCoreApplication.translate
@@ -149,3 +149,31 @@ class Ui_GUI_Add_Client(object):
         self.label_phone.setText(_translate("GUI_Add_Client", "Teléfono:"))
         self.label_gender.setText(_translate("GUI_Add_Client", "Género:"))
         self.label.setText(_translate("GUI_Add_Client", "Agregar Cliente"))
+    
+    def add_new_client(self):
+        id_number = self.txt_id_number.toPlainText()
+        doct_type = str(self.comboBox_doc_type.currentText())
+        name = self.txt_name.toPlainText()
+        birthday = self.dateEdit_birthday.date()
+        email = self.txt_email.toPlainText()
+        phone_number = self.txt_phone_number.toPlainText()
+        gender = str(self.comboBox_gender.currentText())
+        
+        resp = insert_client(id_number, doct_type, name, birthday.toString(QtCore.Qt.ISODate), email, phone_number, gender)
+        
+        if resp:
+            msgBox = QtWidgets.QMessageBox()
+            msgBox.setWindowTitle("Confirmación")
+            msgBox.setText("Cliente agregado correctamente")
+            msgBox.exec()
+            
+            self.txt_id_number.setPlainText("")
+            self.txt_name.setPlainText("")
+            self.txt_email.setPlainText("")
+            self.txt_phone_number.setPlainText("")
+            
+        else:
+            msgBox = QtWidgets.QMessageBox()
+            msgBox.setWindowTitle("Advertencia")
+            msgBox.setText("No se pudo agregar el cliente")
+            msgBox.exec()

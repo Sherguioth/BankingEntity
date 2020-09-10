@@ -8,6 +8,7 @@
 
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
+from controller import client_controller
 
 
 class Ui_GUI_Delete_Client(object):
@@ -147,7 +148,10 @@ class Ui_GUI_Delete_Client(object):
         self.statusbar = QtWidgets.QStatusBar(GUI_Delete_Client)
         self.statusbar.setObjectName("statusbar")
         GUI_Delete_Client.setStatusBar(self.statusbar)
-
+        
+        self.btn_find_client.clicked.connect(self.find_client)
+        self.btn_delete_client.clicked.connect(self.delete_client)
+        
         self.retranslateUi(GUI_Delete_Client)
         QtCore.QMetaObject.connectSlotsByName(GUI_Delete_Client)
 
@@ -164,4 +168,44 @@ class Ui_GUI_Delete_Client(object):
         self.label_email.setText(_translate("GUI_Delete_Client", "E-mail:"))
         self.label_phone.setText(_translate("GUI_Delete_Client", "Teléfono:"))
         self.label_gender.setText(_translate("GUI_Delete_Client", "Género:"))
+    
+    def find_client(self):
+        client = client_controller.find_client(self.txt_id_number.toPlainText())
+        
+        self.txt_id_number.setPlainText(str(client["identificationNumber"]))
+        self.txt_doc_type.setPlainText(client["documetType"])
+        self.txt_name.setPlainText(client["name"])
+        self.dateEdit_birthday.setDate(QtCore.QDate.fromString(client["birthday"], "yyyy-MM-dd"))
+        self.txt_email.setPlainText(client["email"])
+        self.txt_phone_number.setPlainText(client["phoneNumber"])
+        self.txt_gender.setPlainText(client["gender"])
+        
+        self.txt_doc_type.setEnabled(False)
+        self.txt_name.setEnabled(False)
+        self.dateEdit_birthday.setEnabled(False)
+        self.txt_email.setEnabled(False)
+        self.txt_phone_number.setEnabled(False)
+        self.txt_gender.setEnabled(False)
+    
+    def delete_client(self):
+        id_number = self.txt_id_number.toPlainText()
+        
+        resp = client_controller.delete_client(id_number)
+        
+        if resp:
+            msgBox = QtWidgets.QMessageBox()
+            msgBox.setWindowTitle("Confirmación")
+            msgBox.setText("Cliente se ha eliminado correctamente")
+            msgBox.exec()
+            
+            self.txt_id_number.setPlainText("")
+            self.txt_name.setPlainText("")
+            self.txt_email.setPlainText("")
+            self.txt_phone_number.setPlainText("")
+            
+        else:
+            msgBox = QtWidgets.QMessageBox()
+            msgBox.setWindowTitle("Advertencia")
+            msgBox.setText("No se ha podido eliminar el cliente")
+            msgBox.exec()
 

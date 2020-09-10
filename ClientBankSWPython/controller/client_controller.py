@@ -20,7 +20,7 @@ def insert_client(id_number, doc_type, name, birthday, email, phone_number, gend
     }
     
     response = requests.post(url("Client/insertClient"), json= new_client)
-    return response.content()
+    return response.json()
 
 def find_client(id_number):
     id_number = int(id_number)

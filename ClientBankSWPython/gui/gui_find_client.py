@@ -8,6 +8,7 @@
 
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
+from controller.client_controller import *
 
 
 class Ui_GUI_Find_Client(object):
@@ -140,7 +141,9 @@ class Ui_GUI_Find_Client(object):
         self.statusbar = QtWidgets.QStatusBar(GUI_Find_Client)
         self.statusbar.setObjectName("statusbar")
         GUI_Find_Client.setStatusBar(self.statusbar)
-
+        
+        self.btn_find_client.clicked.connect(self.find_client)
+        
         self.retranslateUi(GUI_Find_Client)
         QtCore.QMetaObject.connectSlotsByName(GUI_Find_Client)
 
@@ -156,3 +159,21 @@ class Ui_GUI_Find_Client(object):
         self.label_gender.setText(_translate("GUI_Find_Client", "Género:"))
         self.label_id_number.setText(_translate("GUI_Find_Client", "Número de Identificación:"))
         self.btn_find_client.setText(_translate("GUI_Find_Client", "Buscar"))
+    
+    def find_client(self):
+        client = find_client(self.txt_id_number.toPlainText())
+        
+        self.txt_id_number.setPlainText(str(client["identificationNumber"]))
+        self.txt_doc_type.setPlainText(client["documetType"])
+        self.txt_name.setPlainText(client["name"])
+        self.dateEdit_birthday.setDate(QtCore.QDate.fromString(client["birthday"], "yyyy-MM-dd"))
+        self.txt_email.setPlainText(client["email"])
+        self.txt_phone_number.setPlainText(client["phoneNumber"])
+        self.txt_gender.setPlainText(client["gender"])
+        
+        self.txt_doc_type.setEnabled(False)
+        self.txt_name.setEnabled(False)
+        self.dateEdit_birthday.setEnabled(False)
+        self.txt_email.setEnabled(False)
+        self.txt_phone_number.setEnabled(False)
+        self.txt_gender.setEnabled(False)

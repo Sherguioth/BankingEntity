@@ -8,7 +8,7 @@
 
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from controller.client_controller import *
 
 class Ui_GUI_Update_Client(object):
     def setupUi(self, GUI_Update_Client):
@@ -137,7 +137,18 @@ class Ui_GUI_Update_Client(object):
         self.statusbar = QtWidgets.QStatusBar(GUI_Update_Client)
         self.statusbar.setObjectName("statusbar")
         GUI_Update_Client.setStatusBar(self.statusbar)
-
+        
+        self.comboBox_doc_type.addItems(list(["Cedula de ciudadania",
+                                             "Tarjeta de identidad",
+                                             "Cedula de extranjeria"]))
+        
+        self.comboBox_gender.addItems(list(["Masculino",
+                                           "Femenino",
+                                           "Otro"]))
+        
+        self.btn_find_client.clicked.connect(self.find_client)
+        self.btn_update_client.clicked.connect(self.update_client)
+        
         self.retranslateUi(GUI_Update_Client)
         QtCore.QMetaObject.connectSlotsByName(GUI_Update_Client)
 
@@ -154,3 +165,51 @@ class Ui_GUI_Update_Client(object):
         self.label_phone.setText(_translate("GUI_Update_Client", "Teléfono:"))
         self.label_gender.setText(_translate("GUI_Update_Client", "Género:"))
         self.btn_update_client.setText(_translate("GUI_Update_Client", "Actualizar Cliente"))
+    
+    def find_client(self):
+        client = find_client(self.txt_id_number.toPlainText())
+        
+        self.txt_id_number.setPlainText(str(client["identificationNumber"]))
+        
+        index_combo = self.comboBox_doc_type.findText(client["documetType"], QtCore.Qt.MatchCaseSensitive)
+        if index_combo >= 0:
+            self.comboBox_doc_type.setCurrentIndex(index_combo)
+        
+        self.txt_name.setPlainText(client["name"])
+        self.dateEdit_birthday.setDate(QtCore.QDate.fromString(client["birthday"], "yyyy-MM-dd"))
+        self.txt_email.setPlainText(client["email"])
+        self.txt_phone_number.setPlainText(client["phoneNumber"])
+        
+        index_combo = self.comboBox_gender.findText(client["gender"], QtCore.Qt.MatchCaseSensitive)
+        if index_combo >= 0:
+            self.comboBox_gender.setCurrentIndex(index_combo)
+    
+    def update_client(self):
+        client = find_client(self.txt_id_number.toPlainText())
+        
+        id_number = self.txt_id_number.toPlainText()
+        doct_type = str(self.comboBox_doc_type.currentText())
+        name = self.txt_name.toPlainText()
+        birthday = self.dateEdit_birthday.date()
+        email = self.txt_email.toPlainText()
+        phone_number = self.txt_phone_number.toPlainText()
+        gender = str(self.comboBox_gender.currentText())
+        
+        resp = update_client(id_number, doct_type, name, birthday.toString(QtCore.Qt.ISODate), email, phone_number, gender)
+        
+        if resp:
+            msgBox = QtWidgets.QMessageBox()
+            msgBox.setWindowTitle("Confirmación")
+            msgBox.setText("Cliente se ha acutalizado correctamente")
+            msgBox.exec()
+            
+            self.txt_id_number.setPlainText("")
+            self.txt_name.setPlainText("")
+            self.txt_email.setPlainText("")
+            self.txt_phone_number.setPlainText("")
+            
+        else:
+            msgBox = QtWidgets.QMessageBox()
+            msgBox.setWindowTitle("Advertencia")
+            msgBox.setText("No se pudo acutalizar el cliente")
+            msgBox.exec()

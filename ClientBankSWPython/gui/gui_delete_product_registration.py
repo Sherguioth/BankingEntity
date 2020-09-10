@@ -8,7 +8,8 @@
 
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from gui.gui_modal_list_clients import GUI_Modal
+from controller import product_registration_controller, product_controller
 
 class Ui_GUI_Delete_Product_Registration(object):
     def setupUi(self, GUI_Delete_Product_Registration):
@@ -125,7 +126,11 @@ class Ui_GUI_Delete_Product_Registration(object):
         self.statusbar = QtWidgets.QStatusBar(GUI_Delete_Product_Registration)
         self.statusbar.setObjectName("statusbar")
         GUI_Delete_Product_Registration.setStatusBar(self.statusbar)
-
+        
+        self.btn_find_client.clicked.connect(self.find_client)
+        self.btn_find.clicked.connect(self.find_product_registration)
+        self.btn_delete_product_registration.clicked.connect(self.delete_product_registration)
+        
         self.retranslateUi(GUI_Delete_Product_Registration)
         QtCore.QMetaObject.connectSlotsByName(GUI_Delete_Product_Registration)
 
@@ -143,3 +148,57 @@ class Ui_GUI_Delete_Product_Registration(object):
         self.label_state_2.setText(_translate("GUI_Delete_Product_Registration", "Estado:"))
         self.label_title.setText(_translate("GUI_Delete_Product_Registration", "Eliminar producto"))
         self.btn_find_client.setText(_translate("GUI_Delete_Product_Registration", "..."))
+    
+    def find_client(self):    
+        self.modal = GUI_Modal(self).exec_()
+    
+    def set_id_client_selected(self, data):
+        id_client = data
+        self.txt_client_id.setPlainText(id_client)
+        
+        product_registrations = product_registration_controller.list_all_product_registration()
+        clients_registations = list(filter(lambda product_registration: product_registration["clientId"] == int(id_client), 
+                               product_registrations))
+        
+        products_codes = []
+        print(clients_registations)
+        for product in clients_registations:
+            products_codes.append(str(product["productCode"]))
+        
+        self.comboBox_product_code.addItems(products_codes)
+    
+    def find_product_registration(self):
+        client_id = self.txt_client_id.toPlainText()
+        product_code = str(self.comboBox_product_code.currentText())
+        
+        prodcut_registration = product_registration_controller.find_product_registration(client_id, product_code)
+        
+        self.txt_product_number.setPlainText(str(prodcut_registration["productNumber"]))
+        self.txt_balance.setPlainText(str(prodcut_registration["balance"]))
+        self.dateEdit_registrtion_date.setDate(QtCore.QDate.fromString(prodcut_registration["registrationDate"], "yyyy-MM-dd"))
+        self.dateEdit_expiration_date.setDate(QtCore.QDate.fromString(prodcut_registration["expirationDate"], "yyyy-MM-dd"))
+        state = lambda state_json : "Activo" if (state_json) else "Inactivo"
+        self.txt_state.setPlainText(state(prodcut_registration["state"]))
+    
+    def delete_product_registration(self):
+        client_id = self.txt_client_id.toPlainText()
+        product_code = str(self.comboBox_product_code.currentText())
+        
+        resp = product_registration_controller.delete_product_registration(client_id, product_code)
+        
+        if resp:
+            msgBox = QtWidgets.QMessageBox()
+            msgBox.setWindowTitle("Confirmación")
+            msgBox.setText("Registro agregado correctamente")
+            msgBox.exec()
+            
+            self.txt_product_number.setPlainText("")
+            self.txt_balance.setPlainText("")
+            self.txt_state.setPlainText("")
+            
+            self.set_id_client_selected(client_id)
+        else:
+            msgBox = QtWidgets.QMessageBox()
+            msgBox.setWindowTitle("Advertencia")
+            msgBox.setText("No se pudo regitrar el producto")
+            msgBox.exec()

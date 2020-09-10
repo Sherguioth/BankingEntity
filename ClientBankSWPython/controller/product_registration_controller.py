@@ -1,6 +1,6 @@
 import sys
 import requests
-from general_contoller import url
+from controller.general_contoller import url
 
 def list_all_product_registration():
     response = requests.get(url("ProductRegistration/listAllProductRegistrations"))

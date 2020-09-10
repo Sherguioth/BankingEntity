@@ -8,7 +8,8 @@
 
 import sys
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from gui.gui_modal_list_clients import GUI_Modal
+from controller import product_controller, product_registration_controller
 
 class Ui_GUI_Add_Product_Registration(object):
     def setupUi(self, GUI_Add_Product_Registration):
@@ -117,7 +118,10 @@ class Ui_GUI_Add_Product_Registration(object):
         self.statusbar = QtWidgets.QStatusBar(GUI_Add_Product_Registration)
         self.statusbar.setObjectName("statusbar")
         GUI_Add_Product_Registration.setStatusBar(self.statusbar)
-
+        
+        self.btn_find_client.clicked.connect(self.find_client)
+        self.btn_add_product_registration.clicked.connect(self.add_producto_registration)
+        
         self.retranslateUi(GUI_Add_Product_Registration)
         QtCore.QMetaObject.connectSlotsByName(GUI_Add_Product_Registration)
 
@@ -136,3 +140,50 @@ class Ui_GUI_Add_Product_Registration(object):
         self.radbtn_active.setText(_translate("GUI_Add_Product_Registration", "Activo"))
         self.radbtn_inactive.setText(_translate("GUI_Add_Product_Registration", "Inactivo"))
         self.btn_add_product_registration.setText(_translate("GUI_Add_Product_Registration", "Agregar registro"))
+    
+    def find_client(self):    
+        self.modal = GUI_Modal(self).exec_()
+    
+    def set_id_client_selected(self, data):
+        id_client = data
+        self.txt_client_id.setPlainText(id_client)
+        
+        products = product_controller.list_all_products()
+        product_types = []
+        for product in products:
+            product_types.append(product["name"])
+        
+        self.comboBox_product_code.addItems(product_types)
+    
+    def add_producto_registration(self):
+        client_id = self.txt_client_id.toPlainText();
+        product_name = str(self.comboBox_product_code.currentText())
+        product_number = self.txt_product_number.toPlainText()
+        balance = self.txt_balance.toPlainText()
+        registration_date = self.dateEdit_registrtion_date.date()
+        expiration_date = self.dateEdit_expiration_date.date()
+        state = self.radbtn_active.isChecked()
+        
+        products = product_controller.list_all_products()
+        products = list(filter(lambda product_temp: product_temp["name"] == product_name, products))
+        product = products[0]
+        
+        product_code = product["code"]
+        resp = product_registration_controller.insert_product_registration(client_id, product_code, product_number, 
+                                                                           balance, registration_date.toString(QtCore.Qt.ISODate), 
+                                                                           expiration_date.toString(QtCore.Qt.ISODate), state)
+        
+        if resp:
+            msgBox = QtWidgets.QMessageBox()
+            msgBox.setWindowTitle("Confirmación")
+            msgBox.setText("Registro agregado correctamente")
+            msgBox.exec()
+            
+            self.txt_product_number.setPlainText("")
+            self.txt_balance.setPlainText("")
+            
+        else:
+            msgBox = QtWidgets.QMessageBox()
+            msgBox.setWindowTitle("Advertencia")
+            msgBox.setText("No se pudo regitrar el producto")
+            msgBox.exec()
