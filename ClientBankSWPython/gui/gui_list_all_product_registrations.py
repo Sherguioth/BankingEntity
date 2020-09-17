@@ -97,20 +97,27 @@ class Ui_GUI_List_All_Product_Registrations(object):
         self.label_product_type.setText(_translate("GUI_List_All_Product_Registrations", "Tipo de producto:"))
         self.label_2.setText(_translate("GUI_List_All_Product_Registrations", "Estado:"))
         self.btn_filter.setText(_translate("GUI_List_All_Product_Registrations", "Filtrar"))
+
     
     def load_table_data(self, product_registrations):
-        self.tableWidget.clearContents()
-
-        for row, product_registration in enumerate(product_registrations):
-            self.tableWidget.setRowCount(row+1)
-            self.tableWidget.setItem(row, 0,QTableWidgetItem(str(product_registration["productCode"])))
-            self.tableWidget.setItem(row, 1,QTableWidgetItem(str(product_registration["clientId"])))
-            self.tableWidget.setItem(row, 2,QTableWidgetItem(str(product_registration["productNumber"])))
-            self.tableWidget.setItem(row, 3,QTableWidgetItem(str(product_registration["balance"])))
-            self.tableWidget.setItem(row, 4,QTableWidgetItem(product_registration["registrationDate"]))
-            self.tableWidget.setItem(row, 5,QTableWidgetItem(product_registration["expirationDate"]))
-            state = lambda state_json : "Activo" if (state_json) else "Inactivo"
-            self.tableWidget.setItem(row, 6,QTableWidgetItem(state(product_registration["state"])))
+        try:
+            self.tableWidget.clearContents()
+            for row, product_registration in enumerate(product_registrations):
+                self.tableWidget.setRowCount(row+1)
+                self.tableWidget.setItem(row, 0,QTableWidgetItem(str(product_registration["productCode"])))
+                self.tableWidget.setItem(row, 1,QTableWidgetItem(str(product_registration["clientId"])))
+                self.tableWidget.setItem(row, 2,QTableWidgetItem(str(product_registration["productNumber"])))
+                self.tableWidget.setItem(row, 3,QTableWidgetItem(str(product_registration["balance"])))
+                self.tableWidget.setItem(row, 4,QTableWidgetItem(product_registration["registrationDate"]))
+                self.tableWidget.setItem(row, 5,QTableWidgetItem(product_registration["expirationDate"]))
+                state = lambda state_json : "Activo" if (state_json) else "Inactivo"
+                self.tableWidget.setItem(row, 6,QTableWidgetItem(state(product_registration["state"])))
+        except Exception as ex:
+            msgBox = QtWidgets.QMessageBox()
+            msgBox.setWindowTitle("Error")
+            msgBox.setText(str(ex))
+            msgBox.exec()
+        
     
     def refesh_data(self):
         porducts_registrations =product_registration_controller.list_all_product_registration()
@@ -119,47 +126,60 @@ class Ui_GUI_List_All_Product_Registrations(object):
         self.comboBox_state.setCurrentIndex(0)
     
     def load_filters(self):
-        product_types = [""]
-        products = product_controller.list_all_products()
-        
-        for product in products:
-            product_types.append(product["name"])
-            
-        self.comboBox_state.addItems(list(["", "Activo", "Inactivo"]))
-        self.comboBox_product_type.addItems(product_types)
-    
-    def filter_product_registrations(self):
-        product_registrations = product_registration_controller.list_all_product_registration()
-        
-        product_type = self.comboBox_product_type.currentText()
-        product_state = self.comboBox_state.currentText()
-        if product_type == "" and product_state == "":
-            msgBox = QtWidgets.QMessageBox()
-            msgBox.setWindowTitle("Advertencia")
-            msgBox.setText("Seleccione al menos un criterio de filtrado")
-            msgBox.exec()
-            
-        else:
+        try:
+            product_types = [""]
             products = product_controller.list_all_products()
             
-            if product_type != "" and product_state == "":
-                get_product_code = lambda product_name: list(filter(lambda product: product["name"] == product_type, products))
-                product_list = get_product_code(product_type)
-                product = product_list[0]
-                product_registrations = list(filter(lambda product_registration: product_registration["productCode"] == product["code"],
-                       product_registrations))
-                self.load_table_data(product_registrations)
+            for product in products:
+                product_types.append(product["name"])
                 
-            elif product_type == "" and product_state != "":
-                state = lambda registrartion_state : True if (registrartion_state == "Activo") else False
-                product_registrations = list(filter(lambda product_registration: product_registration["state"] == state(product_state), 
-                                                    product_registrations))
-                self.load_table_data(product_registrations)
+            self.comboBox_state.addItems(list(["", "Activo", "Inactivo"]))
+            self.comboBox_product_type.addItems(product_types)
+        except Exception as ex:
+            msgBox = QtWidgets.QMessageBox()
+            msgBox.setWindowTitle("Error")
+            msgBox.setText(str(ex))
+            msgBox.exec()
+        
+    
+    def filter_product_registrations(self):
+        try:
+            product_registrations = product_registration_controller.list_all_product_registration()
+            product_type = self.comboBox_product_type.currentText()
+            product_state = self.comboBox_state.currentText()
+            if product_type == "" and product_state == "":
+                msgBox = QtWidgets.QMessageBox()
+                msgBox.setWindowTitle("Advertencia")
+                msgBox.setText("Seleccione al menos un criterio de filtrado")
+                msgBox.exec()
+                
             else:
-                get_product_code = lambda product_name: list(filter(lambda product: product["name"] == product_type, products))
-                state = lambda registrartion_state : True if (registrartion_state == "Activo") else False
-                product_list = get_product_code(product_type)
-                product = product_list[0]
-                product_registrations = list(filter(lambda product_registration: product_registration["productCode"] == product["code"] and product_registration["state"] == state(product_state),
-                       product_registrations))
-                self.load_table_data(product_registrations)
+                products = product_controller.list_all_products()
+                
+                if product_type != "" and product_state == "":
+                    get_product_code = lambda product_name: list(filter(lambda product: product["name"] == product_type, products))
+                    product_list = get_product_code(product_type)
+                    product = product_list[0]
+                    product_registrations = list(filter(lambda product_registration: product_registration["productCode"] == product["code"],
+                        product_registrations))
+                    self.load_table_data(product_registrations)
+                    
+                elif product_type == "" and product_state != "":
+                    state = lambda registrartion_state : True if (registrartion_state == "Activo") else False
+                    product_registrations = list(filter(lambda product_registration: product_registration["state"] == state(product_state), 
+                                                        product_registrations))
+                    self.load_table_data(product_registrations)
+                else:
+                    get_product_code = lambda product_name: list(filter(lambda product: product["name"] == product_type, products))
+                    state = lambda registrartion_state : True if (registrartion_state == "Activo") else False
+                    product_list = get_product_code(product_type)
+                    product = product_list[0]
+                    product_registrations = list(filter(lambda product_registration: product_registration["productCode"] == product["code"] and product_registration["state"] == state(product_state),
+                        product_registrations))
+                    self.load_table_data(product_registrations)
+        except Exception as ex:
+            msgBox = QtWidgets.QMessageBox()
+            msgBox.setWindowTitle("Error")
+            msgBox.setText(str(ex))
+            msgBox.exec()
+        

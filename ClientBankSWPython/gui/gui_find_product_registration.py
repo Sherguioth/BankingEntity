@@ -140,35 +140,48 @@ class Ui_GUI_Find_Product_Registration(object):
         self.modal = GUI_Modal(self).exec_()
     
     def set_id_client_selected(self, data):
-        id_client = data
-        self.txt_client_id.setPlainText(id_client)
+        try:
+            id_client = data
+            self.txt_client_id.setPlainText(id_client)
+            
+            product_registrations = product_registration_controller.list_all_product_registration()
+            clients_registations = list(filter(lambda product_registration: product_registration["clientId"] == int(id_client), 
+                                product_registrations))
+            
+            products_codes = []
+            for product in clients_registations:
+                products_codes.append(str(product["productCode"]))
+            
+            self.comboBox_product_code.addItems(products_codes)
+        except Exception as ex:
+            msgBox = QtWidgets.QMessageBox()
+            msgBox.setWindowTitle("Error")
+            msgBox.setText(str(ex))
+            msgBox.exec()
         
-        product_registrations = product_registration_controller.list_all_product_registration()
-        clients_registations = list(filter(lambda product_registration: product_registration["clientId"] == int(id_client), 
-                               product_registrations))
-        
-        products_codes = []
-        print(clients_registations)
-        for product in clients_registations:
-            products_codes.append(str(product["productCode"]))
-        
-        self.comboBox_product_code.addItems(products_codes)
+
     
     def find_product_registration(self):
-        client_id = self.txt_client_id.toPlainText()
-        product_code = str(self.comboBox_product_code.currentText())
-        
-        prodcut_registration = product_registration_controller.find_product_registration(client_id, product_code)
-        
-        self.txt_product_number.setPlainText(str(prodcut_registration["productNumber"]))
-        self.txt_balance.setPlainText(str(prodcut_registration["balance"]))
-        self.dateEdit_registrtion_date.setDate(QtCore.QDate.fromString(prodcut_registration["registrationDate"], "yyyy-MM-dd"))
-        self.dateEdit_expiration_date.setDate(QtCore.QDate.fromString(prodcut_registration["expirationDate"], "yyyy-MM-dd"))
-        state = lambda state_json : "Activo" if (state_json) else "Inactivo"
-        self.txt_state.setPlainText(state(prodcut_registration["state"]))
-        
-        self.txt_product_number.setEnabled(False)
-        self.txt_balance.setEnabled(False)
-        self.dateEdit_registrtion_date.setEnabled(False)
-        self.dateEdit_expiration_date.setEnabled(False)
-        self.txt_state.setEnabled(False)
+        try:
+            client_id = self.txt_client_id.toPlainText()
+            product_code = str(self.comboBox_product_code.currentText())
+            
+            prodcut_registration = product_registration_controller.find_product_registration(client_id, product_code)
+            
+            self.txt_product_number.setPlainText(str(prodcut_registration["productNumber"]))
+            self.txt_balance.setPlainText(str(prodcut_registration["balance"]))
+            self.dateEdit_registrtion_date.setDate(QtCore.QDate.fromString(prodcut_registration["registrationDate"], "yyyy-MM-dd"))
+            self.dateEdit_expiration_date.setDate(QtCore.QDate.fromString(prodcut_registration["expirationDate"], "yyyy-MM-dd"))
+            state = lambda state_json : "Activo" if (state_json) else "Inactivo"
+            self.txt_state.setPlainText(state(prodcut_registration["state"]))
+            
+            self.txt_product_number.setEnabled(False)
+            self.txt_balance.setEnabled(False)
+            self.dateEdit_registrtion_date.setEnabled(False)
+            self.dateEdit_expiration_date.setEnabled(False)
+            self.txt_state.setEnabled(False)
+        except Exception as ex:
+            msgBox = QtWidgets.QMessageBox()
+            msgBox.setWindowTitle("Error")
+            msgBox.setText(str(ex))
+            msgBox.exec()

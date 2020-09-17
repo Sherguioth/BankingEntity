@@ -167,49 +167,63 @@ class Ui_GUI_Update_Client(object):
         self.btn_update_client.setText(_translate("GUI_Update_Client", "Actualizar Cliente"))
     
     def find_client(self):
-        client = find_client(self.txt_id_number.toPlainText())
+        try:
+            client = find_client(self.txt_id_number.toPlainText())
+            
+            self.txt_id_number.setPlainText(str(client["identificationNumber"]))
+            
+            index_combo = self.comboBox_doc_type.findText(client["documetType"], QtCore.Qt.MatchCaseSensitive)
+            if index_combo >= 0:
+                self.comboBox_doc_type.setCurrentIndex(index_combo)
+            
+            self.txt_name.setPlainText(client["name"])
+            self.dateEdit_birthday.setDate(QtCore.QDate.fromString(client["birthday"], "yyyy-MM-dd"))
+            self.txt_email.setPlainText(client["email"])
+            self.txt_phone_number.setPlainText(client["phoneNumber"])
+            
+            index_combo = self.comboBox_gender.findText(client["gender"], QtCore.Qt.MatchCaseSensitive)
+            if index_combo >= 0:
+                self.comboBox_gender.setCurrentIndex(index_combo)
+        except Exception as ex:
+            msgBox = QtWidgets.QMessageBox()
+            msgBox.setWindowTitle("Error")
+            msgBox.setText(str(ex))
+            msgBox.exec()
         
-        self.txt_id_number.setPlainText(str(client["identificationNumber"]))
-        
-        index_combo = self.comboBox_doc_type.findText(client["documetType"], QtCore.Qt.MatchCaseSensitive)
-        if index_combo >= 0:
-            self.comboBox_doc_type.setCurrentIndex(index_combo)
-        
-        self.txt_name.setPlainText(client["name"])
-        self.dateEdit_birthday.setDate(QtCore.QDate.fromString(client["birthday"], "yyyy-MM-dd"))
-        self.txt_email.setPlainText(client["email"])
-        self.txt_phone_number.setPlainText(client["phoneNumber"])
-        
-        index_combo = self.comboBox_gender.findText(client["gender"], QtCore.Qt.MatchCaseSensitive)
-        if index_combo >= 0:
-            self.comboBox_gender.setCurrentIndex(index_combo)
     
     def update_client(self):
-        client = find_client(self.txt_id_number.toPlainText())
-        
-        id_number = self.txt_id_number.toPlainText()
-        doct_type = str(self.comboBox_doc_type.currentText())
-        name = self.txt_name.toPlainText()
-        birthday = self.dateEdit_birthday.date()
-        email = self.txt_email.toPlainText()
-        phone_number = self.txt_phone_number.toPlainText()
-        gender = str(self.comboBox_gender.currentText())
-        
-        resp = update_client(id_number, doct_type, name, birthday.toString(QtCore.Qt.ISODate), email, phone_number, gender)
-        
-        if resp:
-            msgBox = QtWidgets.QMessageBox()
-            msgBox.setWindowTitle("Confirmación")
-            msgBox.setText("Cliente se ha acutalizado correctamente")
-            msgBox.exec()
+        try:
+            client = find_client(self.txt_id_number.toPlainText())
             
-            self.txt_id_number.setPlainText("")
-            self.txt_name.setPlainText("")
-            self.txt_email.setPlainText("")
-            self.txt_phone_number.setPlainText("")
+            id_number = self.txt_id_number.toPlainText()
+            doct_type = str(self.comboBox_doc_type.currentText())
+            name = self.txt_name.toPlainText()
+            birthday = self.dateEdit_birthday.date()
+            email = self.txt_email.toPlainText()
+            phone_number = self.txt_phone_number.toPlainText()
+            gender = str(self.comboBox_gender.currentText())
             
-        else:
+            resp = update_client(id_number, doct_type, name, birthday.toString(QtCore.Qt.ISODate), email, phone_number, gender)
+            
+            if resp:
+                msgBox = QtWidgets.QMessageBox()
+                msgBox.setWindowTitle("Confirmación")
+                msgBox.setText("Cliente se ha acutalizado correctamente")
+                msgBox.exec()
+                
+                self.txt_id_number.setPlainText("")
+                self.txt_name.setPlainText("")
+                self.txt_email.setPlainText("")
+                self.txt_phone_number.setPlainText("")
+                
+            else:
+                msgBox = QtWidgets.QMessageBox()
+                msgBox.setWindowTitle("Advertencia")
+                msgBox.setText("No se pudo acutalizar el cliente")
+                msgBox.exec()
+        except Exception as ex:
             msgBox = QtWidgets.QMessageBox()
-            msgBox.setWindowTitle("Advertencia")
-            msgBox.setText("No se pudo acutalizar el cliente")
+            msgBox.setWindowTitle("Error")
+            msgBox.setText(str(ex))
             msgBox.exec()
+        

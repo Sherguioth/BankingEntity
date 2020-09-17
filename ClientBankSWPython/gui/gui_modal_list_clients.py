@@ -61,18 +61,25 @@ class GUI_Modal(QtWidgets.QDialog):
         self.label_title.setText(_translate("GUI_Modal", "Lista de clientes"))
     
     def load_table_data(self):
-        self.tableWidget.clearContents()
+        try:
+            self.tableWidget.clearContents()
         
-        clients = list_all_clients()
-        for row, client in enumerate(clients):
-            self.tableWidget.setRowCount(row+1)
-            self.tableWidget.setItem(row, 0, QTableWidgetItem(str(client["identificationNumber"])))
-            self.tableWidget.setItem(row, 1, QTableWidgetItem(client["documetType"]))
-            self.tableWidget.setItem(row, 2, QTableWidgetItem(client["name"]))
-            self.tableWidget.setItem(row, 3, QTableWidgetItem(client["birthday"]))
-            self.tableWidget.setItem(row, 4, QTableWidgetItem(client["email"]))
-            self.tableWidget.setItem(row, 5, QTableWidgetItem(client["phoneNumber"]))
-            self.tableWidget.setItem(row, 6, QTableWidgetItem(client["gender"]))
+            clients = list_all_clients()
+            for row, client in enumerate(clients):
+                self.tableWidget.setRowCount(row+1)
+                self.tableWidget.setItem(row, 0, QTableWidgetItem(str(client["identificationNumber"])))
+                self.tableWidget.setItem(row, 1, QTableWidgetItem(client["documetType"]))
+                self.tableWidget.setItem(row, 2, QTableWidgetItem(client["name"]))
+                self.tableWidget.setItem(row, 3, QTableWidgetItem(client["birthday"]))
+                self.tableWidget.setItem(row, 4, QTableWidgetItem(client["email"]))
+                self.tableWidget.setItem(row, 5, QTableWidgetItem(client["phoneNumber"]))
+                self.tableWidget.setItem(row, 6, QTableWidgetItem(client["gender"]))
+        except Exception as ex:
+            msgBox = QtWidgets.QMessageBox()
+            msgBox.setWindowTitle("Error")
+            msgBox.setText(str(ex))
+            msgBox.exec()
+        
     
     def get_client_selected(self):
         self.id_client = self.tableWidget.item(self.tableWidget.currentRow(), 0)

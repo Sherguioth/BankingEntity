@@ -1,13 +1,21 @@
 import sys
 import requests
-from controller.general_contoller import url
+from controller.general_contoller import get_db
+
+db = get_db()
 
 def list_all_products():
-    response = requests.get(url("Product/listAllProducts"))
-    return response.json()
+    products_ref = db.collection(u'products')
+    docs = products_ref.stream()
+    products = []
+    for doc in docs:
+        products.append(doc.to_dict())
+    return products
 
 def find_produt(code):
-    code = int(code)
-
-    response = requests.get(url("Product/Product/findProduct?code={}".format(code)))
-    return response.json()
+    doc_ref = db.collection(u'products').document(code)
+    doc = doc_ref.get()
+    if doc.exists:
+        return doc.to_dict()
+    else:
+        raise Exception("Producto no encontrado")

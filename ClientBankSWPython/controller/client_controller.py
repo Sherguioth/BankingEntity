@@ -1,50 +1,65 @@
 import sys
 import requests
-from controller.general_contoller import url
+from controller.general_contoller import get_db
+
+db = get_db()
 
 def list_all_clients():
-    response = requests.get(url("Client/listAllClients"))
-    return response.json()
+    clients_ref = db.collection(u'clients')
+    docs = clients_ref.stream()
+    clients = []
+    for doc in docs:
+        clients.append(doc.to_dict())
+    return clients
 
-def insert_client(id_number, doc_type, name, birthday, email, phone_number, gender):
-    id_number = int(id_number)
+def insert_client(str_id_number, doc_type, name, birthday, email, phone_number, gender):
+    id_number = int(str_id_number)
     
     new_client = {
-        "identificationNumber" : id_number,
-        "documetType" : doc_type,
-        "name" : name,
-        "birthday" : birthday,
-        "email" : email,
-        "phoneNumber" : phone_number,
-        "gender" : gender
+        u"identificationNumber" : id_number,
+        u"documetType" : doc_type,
+        u"name" : name,
+        u"birthday" : birthday,
+        u"email" : email,
+        u"phoneNumber" : phone_number,
+        u"gender" : gender
     }
     
-    response = requests.post(url("Client/insertClient"), json= new_client)
-    return response.json()
+    doc_ref = db.collection(u'clients').document(str_id_number)
+    doc_ref.set(new_client)
+    return True
 
-def find_client(id_number):
-    id_number = int(id_number)
-    
-    response = requests.get(url("Client/findClient?clientId={}".format(id_number)))
-    return response.json()
+def find_client(str_id_number):
+    doc_ref = db.collection(u'clients').document(str_id_number)
+    doc = doc_ref.get()
+    if doc.exists:
+        return doc.to_dict()
+    else:
+        raise Exception("Cliente no encontrado")
 
-def update_client(id_number, doc_type, name, birthday, email, phone_number, gender):
-    client_to_update = find_client(id_number)
-    id_number = int(id_number)
-    
-    client_to_update["identificationNumber"] = id_number
-    client_to_update["documetType"] = doc_type
-    client_to_update["name"] = name
-    client_to_update["birthday"] = birthday
-    client_to_update["email"] = email
-    client_to_update["phoneNumber"] = phone_number
-    client_to_update["gender"] = gender
-    
-    response = requests.put(url("Client/updateClient?clientId={}".format(id_number)), json=client_to_update)
-    return response.json()
+def update_client(str_id_number, doc_type, name, birthday, email, phone_number, gender):   
+    try:
+        client_to_update = find_client(str_id_number)
+        id_number = int(str_id_number)
+        
+        client_to_update["identificationNumber"] = id_number
+        client_to_update["documetType"] = doc_type
+        client_to_update["name"] = name
+        client_to_update["birthday"] = birthday
+        client_to_update["email"] = email
+        client_to_update["phoneNumber"] = phone_number
+        client_to_update["gender"] = gender
+        
+        doc_ref = db.collection(u'clients').document(str_id_number)
+        doc_ref.set(client_to_update)
+        return True
+    except Exception as ex:
+        raise ex
 
-def delete_client(id_number):
-    client_to_delete = find_client(id_number)
-    
-    response = requests.delete(url("Client/deleteClient?clientId={}".format(client_to_delete["identificationNumber"])))
-    return response.json()
+def delete_client(str_id_number):   
+    try:
+        client_to_delete = find_client(str_id_number)
+        db.collection(u'clients').document(str_id_number).delete()
+        return True
+    except Exception as ex:
+        raise ex

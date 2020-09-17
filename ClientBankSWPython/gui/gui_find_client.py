@@ -161,19 +161,27 @@ class Ui_GUI_Find_Client(object):
         self.btn_find_client.setText(_translate("GUI_Find_Client", "Buscar"))
     
     def find_client(self):
-        client = find_client(self.txt_id_number.toPlainText())
         
-        self.txt_id_number.setPlainText(str(client["identificationNumber"]))
-        self.txt_doc_type.setPlainText(client["documetType"])
-        self.txt_name.setPlainText(client["name"])
-        self.dateEdit_birthday.setDate(QtCore.QDate.fromString(client["birthday"], "yyyy-MM-dd"))
-        self.txt_email.setPlainText(client["email"])
-        self.txt_phone_number.setPlainText(client["phoneNumber"])
-        self.txt_gender.setPlainText(client["gender"])
+        try:
+            client = find_client(self.txt_id_number.toPlainText())
         
-        self.txt_doc_type.setEnabled(False)
-        self.txt_name.setEnabled(False)
-        self.dateEdit_birthday.setEnabled(False)
-        self.txt_email.setEnabled(False)
-        self.txt_phone_number.setEnabled(False)
-        self.txt_gender.setEnabled(False)
+            self.txt_id_number.setPlainText(str(client["identificationNumber"]))
+            self.txt_doc_type.setPlainText(client["documetType"])
+            self.txt_name.setPlainText(client["name"])
+            self.dateEdit_birthday.setDate(QtCore.QDate.fromString(client["birthday"], "yyyy-MM-dd"))
+            self.txt_email.setPlainText(client["email"])
+            self.txt_phone_number.setPlainText(client["phoneNumber"])
+            self.txt_gender.setPlainText(client["gender"])
+            
+            self.txt_doc_type.setEnabled(False)
+            self.txt_name.setEnabled(False)
+            self.dateEdit_birthday.setEnabled(False)
+            self.txt_email.setEnabled(False)
+            self.txt_phone_number.setEnabled(False)
+            self.txt_gender.setEnabled(False)
+        except Exception as ex:
+            msgBox = QtWidgets.QMessageBox()
+            msgBox.setWindowTitle("Error")
+            msgBox.setText(str(ex))
+            msgBox.exec()
+        
