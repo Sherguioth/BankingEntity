@@ -1,8 +1,0 @@
-<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-  <system systemId="http://localhost:7101/ServerBankSW/ClientWebServiceSW?WSDL#%7Bhttp%3A%2F%2FwebServices%2F%7DClientWebServiceSW"
-          uri="../webservices/ClientWebServiceSW.wsdl"/>
-  <system systemId="http://localhost:7101/ServerBankSW/ProductWebServicePort?WSDL#%7Bhttp%3A%2F%2FwebServices%2F%7DProductWebServiceSW"
-          uri="../webservices/ProductWebServiceSW.wsdl"/>
-  <system systemId="http://localhost:7101/ServerBankSW/ProductRegistrationWebServicePort?WSDL#%7Bhttp%3A%2F%2FwebServices%2F%7DProductRegistrationWebServiceSW"
-          uri="../webservices/ProductRegistrationWebServiceSW.wsdl"/>
-</catalog>

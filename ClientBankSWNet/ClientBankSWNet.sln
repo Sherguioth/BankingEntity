@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30320.27
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientBankSWNet", "ClienteBankSWNet\ClientBankSWNet.csproj", "{15AB83EF-0B2D-4492-8845-11F772468EC6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClientBankSWNet", "ClientBankSWNet\ClientBankSWNet.csproj", "{A33A6A01-C585-4333-A814-80C89CC756DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{15AB83EF-0B2D-4492-8845-11F772468EC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{15AB83EF-0B2D-4492-8845-11F772468EC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{15AB83EF-0B2D-4492-8845-11F772468EC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{15AB83EF-0B2D-4492-8845-11F772468EC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A33A6A01-C585-4333-A814-80C89CC756DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A33A6A01-C585-4333-A814-80C89CC756DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A33A6A01-C585-4333-A814-80C89CC756DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A33A6A01-C585-4333-A814-80C89CC756DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {8FE9B019-643F-47D5-8693-0DE53492F235}
+		SolutionGuid = {57871DDD-34BD-4B89-8D93-86556ED22A1C}
 	EndGlobalSection
 EndGlobal
